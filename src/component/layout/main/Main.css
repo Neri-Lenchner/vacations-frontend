@@ -1,0 +1,7 @@
+.Main > h1 {
+    text-align: center;
+}
+
+.Main {
+    overflow: scroll;
+}
