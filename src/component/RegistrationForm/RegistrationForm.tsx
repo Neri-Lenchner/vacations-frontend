@@ -48,7 +48,7 @@ function RegistrationForm(): JSX.Element {
                 )}/>
                 {formState.errors.lastName && <p>{formState.errors.lastName?.message}</p>}
                 <div className="form-input-message">email</div>
-                <input type="text" className="form-email form-element" {...register("email",
+                <input type="email" className="form-email form-element" {...register("email",
                     {
                         required: {value: true, message: "Email is required!"},
                         minLength: {value: 7, message: "Email must be valid"}
@@ -63,7 +63,7 @@ function RegistrationForm(): JSX.Element {
                     }
                 )}/>
                 {formState.errors.password && <p>{formState.errors.password?.message}</p>}
-                <button className="form-button form-element" type="submit">Add Post</button>
+                <button className="form-button form-element" type="submit">Register</button>
                 <div className="form-input-message form-bottom-message">already a member?</div>
                 <NavLink className="form-bottom-message form-link" to="/login-form">login</NavLink>
             </div>

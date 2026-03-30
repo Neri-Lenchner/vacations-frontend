@@ -11,6 +11,10 @@ function Header(): JSX.Element {
             : undefined
     );
 
+    // authStore.getState().token && (
+    //     authStore.getState().user?.firstName
+    // )
+
     useEffect((): Unsubscribe => {
         const unsubscribe: Unsubscribe = authStore.subscribe((): void => {
             if (authStore.getState().user !== null) {
@@ -28,18 +32,27 @@ function Header(): JSX.Element {
             type: AuthActionType.Logout, payload: ""
         })
     }
+
     return (
         <div className="header">
-            <div className="header-button-line">
-                <button onClick={logOut}>
-                    Logout
-                </button>
-            </div>
             {userName
-                ? <h1>{"Hello " + userName}</h1>
-                : <h1>Please Login</h1>}
+                ? <><h2>Hello {userName}</h2>
+                <div className="header-button-line">
+                    <button onClick={logOut}>
+                        Logout
+                    </button>
+                </div></>
+                : <h2>Please login</h2>
+            }
+
+            {/*{userName*/}
+            {/*    ? <h1>{"Hello " + userName}</h1>*/}
+            {/*    : <h1>Please Login</h1>}*/}
         </div>
     );
 }
 
 export default Header;
+
+// <input type="datetime-local"/>
+// <input file="datetime-local"/>

@@ -32,7 +32,7 @@ function LoginForm(): JSX.Element {
                     Login
                 </h1>
                 <div className="form-input-message">email</div>
-                <input type="text" className="form-email form-element" {...register("email",
+                <input type="email" className="form-email form-element" {...register("email",
                     {
                         required: {value: true, message: "Email is required!"},
                         minLength: {value: 7, message: "Email must be valid"}
@@ -47,7 +47,7 @@ function LoginForm(): JSX.Element {
                     }
                 )}/>
                 {formState.errors.password && <p>{formState.errors.password?.message}</p>}
-                <button className="form-button form-element" type="submit">Add Post</button>
+                <button className="form-button form-element" type="submit">Login</button>
                 <div className="form-input-message form-bottom-message">don't have an account?</div>
                 <NavLink className="form-bottom-message form-link" to="/registration-form">register now</NavLink>
             </div>
