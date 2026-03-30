@@ -22,7 +22,8 @@ aside {
 
 main {
     flex: 1;
-    height: 100vh;
+    height: 100vh;     /* take full viewport height */
+    overflow-y: auto;  /* enable vertical scroll */
 }
 
 
