@@ -3,6 +3,7 @@
     margin: 0;
     scroll-behavior: smooth;
     scrollbar-width: none;
+    font-family: Arial, 'Montserrat', sans-serif;
 }
 
 header {
@@ -22,4 +23,74 @@ aside {
 main {
     flex: 1;
     height: 100vh;
+}
+
+
+/* FORM CSS */
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+/* Shared style for inputs + button */
+.form-element {
+    width: 300px;           /* same width for everything */
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+/* Same height for inputs + button */
+.form-headline,
+.form-date,
+.form button {
+    height: 40px;
+}
+
+/* Taller textarea */
+.form-add-content {
+    height: 120px;
+    resize: none; /* optional: prevents resizing */
+}
+
+/* Optional: nicer button */
+.form button {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border: none;
+    transition: 0.2s;
+}
+
+.form button:hover {
+    background-color: #0056b3;
+}
+
+.form-input-message {
+    align-self: start;
+    font-size: 14px;
+    color: gray;
+}
+
+.form-bottom-message {
+    align-self: center;
+}
+
+.form-link {
+    color: blue;
 }
