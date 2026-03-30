@@ -1,3 +1,10 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
 header {
     height: 15vh;
     width: 100%;
@@ -13,6 +20,12 @@ aside {
 }
 
 main {
-    width: 75vw;
+    flex: 1;
     height: 100vh;
+}
+
+.Main {
+    height: 200px;
+    width: 150px;
+    border: 1px solid black;
 }

@@ -1,5 +1,7 @@
 import React, {JSX, useState} from 'react';
+
 import './Main.css';
+import {Component} from "../../Component";
 
 function Main(): JSX.Element {
 
