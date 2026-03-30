@@ -65,7 +65,7 @@ function RegistrationForm(): JSX.Element {
                 {formState.errors.password && <p>{formState.errors.password?.message}</p>}
                 <button className="form-button form-element" type="submit">Add Post</button>
                 <div className="form-input-message form-bottom-message">already a member?</div>
-                <NavLink className="form-bottom-message form-link" to="/">login</NavLink>
+                <NavLink className="form-bottom-message form-link" to="/login-form">login</NavLink>
             </div>
 
             {/*<div className="form">*/}

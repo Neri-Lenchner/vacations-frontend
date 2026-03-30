@@ -8,7 +8,7 @@ function SideBar(): JSX.Element {
         <div className="SideBar">
           <div className="links">
               <NavLink to="/registration-form">Register</NavLink>
-              <NavLink to="/">Link</NavLink>
+              <NavLink to="/login-form">Login</NavLink>
               <NavLink to="/">Link</NavLink>
               <NavLink to="/">Link</NavLink>
               <NavLink to="/">Link</NavLink>
