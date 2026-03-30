@@ -6,6 +6,11 @@
     font-family: Arial, 'Montserrat', sans-serif;
 }
 
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
 header {
     height: 15vh;
     width: 100%;

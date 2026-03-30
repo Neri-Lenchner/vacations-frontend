@@ -11,11 +11,20 @@ class AuthService {
             await axios.post(appConfig.apiAddress + "api/auth/register", user);
         } catch (err) {
             const myErr = err as AxiosError;
-            const data = myErr.response?.data as {error: string};
-            console.log(myErr);
-            throw err;
+            throw new Error((myErr.response?.data as any)?.error);
         }
     }
+
+    // public async register(user: User): Promise<void> {
+    //     try {
+    //         await axios.post(appConfig.apiAddress + "api/auth/register", user);
+    //     } catch (err) {
+    //         const myErr = err as AxiosError;
+    //         const data = myErr.response?.data as {error: string};
+    //         console.log(myErr);
+    //         throw err;
+    //     }
+    // }
 
     // public async login(credentials: Credentials): Promise<void>  {
     //     try {
