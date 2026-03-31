@@ -1,7 +1,7 @@
 import axios from "axios";
 import {appConfig} from "../utils/app-config";
 import {authStore} from "../state/auth-state";
-import {User} from "../models/user";
+import {User} from "../models/user.model";
 import {UserActionType, userStore} from "../state/user-state";
 
 class UserService {
