@@ -1,4 +1,16 @@
 .header {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3rem;
+}
+
+.header-button-line {
     display: flex;
     flex-direction: row;
+}
+
+.header-isUser {
+    display: flex;
 }

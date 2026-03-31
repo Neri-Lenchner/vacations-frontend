@@ -36,12 +36,19 @@ function Header(): JSX.Element {
     return (
         <div className="header">
             {userName
-                ? <><h2>Hello {userName}</h2>
-                <div className="header-button-line">
-                    <button onClick={logOut}>
-                        Logout
-                    </button>
-                </div></>
+                ? <>
+                    <h2>
+                        Hello {userName}
+                    </h2>
+                    <div className="header-button-line">
+                        <button
+                            onClick={logOut}
+                            className="general-button"
+                        >
+                            Logout
+                        </button>
+                    </div>
+                </>
                 : <h2>Please login</h2>
             }
 
