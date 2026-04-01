@@ -43,9 +43,9 @@ function Header(): JSX.Element {
         <div className="header">
             {userName
                 ? <>
-                    <h2>
+                    <div className="header-headline">
                         Hello {userName}
-                    </h2>
+                    </div>
                     <div className="header-button-line">
                         <button
                             onClick={logOut}
@@ -55,7 +55,9 @@ function Header(): JSX.Element {
                         </button>
                     </div>
                 </>
-                : <h2>Please login</h2>
+                : <h2 className="header-headline">
+                    Please login
+                </h2>
             }
 
             {/*{userName*/}

@@ -10,6 +10,6 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 16px;
-    background-color: lightblue;
+    background-color: transparent;
     padding: 40px;
 }
