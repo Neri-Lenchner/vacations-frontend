@@ -16,8 +16,8 @@ function Routing(): JSX.Element {
             <Route path="/login-form" element={<LoginForm />}/>
             <Route path="/vacations" element={<PrivateRoute child={<VacationLIst/>}/>}/>
             <Route path="/" element={<PrivateRoute child={<VacationLIst />}/>}/>
+            <Route path="*" element={<PrivateRoute child={<VacationLIst/>}/>}/>
             {/*<Route path="/new-course/:id?" element="example:{<CourseForm />}"/>*/}
-            <Route path="*" element={<PrivateRoute child={<LoginForm/>}/>}/>
         </Routes>
     );
 }
