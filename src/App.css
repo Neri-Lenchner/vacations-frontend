@@ -27,8 +27,10 @@ aside {
 
 main {
     flex: 1;
-    height: 100vh;     /* take full viewport height */
+    height: calc(100vh - 20vh);
+    /*height: 100vh;     !* take full viewport height *!*/
     overflow-y: auto;  /* enable vertical scroll */
+    padding-bottom: 200px;
 }
 
 /* GENERAL SETTINGS */
