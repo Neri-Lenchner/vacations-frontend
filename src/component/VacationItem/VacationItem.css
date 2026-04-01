@@ -1,0 +1,14 @@
+/*.vacation-item-container {*/
+/*    border: 1px solid black;*/
+/*    width: 200px;*/
+/*    height: 300px;*/
+/*    flex-shrink: 0;*/
+/*}*/
+
+.vacation-item-container {
+    border: 1px solid black;
+    width: 180px;
+    height: 300px;
+    flex-shrink: 0;
+    background-color: lightcoral;  /* debug color */
+}

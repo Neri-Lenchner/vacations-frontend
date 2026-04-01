@@ -39,7 +39,7 @@ function PrivateRoute(privateRouteProps: PrivateRouteProps): JSX.Element {
     // }
 
     return (
-        <div>{privateRouteProps.child}</div>
+        <>{privateRouteProps.child}</>
     );
 }
 
