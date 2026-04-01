@@ -1,31 +1,25 @@
-/*.vacation-item-container {*/
-/*    border: 1px solid black;*/
-/*    width: 200px;*/
-/*    height: 300px;*/
-/*    flex-shrink: 0;*/
-/*}*/
-
 .vacation-item-container {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     border: 1px solid black;
-    width: 200px;
-    height: 300px;
-    width: 200px;
+    width: 280px;
+    height: 350px;
     flex-shrink: 0;
-    background-color: lightcoral;  /* debug color */
+    background-color: white;
 }
 
 .vacation-item-button {
-    width: 190px;
+    width: 270px;
     height: 25px;
     margin-top: 5px;
 }
 
 .vacation-item-image-container {
-    height: 100px;
+    height: 120px;
     width: 100%;
+    background-color: lightcoral;
 }
 
 .vacation-item-content-container {
@@ -37,7 +31,7 @@
 
 .vacation-item-text {
     color: gray;
-    height: 140px;
+    height: 170px;
     width: 100%;
     background-color: white;
     padding: 10px;
@@ -45,11 +39,58 @@
     overflow: hidden;
 }
 
-.vacation-item-title{
-    color: white;
+.vacation-item-dates {
+    font-size: 12px;
+    position: relative;
+    color: gray;
     text-align: center;
     height: 25px;
     padding: 5px 0 ;
-    background-color: blue;
+    background-color: lightblue;
+    width: 100%;
+}
+
+
+.vacation-item-title {
+    position: absolute;
+    left: 10px;
+    top: 95px;
+    font-size: 20px;
+}
+
+.vacation-item-likes-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    font-size: 11px;
+    height: 30px;
+    width: 70px;
+    padding: 10px 5px;
+    background-color: lightgray;
+    border: none;
+    border-radius: 30px;
+}
+
+.vacation-item-svg {
+    position: absolute;
+    left: 20px;
+    top: -2px;
+    color: white;
+    padding-right: 10px;
+    width: 25px;
+    height: 25px;
+    viewBox: 0 0 24 24;
+    fill: none;
+    stroke: gray;
+    stroke-width: 2;
+}
+
+.vacation-item-img {
+    height: 100%;
     width: 100%;
 }
