@@ -1,4 +1,4 @@
-.SideBar > .links {
+.sidebar-links{
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -7,9 +7,9 @@
     height: 100%;
 }
 
-.SideBar {
+.sidebar {
     height: 100%;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
 }
 
 

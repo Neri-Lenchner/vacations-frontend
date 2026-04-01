@@ -5,8 +5,8 @@ import {NavLink} from "react-router-dom";
 function SideBar(): JSX.Element {
 
     return (
-        <div className="SideBar">
-          <div className="links">
+        <div className="sidebar">
+          <div className="sidebar-links">
               <NavLink to="/registration-form">Register</NavLink>
               <NavLink to="/login-form">Login</NavLink>
               <NavLink to="/vacations">Vacations</NavLink>

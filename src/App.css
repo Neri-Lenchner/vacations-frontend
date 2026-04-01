@@ -22,7 +22,7 @@ section {
 
 aside {
     width: 15vw;
-    height: 80vh;
+    flex-stretch: 1;
 }
 
 main {
