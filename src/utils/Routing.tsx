@@ -14,9 +14,10 @@ function Routing(): JSX.Element {
         <Routes>
             <Route path="/registration-form" element={<RegistrationForm />}/>
             <Route path="/login-form" element={<LoginForm />}/>
-            <Route path="/" element={<PrivateRoute isAdmin={!authStore.getState().user?.isAdmin} child={<LoginForm/>}/>}/>
+            <Route path="/vacations" element={<PrivateRoute child={<VacationLIst/>}/>}/>
+            <Route path="/" element={<PrivateRoute child={<LoginForm />}/>}/>
             {/*<Route path="/new-course/:id?" element="example:{<CourseForm />}"/>*/}
-            <Route path="*" element={<PrivateRoute isAdmin={!authStore.getState().user?.isAdmin} child={<VacationLIst/>}/>}/>
+            <Route path="*" element={<PrivateRoute child={<LoginForm/>}/>}/>
         </Routes>
     );
 }

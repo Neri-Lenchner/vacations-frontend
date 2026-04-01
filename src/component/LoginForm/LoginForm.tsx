@@ -2,22 +2,19 @@ import React, {JSX} from 'react';
 import {useForm} from "react-hook-form";
 import {User} from "../../models/user.model";
 import {Credentials} from "../../models/credentials.model";
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import {authService} from "../../services/auth-service";
 import './LoginForm.css';
 
 function LoginForm(): JSX.Element {
     const {register, watch, formState, handleSubmit, reset, setValue } = useForm<Credentials>();
-
+    const navigate = useNavigate();
 
     async function login(credentials: Credentials) {
-
         try {
-
             await authService.login(credentials);
-
             reset();
-            // navigate("/courses-list");
+            navigate("/vacations");
         }
         catch (error) {
             alert(error);

@@ -1,15 +1,20 @@
 import React, {JSX, useEffect, useState} from 'react';
+import {NavLink, useNavigate} from "react-router-dom";
 import {Unsubscribe} from 'redux';
 import {AuthActionType, authStore} from '../../../state/auth-state';
 import './Header.css';
 
 function Header(): JSX.Element {
 
+    const navigate = useNavigate();
+
     const [userName, setUserName] = useState<string | undefined>(
         authStore.getState().token
             ? authStore.getState().user?.firstName
             : undefined
     );
+
+
 
     // authStore.getState().token && (
     //     authStore.getState().user?.firstName
@@ -30,7 +35,8 @@ function Header(): JSX.Element {
     function logOut(): void {
         authStore.dispatch({
             type: AuthActionType.Logout, payload: ""
-        })
+        });
+        navigate('/login');
     }
 
     return (
