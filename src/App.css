@@ -99,7 +99,7 @@ form {
 }
 
 /* Optional: nicer button */
-.form button {
+.form-button {
     background-color: #007bff;
     font-weight: bold;
     color: white;
@@ -108,7 +108,7 @@ form {
     transition: 0.2s;
 }
 
-.form button:hover {
+.form-button:hover {
     background-color: #0056b3;
 }
 
