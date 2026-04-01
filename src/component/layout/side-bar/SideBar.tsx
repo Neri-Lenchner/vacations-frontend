@@ -9,9 +9,11 @@ function SideBar(): JSX.Element {
           <div className="links">
               <NavLink to="/registration-form">Register</NavLink>
               <NavLink to="/login-form">Login</NavLink>
+              <NavLink to="/vacations">Vacations</NavLink>
               <NavLink to="/">Link</NavLink>
               <NavLink to="/">Link</NavLink>
               <NavLink to="/">Link</NavLink>
+
           </div>
         </div>
     );
