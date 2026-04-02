@@ -12,18 +12,17 @@ class VacationService {
 
     // total number of vacations
     async fetchTotal(): Promise<number> {
-        const token = authStore.getState().token;
+        const token: string | null = authStore.getState().token;
         try {
             const response = await axios.get<number>(
-                `${appConfig.apiAddress}/vacations/count`,
-                {
-                    headers: { Authorization: "Bearer " + token }
-                }
+                `${appConfig.apiAddress}/vacations/count/`,
+                {headers: { Authorization: "Bearer " + token }}
             );
             vacationStore.dispatch({type: VacationActionType.GetTotalVacations, payload: response.data});
 
             // Axios auto-parses JSON, so total.data is already the number
             return response.data;
+
         } catch (err) {
             console.error("Failed to fetch total count", err);
             throw new Error("Failed to fetch total count");
@@ -32,8 +31,8 @@ class VacationService {
 
     // paginated list of vacations
     async fetchPage(page: number, limit = 10): Promise<Vacation[]> {
-        const token = authStore.getState().token;
-        const offset = (page - 1) * limit;
+        const token: string | null = authStore.getState().token;
+        const offset: number = (page - 1) * limit;
 
         try {
             const response = await axios.get<Vacation[]>(
@@ -56,7 +55,7 @@ class VacationService {
         try {
             await this.fetchTotal();
             const data: Vacation[] = await this.fetchPage(page, limit);
-            // vacationStore.dispatch({type: VacationActionType.GetVacationList, payload: data});
+            vacationStore.dispatch({type: VacationActionType.GetVacationList, payload: data});
         } catch (err) {
             console.error("Failed to fetch data", err);
         }
