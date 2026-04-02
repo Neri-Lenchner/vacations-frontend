@@ -14,8 +14,7 @@ function VacationList(): JSX.Element {
         const [page, setPage] = useState<Vacation[]>(vacationStore.getState().vacationList);
 
         useEffect(() => {
-                vacationService.fetchTotal();
-                // vacationService.fetchPage();
+                vacationService.fetchData(1);
                 vacationStore.subscribe(() => {
                         setTotalVacations(vacationStore.getState().totalVacations);
                         setPage(vacationStore.getState().vacationList);
