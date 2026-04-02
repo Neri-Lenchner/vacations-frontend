@@ -9,7 +9,13 @@ interface PaginationProps {
 
 function Pagination(paginationProps: PaginationProps): JSX.Element {
 
-    // const [totalVacations, setTotalVacations] = useState<number>(vacationStore.totalVacations);
+    const pagesNumbers: number[] = [];
+    const limit: number = 10;
+    const pages = Math.ceil(paginationProps.totalVacations / limit) || 5;
+
+    for (let i = 1; i <= pages; i++) {
+        pagesNumbers.push(i);
+    }
 
     useEffect(() => {
         // vacationStore.subscribe(() => {
@@ -18,7 +24,15 @@ function Pagination(paginationProps: PaginationProps): JSX.Element {
     }, []);
     return (
         <div className="pagination">
-            Pagination
+            <ul className="pagination-ul">
+                {pagesNumbers.map((pageNumber: number) => (
+                    <li key={pageNumber}>
+                        <a className="pagination-link" >
+                            {pageNumber}
+                        </a>
+                    </li>
+                ))}
+            </ul>
         </div>
     );
 }
