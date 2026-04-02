@@ -17,8 +17,8 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
     //     10000
     // );
 
-    vacation.startDate = vacation.startDate.split(' ')[0].split('-').reverse().join('.');
-    vacation.endDate = vacation.endDate.split(' ')[0].split('-').reverse().join('.');
+    const startDate = vacation.startDate.split('T')[0].split('-').reverse().join('.');
+    const endDate = vacation.endDate.split('T')[0].split('-').reverse().join('.');
 
     return (
         <div className="vacation-item-container">
@@ -32,7 +32,7 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
                     <rect x="16" y="16" width="4" height="4"/>
                 </svg>
                 {/*20 10 2022 - 9 11-2022*/}
-                {vacation.startDate} - {vacation.endDate}
+                {startDate} - {endDate}
             </div>
             <div className="vacation-item-content-container">
                 <p className="vacation-item-text">
