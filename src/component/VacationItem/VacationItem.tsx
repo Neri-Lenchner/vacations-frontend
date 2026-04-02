@@ -9,13 +9,6 @@ interface VacationItemProps {
 function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
 
     const vacation = vacationItemProps.vacation;
-    // const vacation: Vacation = new Vacation(
-    //     "Los Angeles",
-    //     "Discover the vibrant energy of Los Angeles, where sun-soaked beaches, iconic landmarks, and world-class entertainment await. Stroll along Hollywood Boulevard, relax in Santa Monica, and explore trendy neighborhoods filled with culture, cuisine, and creativity. From breathtaking coastal views to unforgettable nightlife, LA offers the perfect blend of excitement and relaxation for your ultimate getaway experience today. Book and create lasting memories in this dazzling California destination.",
-    //     "2026-10-03 00:00:00",
-    //     "2026-11-03 00:00:00",
-    //     10000
-    // );
 
     const startDate = vacation.startDate.split('T')[0].split('-').reverse().join('.');
     const endDate = vacation.endDate.split('T')[0].split('-').reverse().join('.');

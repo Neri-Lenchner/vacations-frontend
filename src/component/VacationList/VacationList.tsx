@@ -20,39 +20,18 @@ function VacationList(): JSX.Element {
                         setPage(vacationStore.getState().vacationList);
                 });
         }, []);
+
     return (
         <>
-                <div className="vacation-list-container">
-                        {page.map(vacation => (
-                            <VacationItem
-                                vacation={vacation}
-                            />
-                        ))}
-                        {/*<VacationItem />*/}
-                        {/*<VacationItem />*/}
-                        {/*<VacationItem />*/}
-                        {/*<VacationItem />*/}
-                        {/*<VacationItem />*/}
-                        {/*<VacationItem />*/}
-                        {/*<VacationItem />*/}
-                        {/*<VacationItem />*/}
-                        {/*<VacationItem />*/}
-                        {/*<VacationItem />*/}
-                        {/*<VacationItem />*/}
-                        {/*<VacationItem />*/}
-                        {/*<VacationItem />*/}
-                        {/*<VacationItem />*/}
-                        {/*<VacationItem />*/}
-                        {/*<VacationItem />*/}
-                        {/*<VacationItem />*/}
-                </div>
-                <Pagination totalVacations={totalVacations} />
+            <div className="vacation-list-container">
+                {page.map(vacation => (
+                    <VacationItem
+                        vacation={vacation}
+                    />
+                ))}
+            </div>
+            <Pagination totalVacations={totalVacations} />
         </>
-
-
-
-
-
     );
 }
 
