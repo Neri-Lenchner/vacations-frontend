@@ -5,10 +5,12 @@ import {createStore} from "redux";
 
 export class VacationState {
     vacationList: Vacation[] = [];
+    totalVacations: number = 0;
 }
 
 export enum VacationActionType {
     GetVacationList = "GetVacationList",
+    GetTotalVacations = "GetTotalVacations",
     // AddUser = "AddUser",
     // UpdateUser = "UpdateUser",
     // DeleteUser = "DeleteUser",
@@ -27,6 +29,9 @@ export function vacationReducer(vacationState: VacationState = new VacationState
     switch (action.type) {
         case VacationActionType.GetVacationList:
             newState.vacationList = action.payload;
+            break;
+        case VacationActionType.GetTotalVacations:
+            newState.totalVacations = action.payload;
             break;
         // case VacationActionType.AddUser:
         //     newState.userList.push(action.payload);

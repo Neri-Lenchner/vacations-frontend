@@ -1,25 +1,64 @@
+import axios from 'axios';
+import {User} from "../models/user.model";
+import {Vacation} from "../models/vacation.model";
+import {appConfig} from "../utils/app-config";
+import {authStore} from "../state/auth-state";
+import {UserActionType, userStore} from "../state/user-state";
+import {VacationActionType, vacationStore} from "../state/vacation-state";
+
 class VacationService {
 
-    // async fetchData(page: number ): Promise<void>{
-    //     const offset: number = (page - 1) * limit;
-    //
-    //     const response: Response = await fetch(`/api/items?limit=${limit}&offset=${offset}`);
-    //
-    //     if (!res.ok) {
-    //         throw new Error("Failed to fetch data");
-    //     }
-    //
-    //     const result: Item[] = await res.json();
-    //
-    //     setData(result);
-    //
-    //     if (result.length > 0) {
-    //         setTotal(result[0].total);
-    //     } else {
-    //         setTotal(0);
-    //     }
-    // };
+    constructor(private authToken: string) {}
+
+    // total number of vacations
+    async fetchTotal(): Promise<number> {
+        try {
+            const response = await axios.get<number>(
+                `${appConfig.apiAddress}/vacations/count`,
+                {
+                    headers: { Authorization: "Bearer " + this.authToken }
+                }
+            );
+            vacationStore.dispatch({type: VacationActionType.GetTotalVacations, payload: response.data});
+
+            // Axios auto-parses JSON, so total.data is already the number
+            return response.data;
+        } catch (err) {
+            console.error("Failed to fetch total count", err);
+            throw new Error("Failed to fetch total count");
+        }
+    }
+
+    // paginated list of vacations
+    async fetchPage(page: number, limit = 10): Promise<Vacation[]> {
+        const offset = (page - 1) * limit;
+
+        try {
+            const response = await axios.get<Vacation[]>(
+                `${appConfig.apiAddress}/vacations?limit=${limit}&offset=${offset}`,
+                {
+                    headers: { Authorization: "Bearer " + this.authToken }
+                }
+            );
+
+            return response.data;
+        } catch (err) {
+            console.error("Failed to fetch paginated data", err);
+            throw new Error("Failed to fetch paginated data");
+        }
+    }
+
+    // fetch total + page
+    async fetchData(page: number, limit = 10): Promise<void> {
+        try {
+            await this.fetchTotal();
+            const data: Vacation[] = await this.fetchPage(page, limit);
+            vacationStore.dispatch({type: VacationActionType.GetVacationList, payload: data});
+        } catch (err) {
+            console.error("Failed to fetch data", err);
+        }
+    }
 
 }
 
-export const vacationService = new VacationService();
+export const vacationService = new VacationService(authStore.getState().token || "");
