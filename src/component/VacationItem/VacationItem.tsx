@@ -1,15 +1,21 @@
+import {JSX} from 'react';
 import "./VacationItem.css";
 import {Vacation} from '../../models/vacation.model';
 
-function VacationItem() {
+interface VacationItemProps {
+    vacation: Vacation;
+}
 
-    const vacation: Vacation = new Vacation(
-        "Los Angeles",
-        "Discover the vibrant energy of Los Angeles, where sun-soaked beaches, iconic landmarks, and world-class entertainment await. Stroll along Hollywood Boulevard, relax in Santa Monica, and explore trendy neighborhoods filled with culture, cuisine, and creativity. From breathtaking coastal views to unforgettable nightlife, LA offers the perfect blend of excitement and relaxation for your ultimate getaway experience today. Book and create lasting memories in this dazzling California destination.",
-        "2026-10-03 00:00:00",
-        "2026-11-03 00:00:00",
-        10000
-    );
+function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
+
+    const vacation = vacationItemProps.vacation;
+    // const vacation: Vacation = new Vacation(
+    //     "Los Angeles",
+    //     "Discover the vibrant energy of Los Angeles, where sun-soaked beaches, iconic landmarks, and world-class entertainment await. Stroll along Hollywood Boulevard, relax in Santa Monica, and explore trendy neighborhoods filled with culture, cuisine, and creativity. From breathtaking coastal views to unforgettable nightlife, LA offers the perfect blend of excitement and relaxation for your ultimate getaway experience today. Book and create lasting memories in this dazzling California destination.",
+    //     "2026-10-03 00:00:00",
+    //     "2026-11-03 00:00:00",
+    //     10000
+    // );
 
     vacation.startDate = vacation.startDate.split(' ')[0].split('-').reverse().join('.');
     vacation.endDate = vacation.endDate.split(' ')[0].split('-').reverse().join('.');
