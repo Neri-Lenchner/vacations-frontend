@@ -26,7 +26,7 @@ function Pagination(paginationProps: PaginationProps): JSX.Element {
         <div className="pagination">
             <ul className="pagination-ul">
                 {pagesNumbers.map((pageNumber: number) => (
-                    <li key={pageNumber}>
+                    <li className="pagination-li" key={pageNumber}>
                         <a className="pagination-link" >
                             {pageNumber}
                         </a>
