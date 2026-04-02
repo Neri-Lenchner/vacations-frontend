@@ -37,9 +37,7 @@ class VacationService {
         try {
             const response = await axios.get<Vacation[]>(
                 `${appConfig.apiAddress}/vacations?limit=${limit}&offset=${offset}`,
-                {
-                    headers: { Authorization: "Bearer " + token }
-                }
+                {headers: { Authorization: "Bearer " + token }}
             );
             vacationStore.dispatch({type: VacationActionType.GetVacationList, payload: response.data});
             return response.data;
