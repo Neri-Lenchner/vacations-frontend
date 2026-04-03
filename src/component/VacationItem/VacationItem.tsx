@@ -1,4 +1,4 @@
-import {JSX} from 'react';
+import {JSX, useState} from 'react';
 import "./VacationItem.css";
 import {Vacation} from '../../models/vacation.model';
 
@@ -7,6 +7,8 @@ interface VacationItemProps {
 }
 
 function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
+
+    const [isFollowing, setIsFollowing] = useState<boolean>(true);
 
     const vacation = vacationItemProps.vacation;
 
@@ -38,9 +40,9 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
             <div className="vacation-item-title">
                 {vacation.destination}
             </div>
-            <div className="vacation-item-likes-container">
+            <div className={isFollowing ? "vacation-item-likes-container vacation-item-isFollowing-true" : "vacation-item-likes-container vacation-item-isFollowing-false"}>
                 <div className="vacation-item-likes-container-content">
-                    ❤️ Like 7
+                    {isFollowing ? "❤️" : "🩶" } Like 7
                 </div>
             </div>
         </div>

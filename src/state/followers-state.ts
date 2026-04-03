@@ -37,7 +37,7 @@ export function followersReducer(followersState: FollowersState = new FollowersS
         //     const indexToUpdate: number = newState.userList.findIndex((user: User): boolean => user.id === action.payload.id);
         //     newState.userList[indexToUpdate] = action.payload;
         //     break;
-        case UserActionType.DeleteFollower:
+        case FollowerActionType.DeleteFollower:
             const indexToDelete = newState.followersList.findIndex((follower: Follower  ): boolean => follower.id === action.payload);
             newState.followersList.splice(indexToDelete, 1);
             break;

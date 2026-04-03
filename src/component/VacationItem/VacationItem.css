@@ -73,7 +73,7 @@
     position: absolute;
     left: 10px;
     top: 10px;
-    font-size: 11px;
+    font-size: 13px;
     height: 30px;
     width: 70px;
     padding: 10px 5px;
@@ -99,4 +99,17 @@
 .vacation-item-img {
     height: 100%;
     width: 100%;
+}
+
+   /*true or false*/
+
+.vacation-item-isFollowing-true {
+    background-color: pink;
+    color: white;
+    font-weight: bold;
+}
+
+.vacation-item-isFollowing-false {
+    background-color: lightgray;
+    color: black;
 }
