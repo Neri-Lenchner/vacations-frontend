@@ -1,6 +1,10 @@
-import {JSX, useState} from 'react';
+import {JSX, useState, useEffect} from 'react';
 import "./VacationItem.css";
+import {Follower} from '../../models/follower.model';
 import {Vacation} from '../../models/vacation.model';
+import {User} from '../../models/user.model';
+import {followersStore} from '../../state/followers-state';
+import {authStore} from '../../state/auth-state';
 
 interface VacationItemProps {
     vacation: Vacation;
@@ -9,6 +13,26 @@ interface VacationItemProps {
 function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
 
     const [isFollowing, setIsFollowing] = useState<boolean>(true);
+    const [followersList, seFollowersList] = useState<Follower[]>(followersStore.getState().followersList);
+    const [user, setUser] = useState<User | null>(authStore.getState().user);
+    useEffect(() => {
+       const unsubscribeFollowers = followersStore.subscribe(() => {
+            seFollowersList(followersStore.getState().followersList);
+        });
+
+       const unsubscribeAuthUser = authStore.subscribe(() => {
+            setUser(authStore.getState().user);
+       });
+
+
+
+
+       return () => {
+           unsubscribeFollowers();
+           unsubscribeAuthUser();
+       }
+
+    }, []);
 
     const vacation = vacationItemProps.vacation;
 
@@ -40,9 +64,12 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
             <div className="vacation-item-title">
                 {vacation.destination}
             </div>
-            <div className={isFollowing ? "vacation-item-likes-container vacation-item-isFollowing-true" : "vacation-item-likes-container vacation-item-isFollowing-false"}>
+            <div
+                className={isFollowing
+                    ? "vacation-item-likes-container vacation-item-isFollowing-true"
+                    : "vacation-item-likes-container vacation-item-isFollowing-false"}>
                 <div className="vacation-item-likes-container-content">
-                    {isFollowing ? "❤️" : "🩶" } Like 7
+                    {isFollowing ? "❤️" : "🩶" } Likes 7
                 </div>
             </div>
         </div>
