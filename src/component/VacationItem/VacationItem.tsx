@@ -13,16 +13,20 @@ interface VacationItemProps {
 function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
 
     const [isFollowing, setIsFollowing] = useState<boolean>(true);
-    const [followersList, seFollowersList] = useState<Follower[]>(followersStore.getState().followersList);
+    const [followersList, setFollowersList] = useState<Follower[]>(followersStore.getState().followersList);
     const [user, setUser] = useState<User | null>(authStore.getState().user);
     useEffect(() => {
        const unsubscribeFollowers = followersStore.subscribe(() => {
-            seFollowersList(followersStore.getState().followersList);
+            setFollowersList(followersStore.getState().followersList);
         });
 
        const unsubscribeAuthUser = authStore.subscribe(() => {
             setUser(authStore.getState().user);
        });
+
+       if (user) {
+           setFollowersList(followersList.filter(follower => follower.userId === user.id));
+       }
 
 
 
@@ -69,7 +73,7 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
                     ? "vacation-item-likes-container vacation-item-isFollowing-true"
                     : "vacation-item-likes-container vacation-item-isFollowing-false"}>
                 <div className="vacation-item-likes-container-content">
-                    {isFollowing ? "❤️" : "🩶" } Likes 7
+                    {isFollowing ? "❤️" : "🩶" } Likes {followersList.length || 0}
                 </div>
             </div>
         </div>
