@@ -11,9 +11,22 @@ class FollowerService {
     public async getFollowersList(): Promise<Follower[]> {
         const response = await axios.get<Follower[]>(
             appConfig.apiAddress + "vacations/followers/", {headers: {Authorization: "Bearer " + authStore.getState().token}});
-        followersStore.dispatch({type: FollowerActionType.GetFollowersList, payload: response.data});
+        followersStore.dispatch({type: FollowerActionType.AddFollower, payload: response.data});
         return followersStore.getState().followersList;
     }
+
+    public async addFollower(follower: Follower): Promise<Follower> {
+        console.log(follower);
+        try {
+            const response = await axios.post<Follower>(appConfig.apiAddress + "vacations/followers", follower, {headers: {Authorization: "Bearer " + authStore.getState().token }});
+            followersStore.dispatch({type: FollowerActionType.AddFollower, payload: response.data});
+            return response.data;
+        } catch (err) {
+            console.error("Error from addFollower");
+            throw err;
+        }
+    }
+
 }
 
 export const followerService = new FollowerService();

@@ -11,7 +11,7 @@ export class FollowersState {
 
 export enum FollowerActionType {
     GetFollowersList = "GetFollowersList",
-    // AddUser = "AddUser",
+    AddFollower = "AddFollower",
     // UpdateUser = "UpdateUser",
     // DeleteUser = "DeleteUser",
 }
@@ -30,9 +30,9 @@ export function followersReducer(followersState: FollowersState = new FollowersS
         case FollowerActionType.GetFollowersList:
             newState.followersList = action.payload;
             break;
-        // case UserActionType.AddUser:
-        //     newState.userList.push(action.payload);
-        //     break;
+        case FollowerActionType.AddFollower:
+            newState.followersList.push(action.payload);
+            break;
         // case UserActionType.UpdateUser:
         //     const indexToUpdate: number = newState.userList.findIndex((user: User): boolean => user.id === action.payload.id);
         //     newState.userList[indexToUpdate] = action.payload;
