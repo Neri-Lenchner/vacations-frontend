@@ -47,4 +47,4 @@ export function followersReducer(followersState: FollowersState = new FollowersS
 }
 
 
-export const followerStore = createStore(followersReducer);
+export const followersStore = createStore(followersReducer);
