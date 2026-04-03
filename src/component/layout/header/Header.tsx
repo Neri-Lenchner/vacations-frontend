@@ -10,7 +10,7 @@ function Header(): JSX.Element {
 
     const [userName, setUserName] = useState<string | undefined>(
         authStore.getState().token
-            ? authStore.getState().user?.firstName
+            ? (`${authStore.getState().user?.firstName!} ${authStore.getState().user?.lastName}` )
             : undefined
     );
 
@@ -24,7 +24,7 @@ function Header(): JSX.Element {
         const unsubscribe: Unsubscribe = authStore.subscribe((): void => {
             if (authStore.getState().user !== null) {
                 console.log(authStore.getState().user?.firstName);
-                setUserName(authStore.getState().user?.firstName)
+                setUserName(`${authStore.getState().user?.firstName!} ${authStore.getState().user?.lastName}`)
             } else {
                 setUserName(undefined);
             }
@@ -44,7 +44,7 @@ function Header(): JSX.Element {
             {userName
                 ? <>
                     <div className="header-headline">
-                        Hello {userName}
+                        Hello <span>{userName}</span>
                     </div>
                     <div className="header-button-line">
                         <button

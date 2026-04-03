@@ -19,9 +19,13 @@
 }
 
 .header-headline {
-    font-size: 30px;
-    /*margin-top: 20px;*/
+    font-size: 40px;
+    color: yellow;
+}
+
+.header-headline span {
     font-size: 50px;
+    color: white;
 }
 
 .header-headline,
