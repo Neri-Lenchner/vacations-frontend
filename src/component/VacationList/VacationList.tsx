@@ -15,10 +15,12 @@ function VacationList(): JSX.Element {
 
         useEffect(() => {
                 vacationService.fetchData(1);
-                vacationStore.subscribe(() => {
+                const unSubscribe = vacationStore.subscribe(() => {
                         setTotalVacations(vacationStore.getState().totalVacations);
                         setPage(vacationStore.getState().vacationList);
                 });
+
+                return () => unSubscribe();
         }, []);
 
     return (
@@ -27,6 +29,7 @@ function VacationList(): JSX.Element {
                 {page.map(vacation => (
                     <VacationItem
                         vacation={vacation}
+                        key={vacation.id}
                     />
                 ))}
             </div>

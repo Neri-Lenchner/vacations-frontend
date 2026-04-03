@@ -1,3 +1,24 @@
+.pagination-page-number-button {
+    padding: 10px;
+    background-color: transparent;
+    border: 2px solid darkblue;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.pagination-page-number-button:hover {
+    cursor: pointer;
+    border: 2px solid #007bff;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.pagination-page-number-button:active {
+    background-color: lightblue;
+    color: white;
+}
+
 .pagination-ul {
     list-style: none;
     display: flex;
@@ -8,20 +29,15 @@
 }
 
 .pagination-li {
-    background-color: transparent;
-    color: darkblue;
-    border: 2px solid darkblue;
-    border-radius: 5px;
-    padding: 10px;
-    font-weight: bold;
+    /*background-color: transparent;*/
+    /*color: darkblue;*/
+    /*border: 2px solid darkblue;*/
+    /*border-radius: 5px;*/
+    /*padding: 10px;*/
+    /*font-weight: bold;*/
 }
 
 .pagination-li:hover {
-    background-color: lightgray;
-    cursor: pointer;
+
 }
 
-.pagination-li:active {
-    background-color: blue;
-    color: white;
-}

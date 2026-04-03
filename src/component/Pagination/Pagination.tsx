@@ -1,6 +1,7 @@
 import redux from 'redux';
 import {JSX, useEffect, useState} from 'react';
 import {vacationStore} from '../../state/vacation-state';
+import {vacationService} from '../../services/vacation-service';
 import './Pagination.css';
 
 interface PaginationProps {
@@ -13,23 +14,25 @@ function Pagination(paginationProps: PaginationProps): JSX.Element {
     const limit: number = 10;
     const pages = Math.ceil(paginationProps.totalVacations / limit) || 5;
 
+    function changePage(page: number) {
+        vacationService.fetchPage(page);
+    }
+
     for (let i = 1; i <= pages; i++) {
         pagesNumbers.push(i);
     }
 
-    useEffect(() => {
-        // vacationStore.subscribe(() => {
-        //     setTotalVacations(vacationStore.totalVacations);
-        // })
-    }, []);
     return (
         <div className="pagination">
             <ul className="pagination-ul">
                 {pagesNumbers.map((pageNumber: number) => (
                     <li className="pagination-li" key={pageNumber}>
-                        <a className="pagination-link" >
+                        <button
+                            className="pagination-page-number-button"
+                            onClick={() => changePage(pageNumber)}
+                        >
                             {pageNumber}
-                        </a>
+                        </button>
                     </li>
                 ))}
             </ul>
