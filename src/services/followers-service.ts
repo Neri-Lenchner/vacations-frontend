@@ -27,6 +27,16 @@ class FollowerService {
         }
     }
 
+    public async deleteFollower(id: number): Promise<void> {
+        try {
+            await axios.delete<void>(appConfig.apiAddress + "vacations/followers/" + id, {headers: { Authorization: "Bearer " + authStore.getState().token }});
+            followersStore.dispatch({type: FollowerActionType.DeleteFollower, payload: id});
+        } catch (err) {
+            console.error("Error from delete Follower");
+            throw err;
+        }
+    }
+
 }
 
 export const followerService = new FollowerService();
