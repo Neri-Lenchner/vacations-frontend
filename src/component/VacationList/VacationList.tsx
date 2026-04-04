@@ -21,8 +21,9 @@ function VacationList(): JSX.Element {
         const [followersList, setFollowersList] = useState<Follower[]>(followersStore.getState().followersList);
         const [user, setUser] = useState<User | null>(authStore.getState().user);
         const [showFollowed, setShowFollowed] = useState(false);
+        const [followedList, setFollowedList] = useState<Vacation[]>([]);
 
-        useEffect(() => {
+    useEffect(() => {
                 vacationService.fetchData(1);
 
                 followersService.getFollowersList();
@@ -55,14 +56,21 @@ function VacationList(): JSX.Element {
 
         try {
             if (user?.id && isChecked) {
+                // const list = await vacationService.getUsersFollowedVacations(user.id);
+                // setPage(list);
+                // setTotalVacations(list?.length)
+
                 const list = await vacationService.getUsersFollowedVacations(user.id);
-                setPage(list);
-                setTotalVacations(list?.length)
+                setFollowedList(list);
+                setPage(list.slice(0, 10));
+                setTotalVacations(list.length);
+
             } else {
                 // Fetch the original list instead of relying on store
                 await vacationService.fetchData(1);
                 setPage(vacationStore.getState().vacationList);
-                setTotalVacations(vacationStore.getState().vacationList.length);
+                // setTotalVacations(vacationStore.getState().vacationList.length);
+                setTotalVacations(vacationStore.getState().totalVacations);
             }
         } catch (error) {
             console.error("Error fetching followed vacations:", error);
