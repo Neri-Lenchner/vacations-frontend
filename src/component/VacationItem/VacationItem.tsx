@@ -19,43 +19,26 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
 
     // const [followersList, setFollowersList] = useState<Follower[]>(followersStore.getState().followersList);
     useEffect(() => {
-       // const unsubscribeFollowers = followersStore.subscribe(() => {
-       //      setFollowersList(followersStore.getState().followersList);
-       //  });
 
-       // const unsubscribeAuthUser = authStore.subscribe(() => {
-       //      setUser(authStore.getState().user);
-       // });
+        if (followersList.length) {
+            const followers: Follower[] = followersList.filter(follower => follower.vacationId === vacation.id);
+            setVacationFollowers(followers);
+        };
 
-       // if (user) {
-       //     setFollowersList(followersList.filter(follower => follower.userId === user.id));
-       // }
-
-
-
-
-       // return () => {
-       //     // unsubscribeFollowers();
-       //     unsubscribeAuthUser();
-       // }
+        if (vacationFollowers.length) {
+            const follower = vacationFollowers.find(follower => follower.userId === user.id);
+            if (follower) {
+                setIsFollowing(true)
+            } else {
+                setIsFollowing(false)
+            }
+        }
 
     }, []);
 
     const {vacation, followersList, user} = vacationItemProps;
 
-    if (followersList.length) {
-        const followers: Follower[] = followersList.filter(follower => follower.vacationId === vacation.id);
-        setVacationFollowers(followers);
-    };
 
-    if (vacationFollowers.length) {
-        const follower = vacationFollowers.find(follower => follower.userId === user.id);
-        if (follower) {
-            setIsFollowing(true)
-        } else {
-            setIsFollowing(false)
-        }
-    }
 
 
 
@@ -92,7 +75,7 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
                     ? "vacation-item-likes-container vacation-item-isFollowing-true"
                     : "vacation-item-likes-container vacation-item-isFollowing-false"}>
                 <div className="vacation-item-likes-container-content">
-                    {isFollowing ? "❤️" : "🩶" } Likes {followersList.length || 0}
+                    {isFollowing ? "❤️" : "🩶" } Likes {vacationFollowers.length || 0}
                 </div>
             </div>
         </div>
