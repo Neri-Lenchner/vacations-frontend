@@ -17,26 +17,19 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
     const [isFollowing, setIsFollowing] = useState<boolean>(true);
     const [vacationFollowers, setVacationFollowers] = useState<Follower[]>([]);
 
-    // const [followersList, setFollowersList] = useState<Follower[]>(followersStore.getState().followersList);
-    useEffect(() => {
+    const {vacation, followersList, user} = vacationItemProps;
 
+    useEffect(() => {
         if (followersList.length) {
             const followers: Follower[] = followersList.filter(follower => follower.vacationId === vacation.id);
             setVacationFollowers(followers);
-        };
-
-        if (vacationFollowers.length) {
-            const follower = vacationFollowers.find(follower => follower.userId === user.id);
-            if (follower) {
-                setIsFollowing(true)
-            } else {
-                setIsFollowing(false)
-            }
         }
+    }, [followersList, vacation.id]);
 
-    }, []);
-
-    const {vacation, followersList, user} = vacationItemProps;
+    useEffect(() => {
+        const follower = vacationFollowers.find(follower => follower.userId === user.id);
+        setIsFollowing(!!follower);
+    }, [vacationFollowers, user.id]);
 
 
 

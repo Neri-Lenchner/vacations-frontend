@@ -11,7 +11,7 @@ class FollowerService {
     public async getFollowersList(): Promise<Follower[]> {
         const response = await axios.get<Follower[]>(
             appConfig.apiAddress + "api/vacations/followers/", {headers: {Authorization: "Bearer " + authStore.getState().token}});
-        followersStore.dispatch({type: FollowerActionType.AddFollower, payload: response.data});
+        followersStore.dispatch({type: FollowerActionType.GetFollowersList, payload: response.data});
         return followersStore.getState().followersList;
     }
 
