@@ -48,11 +48,20 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
         setVacationFollowers(followers);
     };
 
+    if (vacationFollowers.length) {
+        const follower = vacationFollowers.find(follower => follower.userId === user.id);
+        if (follower) {
+            setIsFollowing(true)
+        } else {
+            setIsFollowing(false)
+        }
+    }
 
 
 
-    const startDate = vacation.startDate.split('T')[0].split('-').reverse().join('.');
-    const endDate = vacation.endDate.split('T')[0].split('-').reverse().join('.');
+
+    const startDate: string = vacation.startDate.split('T')[0].split('-').reverse().join('.');
+    const endDate: string = vacation.endDate.split('T')[0].split('-').reverse().join('.');
 
     return (
         <div className="vacation-item-container">
