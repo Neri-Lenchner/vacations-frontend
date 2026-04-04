@@ -62,7 +62,8 @@ function VacationList(): JSX.Element {
 
                 const list = await vacationService.getUsersFollowedVacations(user.id);
                 setFollowedList(list);
-                setPage(list.slice(0, 10));
+                const sortedList = list.sort((a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime());
+                setPage(sortedList);
                 setTotalVacations(list.length);
 
             } else {
@@ -111,7 +112,9 @@ function VacationList(): JSX.Element {
                     />
                 ))}
             </div>
-            <Pagination totalVacations={totalVacations} />
+            {!showFollowed
+                ? <Pagination totalVacations={totalVacations} />
+                : <></>}
         </>
     );
 }
