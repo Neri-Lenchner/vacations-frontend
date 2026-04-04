@@ -8,37 +8,39 @@ import {authStore} from '../../state/auth-state';
 
 interface VacationItemProps {
     vacation: Vacation;
+    followersList: Follower[];
 }
 
 function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
 
     const [isFollowing, setIsFollowing] = useState<boolean>(true);
-    const [followersList, setFollowersList] = useState<Follower[]>(followersStore.getState().followersList);
+    // const [followersList, setFollowersList] = useState<Follower[]>(followersStore.getState().followersList);
     const [user, setUser] = useState<User | null>(authStore.getState().user);
     useEffect(() => {
-       const unsubscribeFollowers = followersStore.subscribe(() => {
-            setFollowersList(followersStore.getState().followersList);
-        });
+       // const unsubscribeFollowers = followersStore.subscribe(() => {
+       //      setFollowersList(followersStore.getState().followersList);
+       //  });
 
        const unsubscribeAuthUser = authStore.subscribe(() => {
             setUser(authStore.getState().user);
        });
 
-       if (user) {
-           setFollowersList(followersList.filter(follower => follower.userId === user.id));
-       }
+       // if (user) {
+       //     setFollowersList(followersList.filter(follower => follower.userId === user.id));
+       // }
 
 
 
 
        return () => {
-           unsubscribeFollowers();
+           // unsubscribeFollowers();
            unsubscribeAuthUser();
        }
 
     }, []);
 
-    const vacation = vacationItemProps.vacation;
+    const {vacation, followersList} = vacationItemProps;
+
 
     const startDate = vacation.startDate.split('T')[0].split('-').reverse().join('.');
     const endDate = vacation.endDate.split('T')[0].split('-').reverse().join('.');
