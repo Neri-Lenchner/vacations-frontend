@@ -47,6 +47,23 @@ class VacationService {
         }
     }
 
+    public async getUsersFollowedVacations(id: number): Promise<Vacation[]> {
+        const token: string | null = authStore.getState().token;
+
+        try {
+            const response = await axios.get<Vacation[]>(
+                `${appConfig.apiAddress}api/vacations/user/followers/`,
+                {headers: { Authorization: "Bearer " + token }}
+            );
+            return response.data;
+        } catch (err) {
+            console.error("Failed to fetch data", err);
+            throw new Error("Failed to fetch data");
+        }
+    }
+
+    // api/vacations/followers/
+
     // fetch total + page
     async fetchData(page: number, limit = 10): Promise<void> {
 

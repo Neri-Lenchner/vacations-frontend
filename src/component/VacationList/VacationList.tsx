@@ -48,6 +48,23 @@ function VacationList(): JSX.Element {
 
     return (
         <>
+            <div className="Vacation-list-checkbox-container">
+                {/*<input type="checkbox" />*/}
+                {/*<input type="checkbox" />*/}
+                {/*<input type="checkbox" />*/}
+                <label className="checkbox-label">
+                    <input type="checkbox"/>
+                    <h4>Followed Vacations</h4>
+                </label>
+                <label className="checkbox-label">
+                    <input type="checkbox"/>
+                    <h4>Didn't start yet</h4>
+                </label>
+                <label className="checkbox-label">
+                    <input type="checkbox"/>
+                    <h4>Active vacations</h4>
+                </label>
+            </div>
             <div className="vacation-list-container">
                 {page.map(vacation => (
                     <VacationItem

@@ -15,7 +15,7 @@ interface VacationItemProps {
 
 function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
 
-    let [isFollowing, setIsFollowing] = useState<boolean>(true);
+    let [isFollowing, setIsFollowing] = useState<boolean>(false);
     const [vacationFollowers, setVacationFollowers] = useState<Follower[]>([]);
 
     const {vacation, followersList, user} = vacationItemProps;

@@ -13,3 +13,15 @@
     background-color: transparent;
     padding: 40px;
 }
+
+.Vacation-list-checkbox-container {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 50px;
+}
+
+.checkbox-label {
+    display: flex;
+    gap: 16px;
+}
