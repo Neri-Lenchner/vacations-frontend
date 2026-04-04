@@ -7,6 +7,7 @@ import {followersStore} from '../../state/followers-state';
 import {authStore} from '../../state/auth-state';
 
 interface VacationItemProps {
+    user: User;
     vacation: Vacation;
     followersList: Follower[];
 }
@@ -15,15 +16,14 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
 
     const [isFollowing, setIsFollowing] = useState<boolean>(true);
     // const [followersList, setFollowersList] = useState<Follower[]>(followersStore.getState().followersList);
-    const [user, setUser] = useState<User | null>(authStore.getState().user);
     useEffect(() => {
        // const unsubscribeFollowers = followersStore.subscribe(() => {
        //      setFollowersList(followersStore.getState().followersList);
        //  });
 
-       const unsubscribeAuthUser = authStore.subscribe(() => {
-            setUser(authStore.getState().user);
-       });
+       // const unsubscribeAuthUser = authStore.subscribe(() => {
+       //      setUser(authStore.getState().user);
+       // });
 
        // if (user) {
        //     setFollowersList(followersList.filter(follower => follower.userId === user.id));
@@ -32,10 +32,10 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
 
 
 
-       return () => {
-           // unsubscribeFollowers();
-           unsubscribeAuthUser();
-       }
+       // return () => {
+       //     // unsubscribeFollowers();
+       //     unsubscribeAuthUser();
+       // }
 
     }, []);
 

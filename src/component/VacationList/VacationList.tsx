@@ -48,6 +48,7 @@ function VacationList(): JSX.Element {
             <div className="vacation-list-container">
                 {page.map(vacation => (
                     <VacationItem
+                        user={user!}
                         vacation={vacation}
                         followersList={followersList}
                         key={vacation.id}
