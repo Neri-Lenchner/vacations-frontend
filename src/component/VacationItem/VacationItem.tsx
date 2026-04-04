@@ -36,16 +36,18 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
     const endDate: string = vacation.endDate.split('T')[0].split('-').reverse().join('.');
 
     async function like() {
-        isFollowing = !isFollowing;
-
         if (isFollowing) {
+            // Currently following, so unfollow
             const follower = vacationFollowers.find(f => f.userId === user.id);
             if (follower?.id) {
-                followersService.deleteFollower(follower.id);
+                setIsFollowing(false);
+                await followersService.deleteFollower(follower.id);
             }
         } else {
+            // Not following, so follow
+            setIsFollowing(true);
             const follower = new Follower(user.id!, vacation.id!);
-            followersService.addFollower(follower);
+            await followersService.addFollower(follower);
         }
     }
 
