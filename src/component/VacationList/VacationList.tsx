@@ -24,7 +24,7 @@ function VacationList(): JSX.Element {
         useEffect(() => {
                 vacationService.fetchData(1);
 
-                // followersService.getFollowersList();
+                followersService.getFollowersList();
 
                 const unSubscribeVacations = vacationStore.subscribe(() => {
                         setTotalVacations(vacationStore.getState().totalVacations);
