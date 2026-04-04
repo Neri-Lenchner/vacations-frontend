@@ -18,7 +18,7 @@ class FollowerService {
     public async addFollower(follower: Follower): Promise<Follower> {
         console.log(follower);
         try {
-            const response = await axios.post<Follower>(appConfig.apiAddress + "vacations/followers", follower, {headers: {Authorization: "Bearer " + authStore.getState().token }});
+            const response = await axios.post<Follower>(appConfig.apiAddress + "api/vacations/followers", follower, {headers: {Authorization: "Bearer " + authStore.getState().token }});
             followersStore.dispatch({type: FollowerActionType.AddFollower, payload: response.data});
             return response.data;
         } catch (err) {

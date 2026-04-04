@@ -39,7 +39,10 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
         isFollowing = !isFollowing;
 
         if (isFollowing) {
-            followersService.deleteFollower(user.id!);
+            const follower = vacationFollowers.find(f => f.userId === user.id);
+            if (follower?.id) {
+                followersService.deleteFollower(follower.id);
+            }
         } else {
             const follower = new Follower(user.id!, vacation.id!);
             followersService.addFollower(follower);
@@ -71,13 +74,12 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
                 {vacation.destination}
             </div>
             <div
+                onClick={like}
                 className={isFollowing
                     ? "vacation-item-likes-container vacation-item-isFollowing-true"
                     : "vacation-item-likes-container vacation-item-isFollowing-false"}>
                 <div
-                    className="vacation-item-likes-container-content"
-                    // onClick={like}
-                >
+                    className="vacation-item-likes-container-content">
                     {isFollowing ? "❤️" : "🩶" } Likes {vacationFollowers.length || 0}
                 </div>
             </div>
