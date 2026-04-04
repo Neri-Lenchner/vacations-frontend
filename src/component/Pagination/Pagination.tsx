@@ -12,7 +12,7 @@ function Pagination(paginationProps: PaginationProps): JSX.Element {
 
     const pagesNumbers: number[] = [];
     const limit: number = 10;
-    const pages = Math.ceil(paginationProps.totalVacations / limit) || 5;
+    const pages = Math.ceil(paginationProps.totalVacations / limit) || 1;
 
     function changePage(page: number) {
         vacationService.fetchPage(page);

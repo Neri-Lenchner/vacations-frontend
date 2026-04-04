@@ -73,14 +73,15 @@
     position: absolute;
     left: 10px;
     top: 10px;
-    font-size: 11px;
+    font-size: 14px;
     height: 30px;
-    width: 70px;
+    width: 80px;
     padding: 10px 5px;
     background-color: lightgray;
     border: none;
     border-radius: 30px;
     cursor: pointer;
+    line-height: 1;
 }
 
 .vacation-item-svg {
@@ -105,12 +106,14 @@
    /*true or false*/
 
 .vacation-item-isFollowing-true {
-    background-color: pink;
+    background-color: black;
     color: white;
-    font-weight: bold;
+    box-shadow: 0 0 20px 0 white
+    /*font-weight: bold;*/
 }
 
 .vacation-item-isFollowing-false {
     background-color: lightgray;
     color: black;
+    box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.2), 0 2px 8px 0 rgba(0, 0, 0, 0.19);
 }

@@ -27,24 +27,22 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
         }
     }, [followersList, vacation.id]);
 
-    useEffect(() => {
-        const follower = vacationFollowers.find(follower => follower.userId === user.id);
+    useEffect((): void => {
+        const follower: Follower | undefined = vacationFollowers.find(follower => follower.userId === user.id);
         setIsFollowing(!!follower);
     }, [vacationFollowers, user.id]);
 
     const startDate: string = vacation.startDate.split('T')[0].split('-').reverse().join('.');
     const endDate: string = vacation.endDate.split('T')[0].split('-').reverse().join('.');
 
-    async function like() {
+    async function like(): Promise<void> {
         if (isFollowing) {
-            // Currently following, so unfollow
-            const follower = vacationFollowers.find(f => f.userId === user.id);
+            const follower: Follower | undefined = vacationFollowers.find(vacationFollower => vacationFollower.userId === user.id);
             if (follower?.id) {
                 setIsFollowing(false);
                 await followersService.deleteFollower(follower.id);
             }
         } else {
-            // Not following, so follow
             setIsFollowing(true);
             const follower = new Follower(user.id!, vacation.id!);
             await followersService.addFollower(follower);
