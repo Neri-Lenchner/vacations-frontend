@@ -39,4 +39,4 @@ class FollowerService {
 
 }
 
-export const followerService = new FollowerService();
+export const followersService = new FollowerService();

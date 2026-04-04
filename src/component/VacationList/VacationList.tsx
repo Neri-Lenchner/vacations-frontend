@@ -4,6 +4,7 @@ import {Vacation} from '../../models/vacation.model';
 import {vacationStore} from '../../state/vacation-state';
 import {followersStore} from "../../state/followers-state";
 import {authStore} from "../../state/auth-state";
+import {followersService} from '../../services/followers-service';
 import {vacationService} from '../../services/vacation-service';
 import "./VacationList.css";
 import VacationItem from "../VacationItem/VacationItem";
