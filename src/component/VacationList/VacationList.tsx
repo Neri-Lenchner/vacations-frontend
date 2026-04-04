@@ -20,6 +20,7 @@ function VacationList(): JSX.Element {
         const [page, setPage] = useState<Vacation[]>(vacationStore.getState().vacationList);
         const [followersList, setFollowersList] = useState<Follower[]>(followersStore.getState().followersList);
         const [user, setUser] = useState<User | null>(authStore.getState().user);
+        const [showFollowed, setShowFollowed] = useState(false);
 
         useEffect(() => {
                 vacationService.fetchData(1);
@@ -46,6 +47,29 @@ function VacationList(): JSX.Element {
                 }
         }, []);
 
+
+
+    async function handleFollowedVacations(event: React.ChangeEvent<HTMLInputElement>) {
+        const isChecked = event.target.checked;
+        setShowFollowed(isChecked);
+
+        try {
+            if (user?.id && isChecked) {
+                const list = await vacationService.getUsersFollowedVacations(user.id);
+                setPage(list);
+                setTotalVacations(list?.length)
+            } else {
+                // Fetch the original list instead of relying on store
+                await vacationService.fetchData(1);
+                setPage(vacationStore.getState().vacationList);
+                setTotalVacations(vacationStore.getState().vacationList.length);
+            }
+        } catch (error) {
+            console.error("Error fetching followed vacations:", error);
+            setShowFollowed(false);
+        }
+    }
+
     return (
         <>
             <div className="Vacation-list-checkbox-container">
@@ -53,7 +77,11 @@ function VacationList(): JSX.Element {
                 {/*<input type="checkbox" />*/}
                 {/*<input type="checkbox" />*/}
                 <label className="checkbox-label">
-                    <input type="checkbox"/>
+                    <input
+                        type="checkbox"
+                        checked={showFollowed}
+                        onChange={handleFollowedVacations}
+                    />
                     <h4>Followed Vacations</h4>
                 </label>
                 <label className="checkbox-label">

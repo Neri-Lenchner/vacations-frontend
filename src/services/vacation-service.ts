@@ -52,7 +52,7 @@ class VacationService {
 
         try {
             const response = await axios.get<Vacation[]>(
-                `${appConfig.apiAddress}api/vacations/user/followers/`,
+                `${appConfig.apiAddress}api/vacations/user/${id}/followers/`,
                 {headers: { Authorization: "Bearer " + token }}
             );
             return response.data;
