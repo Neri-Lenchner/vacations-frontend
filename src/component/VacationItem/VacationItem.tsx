@@ -15,6 +15,8 @@ interface VacationItemProps {
 function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
 
     const [isFollowing, setIsFollowing] = useState<boolean>(true);
+    const [vacationFollowers, setVacationFollowers] = useState<Follower[]>([]);
+
     // const [followersList, setFollowersList] = useState<Follower[]>(followersStore.getState().followersList);
     useEffect(() => {
        // const unsubscribeFollowers = followersStore.subscribe(() => {
@@ -40,6 +42,13 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
     }, []);
 
     const {vacation, followersList, user} = vacationItemProps;
+
+    if (followersList.length) {
+        const followers: Follower[] = followersList.filter(follower => follower.vacationId === vacation.id);
+        setVacationFollowers(followers);
+    };
+
+
 
 
     const startDate = vacation.startDate.split('T')[0].split('-').reverse().join('.');
