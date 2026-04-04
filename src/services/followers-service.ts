@@ -10,7 +10,7 @@ import {FollowerActionType, followersStore} from "../state/followers-state";
 class FollowerService {
     public async getFollowersList(): Promise<Follower[]> {
         const response = await axios.get<Follower[]>(
-            appConfig.apiAddress + "api/giti vacations/followers/", {headers: {Authorization: "Bearer " + authStore.getState().token}});
+            appConfig.apiAddress + "api/vacations/followers/", {headers: {Authorization: "Bearer " + authStore.getState().token}});
         followersStore.dispatch({type: FollowerActionType.AddFollower, payload: response.data});
         return followersStore.getState().followersList;
     }
