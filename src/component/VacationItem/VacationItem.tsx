@@ -4,6 +4,7 @@ import {Follower} from '../../models/follower.model';
 import {Vacation} from '../../models/vacation.model';
 import {User} from '../../models/user.model';
 import {followersStore} from '../../state/followers-state';
+import {followersService} from '../../services/followers-service';
 import {authStore} from '../../state/auth-state';
 
 interface VacationItemProps {
@@ -14,7 +15,7 @@ interface VacationItemProps {
 
 function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
 
-    const [isFollowing, setIsFollowing] = useState<boolean>(true);
+    let [isFollowing, setIsFollowing] = useState<boolean>(true);
     const [vacationFollowers, setVacationFollowers] = useState<Follower[]>([]);
 
     const {vacation, followersList, user} = vacationItemProps;
@@ -31,13 +32,19 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
         setIsFollowing(!!follower);
     }, [vacationFollowers, user.id]);
 
-
-
-
-
-
     const startDate: string = vacation.startDate.split('T')[0].split('-').reverse().join('.');
     const endDate: string = vacation.endDate.split('T')[0].split('-').reverse().join('.');
+
+    async function like() {
+        isFollowing = !isFollowing;
+
+        if (isFollowing) {
+            followersService.deleteFollower(user.id!);
+        } else {
+            const follower = new Follower(user.id!, vacation.id!);
+            followersService.addFollower(follower);
+        }
+    }
 
     return (
         <div className="vacation-item-container">
@@ -67,7 +74,10 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
                 className={isFollowing
                     ? "vacation-item-likes-container vacation-item-isFollowing-true"
                     : "vacation-item-likes-container vacation-item-isFollowing-false"}>
-                <div className="vacation-item-likes-container-content">
+                <div
+                    className="vacation-item-likes-container-content"
+                    // onClick={like}
+                >
                     {isFollowing ? "❤️" : "🩶" } Likes {vacationFollowers.length || 0}
                 </div>
             </div>

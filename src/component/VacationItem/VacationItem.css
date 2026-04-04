@@ -80,6 +80,7 @@
     background-color: lightgray;
     border: none;
     border-radius: 30px;
+    cursor: pointer;
 }
 
 .vacation-item-svg {
