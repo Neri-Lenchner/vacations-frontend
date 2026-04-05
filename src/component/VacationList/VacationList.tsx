@@ -168,7 +168,9 @@ function VacationList(): JSX.Element {
                     />
                     <h4>Didn't start yet</h4>
                 </label>
-                <label className="checkbox-label" htmlFor="active-checkbox">
+                <label
+                    className="checkbox-label"
+                    htmlFor="active-checkbox">
                     <input
                         id="active-checkbox"
                         type="checkbox"
