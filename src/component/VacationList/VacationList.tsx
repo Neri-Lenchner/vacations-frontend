@@ -96,7 +96,9 @@ function VacationList(): JSX.Element {
                     <h4>Followed Vacations</h4>
                 </label>
                 <label className="checkbox-label">
-                    <input type="checkbox"/>
+                    <input
+                        type="checkbox"
+                    />
                     <h4>Didn't start yet</h4>
                 </label>
                 <label className="checkbox-label">
