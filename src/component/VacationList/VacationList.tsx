@@ -118,13 +118,9 @@ function VacationList(): JSX.Element {
                 setShowUpcoming(false);
 
                 await vacationService.fetchData(1);
-                const allVacations: Vacation[] = vacationStore.getState().vacationList;
+                // const allVacations: Vacation[] = vacationStore.getState().vacationList;
                 const today: Date = new Date();
-                const activeList: Vacation[] = allVacations.filter(vacation => {
-                    const startDate = new Date(vacation.startDate);
-                    const endDate = new Date(vacation.endDate);
-                    return startDate <= today && endDate >= today;
-                });
+                const activeList: Vacation[] = await vacationService.getActiveVacations();
                 const sortedList: Vacation[] = activeList.sort((a, b): number => new Date(a.startDate).getTime() - new Date(b.startDate).getTime());
                 setFollowedList(sortedList);
                 setPage(sortedList.slice(0, 10));
