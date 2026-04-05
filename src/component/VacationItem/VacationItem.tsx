@@ -1,11 +1,11 @@
 import {JSX, useState, useEffect} from 'react';
-import "./VacationItem.css";
 import {Follower} from '../../models/follower.model';
 import {Vacation} from '../../models/vacation.model';
 import {User} from '../../models/user.model';
 import {followersStore} from '../../state/followers-state';
 import {followersService} from '../../services/followers-service';
 import {authStore} from '../../state/auth-state';
+import "./VacationItem.css";
 
 interface VacationItemProps {
     user: User;

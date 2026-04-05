@@ -3,8 +3,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 280px;
-    height: 360px;
+    width: 320px;
+    height: 500px;
     border-radius: 4px;
     flex-shrink: 0;
     background-color: white;
@@ -12,17 +12,22 @@
 }
 
 .vacation-item-button {
-    width: 270px;
+    font-family: Arial, sans-serif;
+    background-color: midnightblue !important;
+    width: 300px;
     height: 25px;
-    margin-top: 5px;
+    margin-top: 20px;
     border-radius: 4px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.vacation-item-button:hover {
+    background-color: blue !important;
+}
+
 .vacation-item-image-container {
-    height: 120px;
+    height: 200px;
     width: 100%;
-    background-color: lightcoral;
     border-radius: 4px 4px 0 0;
     overflow: hidden;
 }
@@ -36,33 +41,26 @@
 }
 
 .vacation-item-text {
-    color: gray;
-    height: 180px;
+    color: black;
+    height: 210px;
     width: 100%;
     background-color: white;
     padding: 10px;
-    font-size: 12px;
+    font-size: 17px;
     overflow: hidden;
+    padding-bottom: 10px;
 }
 
 .vacation-item-dates {
-    font-size: 12px;
+    font-size: 23px;
     position: relative;
-    color: gray;
+    color: darkblue;
     text-align: center;
-    height: 25px;
+    height: 30px;
     padding: 5px 0 ;
-    background-color: lightblue;
+    background-color: white;
     width: 100%;
-}
-
-
-.vacation-item-title {
-    position: absolute;
-    left: 10px;
-    top: 95px;
-    font-size: 20px;
-    color: gray;
+    margin: 0 !important;
 }
 
 .vacation-item-likes-container {
@@ -83,19 +81,22 @@
     border-radius: 30px;
     cursor: pointer;
     line-height: 1;
+    font-family: Arial, sans-serif !important;
 }
 
 .vacation-item-svg {
+    margin-top: 5px;
+    margin-right: 20px;
     position: absolute;
-    left: 20px;
+    left: 5px;
     top: -2px;
     color: white;
     padding-right: 10px;
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
     viewBox: 0 0 24 24;
     fill: none;
-    stroke: gray;
+    stroke: darkblue;
     stroke-width: 2;
 }
 
@@ -104,9 +105,19 @@
     width: 100%;
 }
 
+.vacation-item-title {
+    font-size: 30px !important;
+    position: absolute;
+    left: 10px;
+    top: 160px;
+    font-size: 20px;
+    color: lightblue;
+}
+
    /*true or false*/
 
 .vacation-item-isFollowing-true {
+    font-family: Arial, sans-serif !important;
     background-color: black;
     color: white;
     box-shadow: 0 0 20px 0 white;

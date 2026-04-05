@@ -3,7 +3,10 @@
     margin: 0;
     scroll-behavior: smooth;
     scrollbar-width: none;
-    font-family: Arial, 'Montserrat', sans-serif;
+    /*font-family: "Raleway",Arial, 'Montserrat', sans-serif, sans-serif;*/
+    body {
+        font-family: "Raleway", sans-serif;
+    }
 }
 
 html, body {
