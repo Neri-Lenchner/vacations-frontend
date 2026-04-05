@@ -109,7 +109,7 @@
 .vacation-item-isFollowing-true {
     background-color: black;
     color: white;
-    box-shadow: 0 0 20px 0 white
+    box-shadow: 0 0 20px 0 white;
     /*font-weight: bold;*/
 }
 

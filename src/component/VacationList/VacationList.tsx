@@ -22,6 +22,8 @@ function VacationList(): JSX.Element {
         const [followedList, setFollowedList] = useState<Vacation[]>([]);
         const [user, setUser] = useState<User | null>(authStore.getState().user);
         const [showFollowed, setShowFollowed] = useState(false);
+        const [showUpcoming, setShowUpcoming] = useState(false);
+        const [showActive, setShowActive] = useState(false);
 
 
     useEffect(() => {
@@ -49,11 +51,41 @@ function VacationList(): JSX.Element {
                 }
         }, []);
 
+    async function handleUpcomingVacations(event: React.ChangeEvent<HTMLInputElement>): Promise<void> {
+        const isChecked: boolean = event.target.checked;
+        setShowUpcoming(isChecked);
+        if (isChecked) {
+            setShowFollowed(false);
+        }
 
+        try {
+            if (isChecked) {
+                await vacationService.fetchData(1);
+                const allVacations: Vacation[] = vacationStore.getState().vacationList;
+                const today: Date = new Date();
+                const upcomingList: Vacation[] = allVacations.filter(vacation => new Date(vacation.startDate) > today);
+                const sortedList: Vacation[] = upcomingList.sort((a, b): number => new Date(a.startDate).getTime() - new Date(b.startDate).getTime());
+                setFollowedList(sortedList);
+                setPage(sortedList.slice(0, 10));
+                setTotalVacations(sortedList.length);
+
+            } else {
+                await vacationService.fetchData(1);
+                setPage(vacationStore.getState().vacationList);
+                setTotalVacations(vacationStore.getState().totalVacations);
+            }
+        } catch (error) {
+            console.error("Error fetching upcoming vacations:", error);
+            setShowUpcoming(false);
+        }
+    }
 
     async function handleFollowedVacations(event: React.ChangeEvent<HTMLInputElement>): Promise<void> {
         const isChecked: boolean = event.target.checked;
         setShowFollowed(isChecked);
+        if (isChecked) {
+            setShowUpcoming(false);
+        }
 
         try {
             if (user?.id && isChecked) {
@@ -74,8 +106,21 @@ function VacationList(): JSX.Element {
         }
     }
 
+    async function handleActiveVacations(event: React.ChangeEvent<HTMLInputElement>): Promise<void> {
+        const isChecked: boolean = event.target.checked;
+        setShowActive(isChecked);
+        if (isChecked) {
+            setShowFollowed(false);
+            setShowUpcoming(false);
+        } else {
+            await vacationService.fetchData(1);
+            setPage(vacationStore.getState().vacationList);
+            setTotalVacations(vacationStore.getState().totalVacations);
+        }
+    }
+
     function handlePaginationChange(pageNumber: number): void {
-        if (showFollowed) {
+        if (showFollowed || showUpcoming) {
             const startIndex: number = (pageNumber - 1) * 10;
             const endIndex: number = startIndex + 10;
             setPage(followedList.slice(startIndex, endIndex));
@@ -87,22 +132,31 @@ function VacationList(): JSX.Element {
     return (
         <>
             <div className="Vacation-list-checkbox-container">
-                <label className="checkbox-label">
+                <label className="checkbox-label" htmlFor="followed-checkbox">
                     <input
+                        id="followed-checkbox"
                         type="checkbox"
                         checked={showFollowed}
                         onChange={handleFollowedVacations}
                     />
                     <h4>Followed Vacations</h4>
                 </label>
-                <label className="checkbox-label">
+                <label className="checkbox-label" htmlFor="not-started-checkbox">
                     <input
+                        id="not-started-checkbox"
                         type="checkbox"
+                        checked={showUpcoming}
+                        onChange={handleUpcomingVacations}
                     />
                     <h4>Didn't start yet</h4>
                 </label>
-                <label className="checkbox-label">
-                    <input type="checkbox"/>
+                <label className="checkbox-label" htmlFor="active-checkbox">
+                    <input
+                        id="active-checkbox"
+                        type="checkbox"
+                        checked={showActive}
+                        onChange={handleActiveVacations}
+                    />
                     <h4>Active vacations</h4>
                 </label>
             </div>

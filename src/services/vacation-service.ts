@@ -64,6 +64,23 @@ class VacationService {
         }
     }
 
+    public async getUpcomingVacations(): Promise<Vacation[]> {
+        const token: string | null = authStore.getState().token;
+
+        try {
+            const response = await axios.get<Vacation[]>(
+                `${appConfig.apiAddress}api/vacations/upcoming/`,
+                {headers: { Authorization: "Bearer " + token }}
+            );
+            vacationStore.dispatch({type: VacationActionType.GetVacationList, payload: response.data});
+            vacationStore.dispatch({type: VacationActionType.GetTotalVacations, payload: response.data.length});
+            return response.data;
+        } catch (err) {
+            console.error("Failed to fetch data", err);
+            throw new Error("Failed to fetch data");
+        }
+    }
+
     // api/vacations/followers/
 
     // fetch total + page
