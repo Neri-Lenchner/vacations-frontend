@@ -56,6 +56,7 @@ function VacationList(): JSX.Element {
         setShowUpcoming(isChecked);
         if (isChecked) {
             setShowFollowed(false);
+            setShowActive(false);
         }
 
         try {
@@ -85,6 +86,7 @@ function VacationList(): JSX.Element {
         setShowFollowed(isChecked);
         if (isChecked) {
             setShowUpcoming(false);
+            setShowActive(false);
         }
 
         try {
@@ -109,18 +111,37 @@ function VacationList(): JSX.Element {
     async function handleActiveVacations(event: React.ChangeEvent<HTMLInputElement>): Promise<void> {
         const isChecked: boolean = event.target.checked;
         setShowActive(isChecked);
-        if (isChecked) {
-            setShowFollowed(false);
-            setShowUpcoming(false);
-        } else {
-            await vacationService.fetchData(1);
-            setPage(vacationStore.getState().vacationList);
-            setTotalVacations(vacationStore.getState().totalVacations);
+
+        try {
+            if (isChecked) {
+                setShowFollowed(false);
+                setShowUpcoming(false);
+
+                await vacationService.fetchData(1);
+                const allVacations: Vacation[] = vacationStore.getState().vacationList;
+                const today: Date = new Date();
+                const activeList: Vacation[] = allVacations.filter(vacation => {
+                    const startDate = new Date(vacation.startDate);
+                    const endDate = new Date(vacation.endDate);
+                    return startDate <= today && endDate >= today;
+                });
+                const sortedList: Vacation[] = activeList.sort((a, b): number => new Date(a.startDate).getTime() - new Date(b.startDate).getTime());
+                setFollowedList(sortedList);
+                setPage(sortedList.slice(0, 10));
+                setTotalVacations(sortedList.length);
+            } else {
+                await vacationService.fetchData(1);
+                setPage(vacationStore.getState().vacationList);
+                setTotalVacations(vacationStore.getState().totalVacations);
+            }
+        } catch (error) {
+            console.error("Error fetching active vacations:", error);
+            setShowActive(false);
         }
     }
 
     function handlePaginationChange(pageNumber: number): void {
-        if (showFollowed || showUpcoming) {
+        if (showFollowed || showUpcoming || showActive) {
             const startIndex: number = (pageNumber - 1) * 10;
             const endIndex: number = startIndex + 10;
             setPage(followedList.slice(startIndex, endIndex));
@@ -132,7 +153,9 @@ function VacationList(): JSX.Element {
     return (
         <>
             <div className="Vacation-list-checkbox-container">
-                <label className="checkbox-label" htmlFor="followed-checkbox">
+                <label
+                    className="checkbox-label"
+                    htmlFor="followed-checkbox">
                     <input
                         id="followed-checkbox"
                         type="checkbox"
@@ -141,9 +164,11 @@ function VacationList(): JSX.Element {
                     />
                     <h4>Followed Vacations</h4>
                 </label>
-                <label className="checkbox-label" htmlFor="not-started-checkbox">
+                <label
+                    className="checkbox-label"
+                    htmlFor="upcoming-vacations-checkbox">
                     <input
-                        id="not-started-checkbox"
+                        id="upcoming-vacations-checkbox"
                         type="checkbox"
                         checked={showUpcoming}
                         onChange={handleUpcomingVacations}
@@ -171,9 +196,6 @@ function VacationList(): JSX.Element {
                 ))}
             </div>
             <Pagination totalVacations={totalVacations} onPageChange={handlePaginationChange} />
-            {/*{!showFollowed*/}
-            {/*    ? <Pagination totalVacations={totalVacations} />*/}
-            {/*    : <></>}*/}
         </>
     );
 }
