@@ -55,6 +55,8 @@ class VacationService {
                 `${appConfig.apiAddress}api/vacations/user/${id}/followers/`,
                 {headers: { Authorization: "Bearer " + token }}
             );
+            vacationStore.dispatch({type: VacationActionType.GetVacationList, payload: response.data});
+            vacationStore.dispatch({type: VacationActionType.GetTotalVacations, payload: response.data.length});
             return response.data;
         } catch (err) {
             console.error("Failed to fetch data", err);

@@ -19,29 +19,30 @@ function VacationList(): JSX.Element {
         const [totalVacations, setTotalVacations] = useState<number>(vacationStore.getState().totalVacations);
         const [page, setPage] = useState<Vacation[]>(vacationStore.getState().vacationList);
         const [followersList, setFollowersList] = useState<Follower[]>(followersStore.getState().followersList);
+        const [followedList, setFollowedList] = useState<Vacation[]>([]);
         const [user, setUser] = useState<User | null>(authStore.getState().user);
         const [showFollowed, setShowFollowed] = useState(false);
-        const [followedList, setFollowedList] = useState<Vacation[]>([]);
+
 
     useEffect(() => {
                 vacationService.fetchData(1);
 
                 followersService.getFollowersList();
 
-                const unSubscribeVacations = vacationStore.subscribe(() => {
+                const unSubscribeVacations = vacationStore.subscribe((): void => {
                         setTotalVacations(vacationStore.getState().totalVacations);
                         setPage(vacationStore.getState().vacationList);
                 });
 
-                const unSubscribeUser = authStore.subscribe(() => {
+                const unSubscribeUser = authStore.subscribe((): void => {
                     setUser(authStore.getState().user);
                 });
 
-                const unSubscribeFollowers = followersStore.subscribe(() => {
+                const unSubscribeFollowers = followersStore.subscribe((): void => {
                     setFollowersList(followersStore.getState().followersList);
                 });
 
-                return () => {
+                return (): void => {
                     unSubscribeVacations();
                     unSubscribeUser();
                     unSubscribeFollowers()
@@ -50,27 +51,21 @@ function VacationList(): JSX.Element {
 
 
 
-    async function handleFollowedVacations(event: React.ChangeEvent<HTMLInputElement>) {
-        const isChecked = event.target.checked;
+    async function handleFollowedVacations(event: React.ChangeEvent<HTMLInputElement>): Promise<void> {
+        const isChecked: boolean = event.target.checked;
         setShowFollowed(isChecked);
 
         try {
             if (user?.id && isChecked) {
-                // const list = await vacationService.getUsersFollowedVacations(user.id);
-                // setPage(list);
-                // setTotalVacations(list?.length)
-
-                const list = await vacationService.getUsersFollowedVacations(user.id);
-                setFollowedList(list);
-                const sortedList = list.sort((a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime());
-                setPage(sortedList);
+                const list: Vacation[] = await vacationService.getUsersFollowedVacations(user.id);
+                const sortedList: Vacation[] = list.sort((a, b): number => new Date(b.startDate).getTime() - new Date(a.startDate).getTime());
+                setFollowedList(sortedList);
+                setPage(sortedList.slice(0, 10));
                 setTotalVacations(list.length);
 
             } else {
-                // Fetch the original list instead of relying on store
                 await vacationService.fetchData(1);
                 setPage(vacationStore.getState().vacationList);
-                // setTotalVacations(vacationStore.getState().vacationList.length);
                 setTotalVacations(vacationStore.getState().totalVacations);
             }
         } catch (error) {
@@ -79,12 +74,19 @@ function VacationList(): JSX.Element {
         }
     }
 
+    function handlePaginationChange(pageNumber: number): void {
+        if (showFollowed) {
+            const startIndex: number = (pageNumber - 1) * 10;
+            const endIndex: number = startIndex + 10;
+            setPage(followedList.slice(startIndex, endIndex));
+        } else {
+            vacationService.fetchPage(pageNumber);
+        }
+    }
+
     return (
         <>
             <div className="Vacation-list-checkbox-container">
-                {/*<input type="checkbox" />*/}
-                {/*<input type="checkbox" />*/}
-                {/*<input type="checkbox" />*/}
                 <label className="checkbox-label">
                     <input
                         type="checkbox"
@@ -112,9 +114,10 @@ function VacationList(): JSX.Element {
                     />
                 ))}
             </div>
-            {!showFollowed
-                ? <Pagination totalVacations={totalVacations} />
-                : <></>}
+            <Pagination totalVacations={totalVacations} onPageChange={handlePaginationChange} />
+            {/*{!showFollowed*/}
+            {/*    ? <Pagination totalVacations={totalVacations} />*/}
+            {/*    : <></>}*/}
         </>
     );
 }

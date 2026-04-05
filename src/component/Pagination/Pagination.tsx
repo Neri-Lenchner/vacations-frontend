@@ -6,6 +6,7 @@ import './Pagination.css';
 
 interface PaginationProps {
     totalVacations: number;
+    onPageChange?: (page: number) => void;
 }
 
 function Pagination(paginationProps: PaginationProps): JSX.Element {
@@ -15,7 +16,11 @@ function Pagination(paginationProps: PaginationProps): JSX.Element {
     const pages = Math.ceil(paginationProps.totalVacations / limit) || 1;
 
     function changePage(page: number) {
-        vacationService.fetchPage(page);
+        if (paginationProps.onPageChange) {
+            paginationProps.onPageChange(page);
+        } else {
+            vacationService.fetchPage(page);
+        }
     }
 
     for (let i = 1; i <= pages; i++) {
