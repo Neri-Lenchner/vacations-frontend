@@ -73,16 +73,20 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
             <div className="vacation-item-title">
                 {vacation.destination}
             </div>
-            <div
-                onClick={like}
-                className={isFollowing
-                    ? "vacation-item-likes-container vacation-item-isFollowing-true"
-                    : "vacation-item-likes-container vacation-item-isFollowing-false"}>
-                <div
-                    className="vacation-item-likes-container-content">
-                    {isFollowing ? "❤️" : "🩶" } Likes {vacationFollowers.length || 0}
+            {user.isAdmin
+                ? <div></div>
+            : <div
+                    onClick={like}
+                    className={isFollowing
+                        ? "vacation-item-likes-container vacation-item-isFollowing-true"
+                        : "vacation-item-likes-container vacation-item-isFollowing-false"}>
+                    <div
+                        className="vacation-item-likes-container-content">
+                        {isFollowing ? "❤️" : "🩶" } Likes {vacationFollowers.length || 0}
+                    </div>
                 </div>
-            </div>
+            }
+
         </div>
     );
 }
