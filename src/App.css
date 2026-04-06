@@ -91,6 +91,11 @@ form {
     box-sizing: border-box;
 }
 
+textarea.form-element {
+    height: 150px;     /* fixed height */
+    resize: none;      /* prevent user from resizing */
+}
+
 /* Same height for inputs + button */
 .form-headline,
 .form-date,
@@ -118,6 +123,7 @@ form {
     background-color: #0056b3;
 }
 
+.form-input-price,
 .form-input-message {
     align-self: start;
     font-size: 14px;
@@ -130,6 +136,17 @@ form {
 
 .form-link {
     color: blue;
+}
+
+.form-delete {
+    color: gray;
+    background-color: white;
+    border: 1px solid gray;
+}
+
+.form-delete:hover {
+    background-color:  lightgray;
+    color: black;
 }
 
 /* FORM END */
