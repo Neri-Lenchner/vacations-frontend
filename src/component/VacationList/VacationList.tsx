@@ -147,7 +147,7 @@ function VacationList(): JSX.Element {
         <>
             <div className="Vacation-list-checkbox-container">
                 <label
-                    className="checkbox-label"
+                    className={user?.isAdmin ? "display-none" : "checkbox-label"}
                     htmlFor="followed-checkbox">
                     <input
                         id="followed-checkbox"
