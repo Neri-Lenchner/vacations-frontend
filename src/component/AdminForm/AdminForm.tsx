@@ -23,7 +23,7 @@ function AdminForm(): JSX.Element {
                     }
                 )}/>
                 {formState.errors.destination && <p>{formState.errors.description?.message}</p>}
-                <div className="form-input-message">last name</div>
+                <div className="form-input-message">description</div>
                 <textarea className="form-description-texterea form-element" {...register("description",
                     {
                         required: {value: true, message: "Description is required!"},
@@ -31,7 +31,7 @@ function AdminForm(): JSX.Element {
                     }
                 )}/>
                 {formState.errors.description && <p>{formState.errors.description?.message}</p>}
-                <div className="form-input-message">email</div>
+                <div className="form-input-message">start date</div>
                 <input
                     type="date"
                     className="form-date form-element"
@@ -41,7 +41,7 @@ function AdminForm(): JSX.Element {
                     })}
                 />
                 {formState.errors.startDate && <p>{formState.errors.startDate?.message}</p>}
-                <div className="form-input-message">password</div>
+                <div className="form-input-message">end date</div>
                 <input
                     type="date"
                     className="form-date form-element"
