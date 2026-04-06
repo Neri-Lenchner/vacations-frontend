@@ -192,6 +192,10 @@
     margin-right: 10px;
 }
 
+.vacation-item-admin-click-right-delete {
+    margin-top: 3px;
+}
+
 .display-none {
     display: none;
 }

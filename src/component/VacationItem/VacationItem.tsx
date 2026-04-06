@@ -80,7 +80,7 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
                         &#9998; <div className="vacation-item-admin-click-left-edit">Edit</div>
                     </div>
                     <div className="vacation-item-admin-click-right">
-                       <span>&#128465;&#65038;</span> <div>Delete</div>
+                       <span>&#128465;&#65038;</span> <div className="vacation-item-admin-click-right-delete">Delete</div>
                     </div>
                 </div>
             : <div
