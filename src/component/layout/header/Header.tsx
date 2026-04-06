@@ -3,6 +3,8 @@ import {NavLink, useNavigate} from "react-router-dom";
 import {Unsubscribe} from 'redux';
 import {AuthActionType, authStore} from '../../../state/auth-state';
 import './Header.css';
+import {User} from '../../../models/user.model';
+
 
 function Header(): JSX.Element {
 
@@ -14,19 +16,18 @@ function Header(): JSX.Element {
             : undefined
     );
 
-
-
-    // authStore.getState().token && (
-    //     authStore.getState().user?.firstName
-    // )
+    const [user, setUser] = useState<User | null>(authStore.getState().user);
 
     useEffect((): Unsubscribe => {
         const unsubscribe: Unsubscribe = authStore.subscribe((): void => {
-            if (authStore.getState().user !== null) {
-                console.log(authStore.getState().user?.firstName);
-                setUserName(`${authStore.getState().user?.firstName!} ${authStore.getState().user?.lastName}`)
+            const currentUser = authStore.getState().user;
+            if (currentUser !== null) {
+                console.log(currentUser?.firstName);
+                setUserName(`${currentUser?.firstName!} ${currentUser?.lastName}`);
+                setUser(currentUser);
             } else {
                 setUserName(undefined);
+                setUser(null);
             }
         });
         return () => unsubscribe();
@@ -37,6 +38,10 @@ function Header(): JSX.Element {
             type: AuthActionType.Logout, payload: ""
         });
         navigate('/login');
+    }
+
+    function navigateToAdminForm(): void {
+        navigate('/admin-form');
     }
 
     return (
@@ -53,6 +58,14 @@ function Header(): JSX.Element {
                         >
                             Logout
                         </button>
+                        {user?.isAdmin &&
+                            <button
+                                onClick={navigateToAdminForm}
+                                className="general-button"
+                            >
+                                Add Vacation
+                            </button>
+                        }
                     </div>
                 </>
                 : <h2 className="header-headline">

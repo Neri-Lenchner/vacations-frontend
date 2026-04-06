@@ -33,3 +33,7 @@
 .header-button-line {
     margin-left: 50px;
 }
+
+.general-button {
+    outline: none;
+}
