@@ -92,7 +92,7 @@ form {
 }
 
 textarea.form-element {
-    height: 150px;     /* fixed height */
+    height: 250px;     /* fixed height */
     resize: none;      /* prevent user from resizing */
 }
 
@@ -147,6 +147,31 @@ textarea.form-element {
 .form-delete:hover {
     background-color:  lightgray;
     color: black;
+}
+
+.form-split {
+    display: flex;
+}
+
+.form-split-buttons {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.form-split-1,
+.form-split-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.form-split-2 {
+
 }
 
 /* FORM END */
