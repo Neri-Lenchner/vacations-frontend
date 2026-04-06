@@ -58,13 +58,14 @@ function Header(): JSX.Element {
                         >
                             Logout
                         </button>
-                        {user?.isAdmin &&
-                            <button
+                        {user?.isAdmin
+                            ? <button
                                 onClick={navigateToAdminForm}
-                                className="general-button"
+                                className={user.isAdmin ? "general-button" : "display-none"}
                             >
                                 Add Vacation
                             </button>
+                           : <div></div>
                         }
                     </div>
                 </>

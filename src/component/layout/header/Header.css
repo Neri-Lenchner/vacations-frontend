@@ -16,6 +16,7 @@
 .header-button-line {
     display: flex;
     flex-direction: row;
+    gap: 15px;
 }
 
 .header-headline {
@@ -34,6 +35,6 @@
     margin-left: 50px;
 }
 
-.general-button {
-    outline: none;
+.display-none {
+    display: none;
 }
