@@ -151,6 +151,7 @@ function VacationList(): JSX.Element {
                     htmlFor="followed-checkbox">
                     <input
                         id="followed-checkbox"
+                        className="checkbox"
                         type="checkbox"
                         checked={showFollowed}
                         onChange={handleFollowedVacations}
@@ -162,6 +163,7 @@ function VacationList(): JSX.Element {
                     htmlFor="upcoming-vacations-checkbox">
                     <input
                         id="upcoming-vacations-checkbox"
+                        className="checkbox"
                         type="checkbox"
                         checked={showUpcoming}
                         onChange={handleUpcomingVacations}
@@ -173,6 +175,7 @@ function VacationList(): JSX.Element {
                     htmlFor="active-checkbox">
                     <input
                         id="active-checkbox"
+                        className="checkbox"
                         type="checkbox"
                         checked={showActive}
                         onChange={handleActiveVacations}
