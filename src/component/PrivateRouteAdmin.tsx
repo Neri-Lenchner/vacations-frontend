@@ -1,14 +1,14 @@
 import React, {JSX, ReactNode, useState, useEffect} from 'react';
 import {Unsubscribe} from "redux";
-import {authStore} from "../../state/auth-state";
+import {authStore} from "../state/auth-state";
 import {Navigate} from "react-router-dom";
-import {User} from "../../models/user.model";
+import {User} from "../models/user.model";
 
-interface PrivateRouteProps {
+interface PrivateRoutePropsAdmin {
     child: ReactNode;
 }
 
-function PrivateRoute(privateRouteProps: PrivateRouteProps): JSX.Element {
+function PrivateRouteAdmin(privateRoutePropsAdmin: PrivateRoutePropsAdmin): JSX.Element {
 
 
     const [user, setUser] = useState<User | null>(
@@ -34,13 +34,18 @@ function PrivateRoute(privateRouteProps: PrivateRouteProps): JSX.Element {
         return (<Navigate to="/login-form" />);
     }
 
+    if (!user?.isAdmin) {
+        return (<Navigate to="/login-form" />);
+    }
+
+
     // if (!privateRouteProps.permissionIdList.includes(authStore.getState().user!.roleId)) {
     //     return (<Navigate to="/" />);
     // }
 
     return (
-        <>{privateRouteProps.child}</>
+        <>{privateRoutePropsAdmin.child}</>
     );
 }
 
-export default PrivateRoute;
+export default PrivateRouteAdmin;
