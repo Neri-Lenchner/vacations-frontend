@@ -1,4 +1,5 @@
 import {JSX, useState, useEffect} from 'react';
+import {useNavigate} from 'react-router-dom'
 import {Follower} from '../../models/follower.model';
 import {Vacation} from '../../models/vacation.model';
 import {User} from '../../models/user.model';
@@ -17,7 +18,7 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
 
     let [isFollowing, setIsFollowing] = useState<boolean>(false);
     const [vacationFollowers, setVacationFollowers] = useState<Follower[]>([]);
-
+    const navigate = useNavigate();
     const {vacation, followersList, user} = vacationItemProps;
 
     useEffect(() => {
@@ -49,6 +50,11 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
         }
     }
 
+    function navigateToAdminForm() {
+        navigate('/admin-form');
+        console.log("admin-form")
+    }
+
     return (
         <div className="vacation-item-container">
             <div className="vacation-item-image-container">
@@ -76,7 +82,9 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
             {user.isAdmin
                 ?
                 <div className="vacation-item-admin-clicks">
-                    <div className="vacation-item-admin-click-left">
+                    <div
+                        className="vacation-item-admin-click-left"
+                        onClick={navigateToAdminForm}>
                         &#9998; <div className="vacation-item-admin-click-left-edit">Edit</div>
                     </div>
                     <div className="vacation-item-admin-click-right">
