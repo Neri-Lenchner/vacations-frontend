@@ -129,3 +129,45 @@
     color: black;
     box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.2), 0 2px 8px 0 rgba(0, 0, 0, 0.19);
 }
+
+.vacation-item-admin-button-1,
+.vacation-item-admin-button-2{
+
+}
+
+.vacation-item-admin-clicks{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.vacation-item-admin-clicks {
+
+}
+
+.vacation-item-admin-click-left,
+.vacation-item-admin-click-right {
+    padding: 30px;
+    position: absolute;
+    top: 10px;
+    font-size: 14px;
+    height: 30px;
+    width: 80px;
+    padding: 10px 5px;
+    background-color: lightgray;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    line-height: 1;
+    font-family: Arial, sans-serif !important;
+}
+
+.vacation-item-admin-click-left {
+    left: 5px;
+}
+
+.vacation-item-admin-click-right {
+    right: 5px;
+}

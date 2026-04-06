@@ -74,7 +74,15 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
                 {vacation.destination}
             </div>
             {user.isAdmin
-                ? <div></div>
+                ?
+                <div className="vacation-item-admin-clicks">
+                    <div className="vacation-item-admin-click-left">
+
+                    </div>
+                    <div className="vacation-item-admin-click-right">
+
+                    </div>
+                </div>
             : <div
                     onClick={like}
                     className={isFollowing
