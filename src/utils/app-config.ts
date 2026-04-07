@@ -13,7 +13,7 @@ class ProdAppConfig extends AppConfig {
 export const appConfig = process.env.NODE_ENV === "production" ? new ProdAppConfig() : new DevAppConfig();
 
 
-
+//
 // class AppConfig {
 //
 // }
@@ -30,4 +30,4 @@ export const appConfig = process.env.NODE_ENV === "production" ? new ProdAppConf
 //     uploadsAddress: string = this.serverAddress + "/uploads/";
 // }
 //
-// export const appConfig = process.env.NODE_ENV === "production" ? new ProdAppConfig() : new DevAppConfig;
+// export const appConfig = process.env.NODE_ENV === "production" ? new ProdAppConfig() : new DevAppConfig();
