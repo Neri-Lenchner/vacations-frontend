@@ -1,0 +1,659 @@
+* [33mcommit bcd75ffd1f61f9407344a0dc2b0b8e3744c7ffd0[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Tue Apr 7 18:55:14 2026 +0300
+[31m|[m 
+[31m|[m     test start
+[31m|[m 
+* [33mcommit d9cd314b455991ee9cc180cbf6e327bb157e3211[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Tue Apr 7 16:47:30 2026 +0300
+[31m|[m 
+[31m|[m     test progress
+[31m|[m 
+* [33mcommit 9674efdace0114ac381c2b57f320ec51bde23dd6[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Tue Apr 7 14:30:13 2026 +0300
+[31m|[m 
+[31m|[m     end of the day
+[31m|[m 
+* [33mcommit fc4ad37f33d9168ab7f26c0c7da280d979c83c99[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Tue Apr 7 11:38:32 2026 +0300
+[31m|[m 
+[31m|[m     finally
+[31m|[m 
+* [33mcommit bdbbee0b37806ad88ac2b2e895f103d2befebcff[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Tue Apr 7 09:12:08 2026 +0300
+[31m|[m 
+[31m|[m     added addVacation to vaction-service
+[31m|[m 
+* [33mcommit 7f927446cb05772ff091a38c259ff83fe3f5c371[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Tue Apr 7 08:29:20 2026 +0300
+[31m|[m 
+[31m|[m     added file input to AdminForm
+[31m|[m 
+* [33mcommit a21485fa4a68e6320eb54c445933544a32d92a9f[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Tue Apr 7 08:14:42 2026 +0300
+[31m|[m 
+[31m|[m        modified:   src/component/VacationList/VacationList.css
+[31m|[m 
+* [33mcommit c7d2a312246b2c12101d431e69beadc662e4ceeb[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Tue Apr 7 08:00:33 2026 +0300
+[31m|[m 
+[31m|[m     added navigation buttons to the header
+[31m|[m 
+* [33mcommit ca0443cd97722d73da2b052f71cb050f28fc3eea[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Tue Apr 7 07:53:10 2026 +0300
+[31m|[m 
+[31m|[m     fixed header buttons css
+[31m|[m 
+* [33mcommit da3607cd3dfed3c7a1c7df93a935a0dffce0dc74[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Tue Apr 7 07:48:34 2026 +0300
+[31m|[m 
+[31m|[m     fixed navigation from registration to vacations
+[31m|[m 
+* [33mcommit 71272047c624d1f81f7d286aab382c042b873e71[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Tue Apr 7 07:25:01 2026 +0300
+[31m|[m 
+[31m|[m     starting point for today
+[31m|[m 
+* [33mcommit 9fad4dc65f2b674393c954913162fe41626fa0ac[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Mon Apr 6 21:58:41 2026 +0300
+[31m|[m 
+[31m|[m     fixed header
+[31m|[m 
+* [33mcommit 8618c0c62896df4423ec66b8a6b9087cd0c3cfff[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Mon Apr 6 21:48:56 2026 +0300
+[31m|[m 
+[31m|[m     progress test 1
+[31m|[m 
+* [33mcommit 8a76b18226740ab25ad48da334e5cdda87797abe[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Mon Apr 6 13:59:13 2026 +0300
+[31m|[m 
+[31m|[m     fixed css for AdminForm
+[31m|[m 
+* [33mcommit 62958f20b2909016963214d92d9bfd02cf9abf85[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Mon Apr 6 13:18:12 2026 +0300
+[31m|[m 
+[31m|[m     added
+[31m|[m 
+* [33mcommit 2a4aa5b3d7ee82943d28e428d5a7cfac65af8459[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Mon Apr 6 12:57:35 2026 +0300
+[31m|[m 
+[31m|[m     progress makeing AdminForm
+[31m|[m 
+* [33mcommit c23d2ce7a698599c3909c24c506b83e1070b6652[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Mon Apr 6 11:41:46 2026 +0300
+[31m|[m 
+[31m|[m     added PrivateRouteAdmin.tsx
+[31m|[m 
+* [33mcommit ec0ec94a4d1aa97a5bfb8e6528d66f844242a53f[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Mon Apr 6 10:56:26 2026 +0300
+[31m|[m 
+[31m|[m     added functionality to admin edit button
+[31m|[m 
+* [33mcommit 816600fffc41ba94bd9899effcbb5b34a20e8689[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Mon Apr 6 10:27:10 2026 +0300
+[31m|[m 
+[31m|[m     added AdminForm
+[31m|[m 
+* [33mcommit 76f53332dfa51a9e9725dbb4be81db528a2698bd[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Mon Apr 6 10:08:00 2026 +0300
+[31m|[m 
+[31m|[m     css fixed for admin checkbox
+[31m|[m 
+* [33mcommit 5a14bcbba8f5e8b38fb5b7bfbf5bd6716361b491[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Mon Apr 6 09:44:45 2026 +0300
+[31m|[m 
+[31m|[m     added admin item buttons
+[31m|[m 
+* [33mcommit 5460c96e4d388d90816486fb0880f80e2be02a28[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Mon Apr 6 08:55:21 2026 +0300
+[31m|[m 
+[31m|[m     progress in admin clicks
+[31m|[m 
+* [33mcommit 279ee04919c95730ed7dab3db8547d0bf593fa7d[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Mon Apr 6 08:19:32 2026 +0300
+[31m|[m 
+[31m|[m     started to work on admin mode
+[31m|[m 
+* [33mcommit d7602a9048a762a5a65425c99e5968b3a66a9c7f[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Mon Apr 6 07:40:47 2026 +0300
+[31m|[m 
+[31m|[m     css suff
+[31m|[m 
+* [33mcommit b4e1e2191ae46df60a2c26bb3a5936390232446b[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Sun Apr 5 21:17:12 2026 +0300
+[31m|[m 
+[31m|[m     changed design
+[31m|[m 
+* [33mcommit ffb2040f7c7df5efc9c487e8fad8187707c40023[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Sun Apr 5 19:45:03 2026 +0300
+[31m|[m 
+[31m|[m     starting poing
+[31m|[m 
+* [33mcommit 6dfa7cecb7f2bc9e480175e28f09539924907f79[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Sun Apr 5 06:33:50 2026 +0300
+[31m|[m 
+[31m|[m     fixes
+[31m|[m 
+* [33mcommit 6fd6b5d16924f7452f9089d0c31a021974966132[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Sun Apr 5 06:28:24 2026 +0300
+[31m|[m 
+[31m|[m     functional checkboxes
+[31m|[m 
+* [33mcommit 1d770eae330e4ec04693a989a579497b660239b0[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Sun Apr 5 06:01:19 2026 +0300
+[31m|[m 
+[31m|[m     bla bla
+[31m|[m 
+* [33mcommit 2547195300524831521db30bc419826738887fbf[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Sun Apr 5 05:20:23 2026 +0300
+[31m|[m 
+[31m|[m     added alot
+[31m|[m 
+* [33mcommit 799dd9a063071eaeedb26988bb7dcf4d01926ef5[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Sun Apr 5 04:54:38 2026 +0300
+[31m|[m 
+[31m|[m     progress
+[31m|[m 
+* [33mcommit bf9e5bf1917bce13092bddc10b3e2044265d5ec0[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Sun Apr 5 04:14:16 2026 +0300
+[31m|[m 
+[31m|[m     first checkbox seems ok
+[31m|[m 
+* [33mcommit 88a627a7d7a25be0d9588e30fb51fdb1e2736c7f[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Sun Apr 5 02:49:44 2026 +0300
+[31m|[m 
+[31m|[m     found a temporary confition to checkbox
+[31m|[m 
+* [33mcommit 690e5f97975f36bf617a16c3127abea2535c3e1c[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Sun Apr 5 01:28:23 2026 +0300
+[31m|[m 
+[31m|[m     seems that the tryout turned out to be good
+[31m|[m 
+* [33mcommit e15635666dfb99132b21c6f018a890114cc406f1[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Sun Apr 5 01:03:20 2026 +0300
+[31m|[m 
+[31m|[m     tryout begins
+[31m|[m 
+* [33mcommit 93b16a818e1c07c3b0fc2a72bff49f04172a38b6[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Sun Apr 5 00:18:35 2026 +0300
+[31m|[m 
+[31m|[m     added checkboxes no logic in component
+[31m|[m 
+* [33mcommit b4684fe5a03bbee0cc24e7e20deece4d1d8ff565[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Sat Apr 4 18:01:46 2026 +0300
+[31m|[m 
+[31m|[m     reversed last what I did on last commit
+[31m|[m 
+* [33mcommit 5731fda8a06af97fa79626e8588fec4dcaeb4a69[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Sat Apr 4 17:47:51 2026 +0300
+[31m|[m 
+[31m|[m     commented out VacationList.tsx line 27 - watch to see if somthing is wrong
+[31m|[m 
+* [33mcommit 05d5ce37c6ca0b39506c522bae58601e2e5a8b00[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Sat Apr 4 17:45:05 2026 +0300
+[31m|[m 
+[31m|[m     everything seem to work just fine
+[31m|[m 
+* [33mcommit 29c4089985fe731afe13baa0429a1f24be7e17e8[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Sat Apr 4 15:33:31 2026 +0300
+[31m|[m 
+[31m|[m     looks like the test was a success
+[31m|[m 
+* [33mcommit 27a797a22f64a79ec0c33f8ccd7195cd9300cb8b[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Sat Apr 4 15:26:13 2026 +0300
+[31m|[m 
+[31m|[m     test progress1
+[31m|[m 
+* [33mcommit 45bde0630d4f566c61d38ccad875214045e32f40[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Sat Apr 4 15:13:56 2026 +0300
+[31m|[m 
+[31m|[m     test start
+[31m|[m 
+* [33mcommit 1b408c161613550047873dc3efb25a59138f5167[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Sat Apr 4 13:15:54 2026 +0300
+[31m|[m 
+[31m|[m     test seem to work fine
+[31m|[m 
+* [33mcommit 891c9bc9c65747fa26a81721181a0c933c27b2bb[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Sat Apr 4 12:57:59 2026 +0300
+[31m|[m 
+[31m|[m     sest progression
+[31m|[m 
+* [33mcommit 582797f0b418887fbb56eff85ccae00ba2ff056a[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Sat Apr 4 12:46:04 2026 +0300
+[31m|[m 
+[31m|[m     test start
+[31m|[m 
+* [33mcommit 8c71bae66cf390ec8062473f469b1deefeb235be[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Sat Apr 4 12:43:06 2026 +0300
+[31m|[m 
+[31m|[m     added
+[31m|[m 
+* [33mcommit 034e5c81a6afb5bcb7e099b6a1cd62714950702d[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Sat Apr 4 12:38:11 2026 +0300
+[31m|[m 
+[31m|[m     where the hell am I
+[31m|[m 
+* [33mcommit dc7b68a5f5c6aec5b65216001a85ce9e4af4c8a6[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Sat Apr 4 11:59:12 2026 +0300
+[31m|[m 
+[31m|[m     progress
+[31m|[m 
+* [33mcommit 3b370d1050b49296ddea3d7b1cbe2f1c11576691[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Sat Apr 4 11:54:38 2026 +0300
+[31m|[m 
+[31m|[m     progress
+[31m|[m 
+* [33mcommit af06c2634afabe466e1412d713b7486fbcd93219[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Sat Apr 4 09:20:10 2026 +0300
+[31m|[m 
+[31m|[m     small fixes to last commit
+[31m|[m 
+* [33mcommit 9c462aa364e074755d3e4a643b6375a1d4ff1b75[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Sat Apr 4 09:17:00 2026 +0300
+[31m|[m 
+[31m|[m     added user prop to vacationItemProps
+[31m|[m 
+* [33mcommit e16034cc7e3d12b408ee5bede218fa6b4b16091f[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Sat Apr 4 09:10:48 2026 +0300
+[31m|[m 
+[31m|[m     added props to VacationItem and changed vacationLIst
+[31m|[m 
+* [33mcommit 5371ec731f2c30d30bac57143b9b82544379c4b6[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Fri Apr 3 21:32:41 2026 +0300
+[31m|[m 
+[31m|[m     added
+[31m|[m 
+* [33mcommit 126b8ae33f5a0333977da74fdd66b941bbc8b57d[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Fri Apr 3 21:23:33 2026 +0300
+[31m|[m 
+[31m|[m     added hooks to VacationItem
+[31m|[m 
+* [33mcommit 70dd39fc10718ab5c98433b6f97656a75ef11314[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Fri Apr 3 20:47:10 2026 +0300
+[31m|[m 
+[31m|[m     added stuff to vacationItem
+[31m|[m 
+* [33mcommit 708658c8916d2303cf82b681a93dab08c9181393[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Fri Apr 3 20:30:05 2026 +0300
+[31m|[m 
+[31m|[m     I think I am ready
+[31m|[m 
+* [33mcommit be3ee9e8b5b88c377b7cd09ea2f52bd10873af6a[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Fri Apr 3 18:59:21 2026 +0300
+[31m|[m 
+[31m|[m     added followerService.addFollower
+[31m|[m 
+* [33mcommit 28fc49ca3118a851497c52a7813cb127f31a2154[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Fri Apr 3 18:49:55 2026 +0300
+[31m|[m 
+[31m|[m     added stuff
+[31m|[m 
+* [33mcommit 8a832ab871a67dd3c33339a8528d3d333d5f807a[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Fri Apr 3 16:39:08 2026 +0300
+[31m|[m 
+[31m|[m     added follower.model.ts and followerState.ts
+[31m|[m 
+* [33mcommit da8ff52c59c114b80f8f7da2df80b78ebc49ceea[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Fri Apr 3 16:25:44 2026 +0300
+[31m|[m 
+[31m|[m     fixed some css issues
+[31m|[m 
+* [33mcommit 81f8d2ba0a256da492aa4a89e986a5ab59e4b7d0[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Fri Apr 3 05:28:38 2026 +0300
+[31m|[m 
+[31m|[m     added background img to header
+[31m|[m 
+* [33mcommit 8b41f347594bd52a52c35a4669d234b16978f31e[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Fri Apr 3 04:21:29 2026 +0300
+[31m|[m 
+[31m|[m     another fix in the wall
+[31m|[m 
+* [33mcommit c86f72a1b2dc053d5ea7adf1dbea63946f09bc5c[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Fri Apr 3 04:18:44 2026 +0300
+[31m|[m 
+[31m|[m     fix
+[31m|[m 
+* [33mcommit 5e11ae1586708e91ad4c2d96131646dba6aeb0ad[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Fri Apr 3 04:17:53 2026 +0300
+[31m|[m 
+[31m|[m     changed alot
+[31m|[m 
+* [33mcommit 0d9a1a547f921fff17d1f45def3971856e0a503a[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Fri Apr 3 02:19:58 2026 +0300
+[31m|[m 
+[31m|[m     progress
+[31m|[m 
+* [33mcommit 0fa07668afdb9711ca5fc02da6919a9fa6f62832[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Fri Apr 3 02:17:49 2026 +0300
+[31m|[m 
+[31m|[m     fixed VacationItem fetching
+[31m|[m 
+* [33mcommit 2eb100964586db9a279b9a66a94f077a9fe74520[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Fri Apr 3 02:08:56 2026 +0300
+[31m|[m 
+[31m|[m     VacationItem
+[31m|[m 
+* [33mcommit 7cc02afd52794952a7b6668aee134e1ddff63122[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Fri Apr 3 01:56:15 2026 +0300
+[31m|[m 
+[31m|[m     tryout ahead
+[31m|[m 
+* [33mcommit 20c13446e0b8894fba9aa3d5338b3948dcd5404d[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Fri Apr 3 01:34:00 2026 +0300
+[31m|[m 
+[31m|[m     progress css
+[31m|[m 
+* [33mcommit ca90dd876810718d72920f1501906de289cb88b0[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Fri Apr 3 01:25:23 2026 +0300
+[31m|[m 
+[31m|[m     progress in pagination
+[31m|[m 
+* [33mcommit 2f1e91bda1394563f3939263414e20985cac0079[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Fri Apr 3 01:12:52 2026 +0300
+[31m|[m 
+[31m|[m     progress
+[31m|[m 
+* [33mcommit 4db1d9ce041f068724cd9d16f82ee8eba67c47eb[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Fri Apr 3 00:21:22 2026 +0300
+[31m|[m 
+[31m|[m     set VacationItem
+[31m|[m 
+* [33mcommit 36aa45089744d299474164699250159ada7fee54[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Thu Apr 2 20:33:51 2026 +0300
+[31m|[m 
+[31m|[m      added pagination
+[31m|[m 
+* [33mcommit c5857321149a7a93b344c0884c0a296dea3ac0c0[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Thu Apr 2 19:49:20 2026 +0300
+[31m|[m 
+[31m|[m      src/component/Pagination/
+[31m|[m 
+* [33mcommit 3afe57bf2c7150d68a4fc01b86c64107a98d0c07[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Thu Apr 2 18:18:20 2026 +0300
+[31m|[m 
+[31m|[m      modified:   src/services/vacation-service.ts
+[31m|[m 
+* [33mcommit 41feb5b18853ee1fae5150c3d53c238647873439[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Thu Apr 2 17:55:22 2026 +0300
+[31m|[m 
+[31m|[m     functional vacationService.fetchPage
+[31m|[m 
+* [33mcommit 15b72e87fa74050e3779a67d92c3687045c9030c[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Thu Apr 2 14:10:15 2026 +0300
+[31m|[m 
+[31m|[m     fixed ffetching issues
+[31m|[m 
+* [33mcommit a638c16cc2776573453073e4478ab714cb2a3eb0[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Thu Apr 2 13:59:12 2026 +0300
+[31m|[m 
+[31m|[m     fixed issues in vacationService and in vacationStore
+[31m|[m 
+* [33mcommit 220593530225c57a7ee644b2e87b77b7a9a3c577[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Thu Apr 2 12:58:45 2026 +0300
+[31m|[m 
+[31m|[m     added vacation-state.ts
+[31m|[m 
+* [33mcommit 8ce74e0bbce6b4c0522684778d0811a10621ad79[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Thu Apr 2 11:41:26 2026 +0300
+[31m|[m 
+[31m|[m     added vacationService and vacation.model
+[31m|[m 
+* [33mcommit 71eda344b50dc217a05abff14fbdfed290eb4dda[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Wed Apr 1 19:00:45 2026 +0300
+[31m|[m 
+[31m|[m     fixed height css problem
+[31m|[m 
+* [33mcommit 2eafbc41846f176ffcc5bc14134d0dfb5a0caae8[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Wed Apr 1 18:51:14 2026 +0300
+[31m|[m 
+[31m|[m     css header stuff
+[31m|[m 
+* [33mcommit 10f85ac4e5bcee513b7798175ab3da66ed4f60b2[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Wed Apr 1 18:13:20 2026 +0300
+[31m|[m 
+[31m|[m     fixed css header issue
+[31m|[m 
+* [33mcommit 29946d2eb38651b63d3b03b7adb25c26459b9f46[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Wed Apr 1 14:52:49 2026 +0300
+[31m|[m 
+[31m|[m     VacationItem.css is cool now
+[31m|[m 
+* [33mcommit f25379966ee384632941532a8935a70cc17c69fb[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Wed Apr 1 13:32:08 2026 +0300
+[31m|[m 
+[31m|[m     stuff stuff stuff
+[31m|[m 
+* [33mcommit dd6f58d5494637f5bf0aff77c7b03d64c6288896[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Wed Apr 1 12:23:58 2026 +0300
+[31m|[m 
+[31m|[m     fixed css issue
+[31m|[m 
+* [33mcommit ed45d33315c59957099c5afd3a7d31869ff4d6d8[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Wed Apr 1 11:07:47 2026 +0300
+[31m|[m 
+[31m|[m     cosmetics
+[31m|[m 
+* [33mcommit f7e82bf384d8c83a5c02f23417220c2d8297c7c9[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Wed Apr 1 11:05:45 2026 +0300
+[31m|[m 
+[31m|[m     fexed login issue
+[31m|[m 
+* [33mcommit 8b6479633651ac7de4fd9d6a9e022b2f19de79b1[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Wed Apr 1 10:53:53 2026 +0300
+[31m|[m 
+[31m|[m     added link to vacations
+[31m|[m 
+* [33mcommit 52d3ac700a088374b15bd4f42d73ba9f7dd8132a[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Wed Apr 1 10:51:25 2026 +0300
+[31m|[m 
+[31m|[m     changed a lot in Routing.tsx and in PrivateRoute.tsx
+[31m|[m 
+* [33mcommit 8259553ce58bb654cbfcd3e7419e9111ace7eeb7[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Tue Mar 31 17:04:25 2026 +0300
+[31m|[m 
+[31m|[m     in progress
+[31m|[m 
+* [33mcommit 79fb30fe4ec620b620d400ee4927326707ca50e8[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Tue Mar 31 15:35:11 2026 +0300
+[31m|[m 
+[31m|[m     few twiks
+[31m|[m 
+* [33mcommit 50a3b33407abfc883febf77eccbff04b9cce9768[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Tue Mar 31 14:03:07 2026 +0300
+[31m|[m 
+[31m|[m     small fixes
+[31m|[m 
+* [33mcommit 58b04c4f8c518dcc7c9630321292d636ac405c1b[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Tue Mar 31 13:58:15 2026 +0300
+[31m|[m 
+[31m|[m     added userService.ts
+[31m|[m 
+* [33mcommit 75d7ac4d30e728d273c814678d17f918d884e454[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Tue Mar 31 13:47:09 2026 +0300
+[31m|[m 
+[31m|[m     added user-state.ts
+[31m|[m 
+* [33mcommit 87422c101cf90810c3873496bb22621b5170f58c[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Mon Mar 30 22:07:32 2026 +0300
+[31m|[m 
+[31m|[m     added and changed and stuff
+[31m|[m 
+* [33mcommit 166472a6377558b107e56e420b24d20a0cb3a29e[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Mon Mar 30 14:16:45 2026 +0300
+[31m|[m 
+[31m|[m     progress
+[31m|[m 
+* [33mcommit a05493b94c18168e9c28ebdd4aeb79ea44b75c44[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Mon Mar 30 13:51:14 2026 +0300
+[31m|[m 
+[31m|[m     added login-form
+[31m|[m 
+* [33mcommit 4d78e4e800468b4d0888865168d6bfb17f1dd2d5[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Mon Mar 30 12:58:14 2026 +0300
+[31m|[m 
+[31m|[m     Remove old React-lesson-51_23-2-2026 module reference
+[31m|[m 
+* [33mcommit 863a3c72f0500f3b1a115ddff12a1824eff38baf[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Mon Mar 30 12:12:15 2026 +0300
+[31m|[m 
+[31m|[m     progress
+[31m|[m 
+* [33mcommit b0790af36f1a05d2c155d19421796096864aed15[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Mon Mar 30 10:29:39 2026 +0300
+[31m|[m 
+[31m|[m     progress
+[31m|[m 
+* [33mcommit 222c85da7fccec5e017587a74c7b18ca9358bb5f[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Mon Mar 30 09:16:22 2026 +0300
+[31m|[m 
+[31m|[m     added auth-state.ts
+[31m|[m 
+* [33mcommit 7a5073fd4f08de121bf0585b5792a78eabff0032[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Mon Mar 30 09:07:18 2026 +0300
+[31m|[m 
+[31m|[m     css fixes
+[31m|[m 
+* [33mcommit e17b135bd59d65c64afa249e358ba3a6a0bae8c9[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Mon Mar 30 09:01:50 2026 +0300
+[31m|[m 
+[31m|[m     downgraded types
+[31m|[m 
+* [33mcommit 7c6329987e0db800ab9bee9b71a4d4785870298b[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Mon Mar 30 07:41:13 2026 +0300
+[31m|[m 
+[31m|[m     css fix
+[31m|[m 
+* [33mcommit 353197f50de4a3a110f082beaa3506fba5ae8567[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Mon Mar 30 07:39:16 2026 +0300
+[31m|[m 
+[31m|[m     first commit
+[31m|[m 
+* [33mcommit 559df70fd736cdc27b458f6c87ef4f27c627f482[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Thu Mar 26 15:39:00 2026 +0200
+[31m|[m 
+[31m|[m     first commit
+[31m|[m 
+* [33mcommit 45438b72d84401ad9b1418d396ad886df0ae7378[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Tue Feb 24 12:12:14 2026 +0200
+[31m|[m 
+[31m|[m     changed general css
+[31m|[m 
+* [33mcommit 7e834f3e83f33eaa6eca92a6f3ae88cf495e572c[m
+[31m|[m Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+[31m|[m Date:   Tue Feb 24 11:48:00 2026 +0200
+[31m|[m 
+[31m|[m     moved utils into src dir
+[31m|[m 
+* [33mcommit 2460a51a214faf86cde772dbbbafe2e0840f3d81[m
+  Author: Neri-Lenchner <n.l.y.a.lench@gmail.com>
+  Date:   Tue Feb 24 11:46:21 2026 +0200
+  
+      first commit
