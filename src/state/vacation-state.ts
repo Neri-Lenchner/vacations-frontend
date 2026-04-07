@@ -11,7 +11,7 @@ export class VacationState {
 export enum VacationActionType {
     GetVacationList = "GetVacationList",
     GetTotalVacations = "GetTotalVacations",
-    // AddUser = "AddUser",
+    AddVacation = "AddVacation",
     // UpdateUser = "UpdateUser",
     // DeleteUser = "DeleteUser",
 }
@@ -33,9 +33,9 @@ export function vacationReducer(vacationState: VacationState = new VacationState
         case VacationActionType.GetTotalVacations:
             newState.totalVacations = action.payload;
             break;
-        // case VacationActionType.AddUser:
-        //     newState.userList.push(action.payload);
-        //     break;
+        case VacationActionType.AddVacation:
+            newState.vacationList.push(action.payload);
+            break;
         // case VacationActionType.UpdateUser:
         //     const indexToUpdate: number = newState.userList.findIndex((user: User): boolean => user.id === action.payload.id);
         //     newState.userList[indexToUpdate] = action.payload;

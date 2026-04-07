@@ -112,6 +112,29 @@ class VacationService {
         }
     }
 
+    async addVacation(vacation: Vacation): Promise<Vacation> {
+        const token: string | null = authStore.getState().token;
+
+        const formData = new FormData();
+        formData.append("destination", vacation.destination);
+        formData.append("description", vacation.description);
+        formData.append("startDate", vacation.startDate);
+        formData.append("endDate", vacation.endDate);
+        formData.append("cost", vacation.cost.toString());
+        formData.append("image", vacation.image![0]);
+
+        try {
+
+            const response = await axios.post<Vacation>(
+                `${appConfig.apiAddress}api/vacation`, formData, {headers: { Authorization: "Bearer " + token }}
+            );
+            vacationStore.dispatch({type: VacationActionType.AddVacation, payload: response.data});
+            return response.data;
+        } catch (error) {
+            throw new Error("Failed to add Vacation");
+        }
+
+    }
 }
 
 export const vacationService = new VacationService();
