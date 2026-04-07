@@ -35,6 +35,18 @@
     margin-left: 50px;
 }
 
+.header-button {
+    color: yellow;
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+}
+
+.header-button:hover {
+    cursor: pointer;
+    color: white;
+}
+
 .display-none {
     display: none;
 }

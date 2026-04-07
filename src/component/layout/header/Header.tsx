@@ -54,14 +54,14 @@ function Header(): JSX.Element {
                     <div className="header-button-line">
                         <button
                             onClick={logOut}
-                            className="general-button"
+                            className="header-button"
                         >
                             Logout
                         </button>
                         {user?.isAdmin
                             ? <button
                                 onClick={navigateToAdminForm}
-                                className={user.isAdmin && ("general-button" )}
+                                className={user.isAdmin && ("header-button")}
                             >
                                 Add Vacation
                             </button>
