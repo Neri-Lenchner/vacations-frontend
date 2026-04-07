@@ -116,11 +116,12 @@ class VacationService {
         const token: string | null = authStore.getState().token;
 
         const formData = new FormData();
-        formData.append("destination", vacation.destination);
-        formData.append("description", vacation.description);
-        formData.append("startDate", vacation.startDate);
-        formData.append("endDate", vacation.endDate);
-        formData.append("cost", vacation.cost.toString());
+        formData.append("vacation", JSON.stringify(vacation));
+        // formData.append("destination", vacation.destination);
+        // formData.append("description", vacation.description);
+        // formData.append("startDate", vacation.startDate);
+        // formData.append("endDate", vacation.endDate);
+        // formData.append("cost", vacation.cost.toString());
         formData.append("image", vacation.image![0]);
 
         try {

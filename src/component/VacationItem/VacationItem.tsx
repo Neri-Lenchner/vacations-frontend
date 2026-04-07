@@ -3,6 +3,7 @@ import {useNavigate} from 'react-router-dom'
 import {Follower} from '../../models/follower.model';
 import {Vacation} from '../../models/vacation.model';
 import {User} from '../../models/user.model';
+import {appConfig} from "../../utils/app-config";
 import {followersStore} from '../../state/followers-state';
 import {followersService} from '../../services/followers-service';
 import {authStore} from '../../state/auth-state';
@@ -58,7 +59,7 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
     return (
         <div className="vacation-item-container">
             <div className="vacation-item-image-container">
-                <img className="vacation-item-img" src="https://www.shutterstock.com/image-photo/sun-sets-behind-mountain-ranges-600nw-2479236003.jpg" />
+                <img className="vacation-item-img" src={vacation.image|| "https://www.shutterstock.com/image-photo/sun-sets-behind-mountain-ranges-600nw-2479236003.jpg"} />
             </div>
             <div className="vacation-item-dates">
                 <svg className="vacation-item-svg" viewBox="0 0 24 24" fill="none">
@@ -108,3 +109,5 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
 }
 
 export default VacationItem;
+
+// src={ appConfig.serverAddress + "/" + vacationItemProps.vacation.image|| "https://www.shutterstock.com/image-photo/sun-sets-behind-mountain-ranges-600nw-2479236003.jpg"} />
