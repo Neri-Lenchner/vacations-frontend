@@ -35,6 +35,7 @@ export function authReducer(authState: AuthState = new AuthState(), action: Auth
     const newState = {...authState}
 
     switch (action.type) {
+        case AuthActionType.Register:
         case AuthActionType.Login:
             const token = action.payload;
             newState.token = token;
