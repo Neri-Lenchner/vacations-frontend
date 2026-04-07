@@ -25,6 +25,14 @@ function AdminForm(): JSX.Element {
                             }
                         )}/>
                         {formState.errors.destination && <p>{formState.errors.description?.message}</p>}
+                        <input
+                            type="file"
+                            className="form-file form-element"
+                            {...register("image", {
+                                required: { value: true, message: "!" },
+                                min: { value: 1, message: "Image is optional" }
+                            })}
+                        />
                         <div className="form-input-message">description</div>
                         <textarea className="form-description-texterea form-element" {...register("description",
                             {
@@ -55,14 +63,14 @@ function AdminForm(): JSX.Element {
                             })}
                         />
                         {formState.errors.endDate && <p>{formState.errors.endDate?.message}</p>}
-                        <div className="form-input-price">price</div>
+                        <div className="form-input-message">price</div>
                         <input
                             type="number"
                             className="form-price form-element"
                             placeholder="$"
-                            {...register("endDate", {
-                                required: { value: true, message: "End date is required!" },
-                                // min: { value: 7, message: "Date must be after Jan 1, 2024" }
+                            {...register("cost", {
+                                required: { value: true, message: "Cost date is required!" },
+                                min: { value: 1, message: "Cost can not be negative" }
                             })}
                         />
                         <div className="form-split-buttons">
