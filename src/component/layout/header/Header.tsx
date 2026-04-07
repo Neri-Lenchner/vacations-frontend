@@ -73,10 +73,6 @@ function Header(): JSX.Element {
                     Please login
                 </h2>
             }
-
-            {/*{userName*/}
-            {/*    ? <h1>{"Hello " + userName}</h1>*/}
-            {/*    : <h1>Please Login</h1>}*/}
         </div>
     );
 }
