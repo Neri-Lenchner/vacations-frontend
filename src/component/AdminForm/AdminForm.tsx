@@ -4,13 +4,43 @@ import {NavLink} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import {User} from "../../models/user.model";
 import {Vacation} from "../../models/vacation.model";
-
+import {authService} from "../../services/auth-service";
+import {vacationService} from "../../services/vacation-service";
 
 function AdminForm(): JSX.Element {
+    const {register, watch, formState, handleSubmit, reset, setValue, getValues } = useForm<Vacation>();
 
-    const {register, watch, formState, handleSubmit, reset, setValue } = useForm<Vacation>();
+    // async function addVacation(event: React.FormEvent<HTMLFormElement>): Promise<void>{
+    //     event.preventDefault();
+    //     const vacation = watch();
+    //     console.log("Form data:", vacation);
+    //     try {
+    //         await vacationService.addVacation(vacation);
+    //
+    //         // reset();
+    //         // navigate("/vacations");
+    //     }
+    //     catch (error) {
+    //         alert(error);
+    //         console.error(error);
+    //     }
+    // }
+
+    async function addVacation(event: React.FormEvent<HTMLFormElement>): Promise<void>{
+        event.preventDefault();
+        const vacation = getValues();  // Use getValues() instead of watch()
+        console.log("Form data:", vacation);
+        try {
+            await vacationService.addVacation(vacation);
+        }
+        catch (error) {
+            alert(error);
+            console.error(error);
+        }
+    }
+
     return (
-        <form>
+        <form onSubmit={addVacation}>
             <div className="form">
                 <h1 className="form-headline">
                     Add Vacation

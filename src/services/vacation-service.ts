@@ -131,7 +131,7 @@ class VacationService {
             vacationStore.dispatch({type: VacationActionType.AddVacation, payload: response.data});
             return response.data;
         } catch (error) {
-            throw new Error("Failed to add Vacation");
+           throw new Error("Failed to add Vacation");
         }
 
     }
