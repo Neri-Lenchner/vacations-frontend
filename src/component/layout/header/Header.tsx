@@ -44,6 +44,10 @@ function Header(): JSX.Element {
         navigate('/admin-form');
     }
 
+    function navigateToVacationList(): void {
+        navigate("/vacations");
+    }
+
     return (
         <div className="header">
             {userName
@@ -59,12 +63,20 @@ function Header(): JSX.Element {
                             Logout
                         </button>
                         {user?.isAdmin
-                            ? <button
-                                onClick={navigateToAdminForm}
-                                className={user.isAdmin && ("header-button")}
-                            >
-                                Add Vacation
-                            </button>
+                            ? <>
+                                <button
+                                    onClick={navigateToAdminForm}
+                                    className={user.isAdmin && ("header-button")}
+                                >
+                                    Add Vacation
+                                </button>
+                                <button
+                                    onClick={navigateToVacationList}
+                                    className={user.isAdmin && ("header-button")}
+                                >
+                                    Vacations
+                                </button>
+                            </>
                            : <div></div>
                         }
                     </div>
