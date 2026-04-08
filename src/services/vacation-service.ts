@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, {AxiosError} from 'axios';
 import {User} from "../models/user.model";
 import {Vacation} from "../models/vacation.model";
 import {appConfig} from "../utils/app-config";
@@ -132,7 +132,11 @@ class VacationService {
             vacationStore.dispatch({type: VacationActionType.AddVacation, payload: response.data});
             return response.data;
         } catch (error) {
-           throw new Error("Failed to add Vacation");
+           // throw new Error("Failed to add Vacation");
+            const myErr = error as AxiosError;
+            const data = myErr.response?.data as {error: string};
+            console.error(data);
+            throw error;
         }
 
     }

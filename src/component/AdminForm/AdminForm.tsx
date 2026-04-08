@@ -8,7 +8,7 @@ import {authService} from "../../services/auth-service";
 import {vacationService} from "../../services/vacation-service";
 
 function AdminForm(): JSX.Element {
-    const {register, watch, formState, handleSubmit, reset, setValue, getValues } = useForm<Vacation>();
+    const {register, formState, handleSubmit} = useForm<Vacation>();
 
     // async function addVacation(event: React.FormEvent<HTMLFormElement>): Promise<void>{
     //     event.preventDefault();
@@ -26,9 +26,7 @@ function AdminForm(): JSX.Element {
     //     }
     // }
 
-    async function addVacation(event: React.FormEvent<HTMLFormElement>): Promise<void>{
-        event.preventDefault();
-        const vacation = getValues();  // Use getValues() instead of watch()
+    async function addVacation(vacation: Vacation): Promise<void>{
         console.log("Form data:", vacation);
         try {
             await vacationService.addVacation(vacation);
@@ -40,7 +38,7 @@ function AdminForm(): JSX.Element {
     }
 
     return (
-        <form onSubmit={addVacation}>
+        <form onSubmit={handleSubmit(addVacation)}>
             <div className="form">
                 <h1 className="form-headline">
                     Add Vacation
@@ -54,7 +52,7 @@ function AdminForm(): JSX.Element {
                                 minLength: {value: 2, message: "Must contain at list 2 letter"}
                             }
                         )}/>
-                        {formState.errors.destination && <p>{formState.errors.description?.message}</p>}
+                        {formState.errors.destination && <p>{formState.errors.destination?.message}</p>}
                         <input
                             type="file"
                             className="form-file form-element"
@@ -99,10 +97,13 @@ function AdminForm(): JSX.Element {
                             className="form-price form-element"
                             placeholder="$"
                             {...register("cost", {
+                                valueAsNumber: true,
                                 required: { value: true, message: "Cost date is required!" },
-                                min: { value: 1, message: "Cost can not be negative" }
+                                min: { value: 1, message: "Price can not be negative" },
+                                max: { value: 10000, message: "Price can not be more than 10,000$" }
                             })}
                         />
+                        {formState.errors.cost && <p>{formState.errors.cost?.message}</p>}
                         <div className="form-split-buttons">
                             <button className="form-button form-element" type="submit">Add Vacation</button>
                             <button className="form-button form-element form-delete">Cancel</button>
