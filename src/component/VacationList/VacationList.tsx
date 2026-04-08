@@ -60,10 +60,7 @@ function VacationList(): JSX.Element {
         }
         try {
             if (isChecked) {
-                await vacationService.fetchData(1);
-                const allVacations: Vacation[] = vacationStore.getState().vacationList;
-                const today: Date = new Date();
-                const upcomingList: Vacation[] = allVacations.filter(vacation => new Date(vacation.startDate) > today);
+                const upcomingList: Vacation[] = await vacationService.getUpcomingVacations();
                 const sortedList: Vacation[] = upcomingList.sort((a, b): number => new Date(a.startDate).getTime() - new Date(b.startDate).getTime());
                 setFollowedList(sortedList);
                 setPage(sortedList.slice(0, 10));
