@@ -64,18 +64,26 @@ function Header(): JSX.Element {
                         </button>
                         {user?.isAdmin
                             ? <>
-                                <button
-                                    onClick={navigateToAdminForm}
+                                {/*<button*/}
+                                {/*    onClick={navigateToAdminForm}*/}
+                                {/*    className={user.isAdmin && ("header-button")}*/}
+                                {/*>*/}
+                                {/*    Add Vacation*/}
+                                {/*</button>*/}
+                                {/*<button*/}
+                                {/*    onClick={navigateToVacationList}*/}
+                                {/*    className={user.isAdmin && ("header-button")}*/}
+                                {/*>*/}
+                                {/*    Vacations*/}
+                                {/*</button>*/}
+                                <NavLink
                                     className={user.isAdmin && ("header-button")}
-                                >
-                                    Add Vacation
-                                </button>
-                                <button
-                                    onClick={navigateToVacationList}
+                                    to="/admin-form">
+                                    Add Vacation</NavLink>
+                                <NavLink
                                     className={user.isAdmin && ("header-button")}
-                                >
-                                    Vacations
-                                </button>
+                                    to="/vacations">
+                                    Vacations</NavLink>
                             </>
                            : <div></div>
                         }
