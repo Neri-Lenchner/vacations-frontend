@@ -52,8 +52,7 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
     }
 
     function navigateToAdminForm() {
-        navigate('/admin-form');
-        console.log("admin-form")
+        navigate(`/admin-form/${vacation.id}`);
     }
 
     return (
