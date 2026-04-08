@@ -40,14 +40,6 @@ function Header(): JSX.Element {
         navigate('/login');
     }
 
-    function navigateToAdminForm(): void {
-        navigate('/admin-form');
-    }
-
-    function navigateToVacationList(): void {
-        navigate("/vacations");
-    }
-
     return (
         <div className="header">
             {userName
@@ -64,26 +56,16 @@ function Header(): JSX.Element {
                         </button>
                         {user?.isAdmin
                             ? <>
-                                {/*<button*/}
-                                {/*    onClick={navigateToAdminForm}*/}
-                                {/*    className={user.isAdmin && ("header-button")}*/}
-                                {/*>*/}
-                                {/*    Add Vacation*/}
-                                {/*</button>*/}
-                                {/*<button*/}
-                                {/*    onClick={navigateToVacationList}*/}
-                                {/*    className={user.isAdmin && ("header-button")}*/}
-                                {/*>*/}
-                                {/*    Vacations*/}
-                                {/*</button>*/}
                                 <NavLink
                                     className={user.isAdmin && ("header-button")}
                                     to="/admin-form">
-                                    Add Vacation</NavLink>
+                                    Add Vacation
+                                </NavLink>
                                 <NavLink
                                     className={user.isAdmin && ("header-button")}
                                     to="/vacations">
-                                    Vacations</NavLink>
+                                    Vacations
+                                </NavLink>
                             </>
                            : <div></div>
                         }
