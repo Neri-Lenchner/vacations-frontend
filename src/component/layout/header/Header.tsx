@@ -58,13 +58,13 @@ function Header(): JSX.Element {
                             ? <>
                                 <NavLink
                                     className={user.isAdmin && ("header-button")}
-                                    to="/admin-form">
-                                    Add Vacation
+                                    to="/vacations">
+                                    Vacations
                                 </NavLink>
                                 <NavLink
                                     className={user.isAdmin && ("header-button")}
-                                    to="/vacations">
-                                    Vacations
+                                    to="/admin-form">
+                                    Add Vacation
                                 </NavLink>
                             </>
                            : <div></div>
