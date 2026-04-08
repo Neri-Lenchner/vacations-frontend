@@ -10,7 +10,7 @@ import {FollowerActionType, followersStore} from "../state/followers-state";
 class FollowerService {
     public async getFollowersList(): Promise<Follower[]> {
         const response = await axios.get<Follower[]>(
-            appConfig.apiAddress + "api/vacations/followers/", {headers: {Authorization: "Bearer " + authStore.getState().token}});
+            appConfig.apiAddress + "vacations/followers/", {headers: {Authorization: "Bearer " + authStore.getState().token}});
         followersStore.dispatch({type: FollowerActionType.GetFollowersList, payload: response.data});
         return followersStore.getState().followersList;
     }
@@ -18,7 +18,7 @@ class FollowerService {
     public async addFollower(follower: Follower): Promise<Follower> {
         console.log(follower);
         try {
-            const response = await axios.post<Follower>(appConfig.apiAddress + "api/vacations/followers", follower, {headers: {Authorization: "Bearer " + authStore.getState().token }});
+            const response = await axios.post<Follower>(appConfig.apiAddress + "vacations/followers", follower, {headers: {Authorization: "Bearer " + authStore.getState().token }});
             followersStore.dispatch({type: FollowerActionType.AddFollower, payload: response.data});
             return response.data;
         } catch (err) {
@@ -29,7 +29,7 @@ class FollowerService {
 
     public async deleteFollower(id: number): Promise<void> {
         try {
-            await axios.delete<void>(appConfig.apiAddress + "api/vacations/followers/" + id, {headers: { Authorization: "Bearer " + authStore.getState().token }});
+            await axios.delete<void>(appConfig.apiAddress + "vacations/followers/" + id, {headers: { Authorization: "Bearer " + authStore.getState().token }});
             followersStore.dispatch({type: FollowerActionType.DeleteFollower, payload: id});
         } catch (err) {
             console.error("Error from delete Follower");

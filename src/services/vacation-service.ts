@@ -15,7 +15,7 @@ class VacationService {
         const token: string | null = authStore.getState().token;
         try {
             const response = await axios.get<number>(
-                `${appConfig.apiAddress}api/vacations/count/`,
+                `${appConfig.apiAddress}vacations/count/`,
                 {headers: { Authorization: "Bearer " + token }}
             );
             vacationStore.dispatch({type: VacationActionType.GetTotalVacations, payload: response.data});
@@ -36,7 +36,7 @@ class VacationService {
 
         try {
             const response = await axios.get<Vacation[]>(
-                `${appConfig.apiAddress}api/vacations?limit=${limit}&offset=${offset}`,
+                `${appConfig.apiAddress}vacations?limit=${limit}&offset=${offset}`,
                 {headers: { Authorization: "Bearer " + token }}
             );
             vacationStore.dispatch({type: VacationActionType.GetVacationList, payload: response.data});
@@ -52,7 +52,7 @@ class VacationService {
 
         try {
             const response = await axios.get<Vacation[]>(
-                `${appConfig.apiAddress}api/vacations/user/${id}/followers/`,
+                `${appConfig.apiAddress}vacations/user/${id}/followers/`,
                 {headers: { Authorization: "Bearer " + token }}
             );
             vacationStore.dispatch({type: VacationActionType.GetVacationList, payload: response.data});
@@ -69,7 +69,7 @@ class VacationService {
 
         try {
             const response = await axios.get<Vacation[]>(
-                `${appConfig.apiAddress}api/vacations/upcoming/`,
+                `${appConfig.apiAddress}vacations/upcoming/`,
                 {headers: { Authorization: "Bearer " + token }}
             );
             vacationStore.dispatch({type: VacationActionType.GetVacationList, payload: response.data});
@@ -86,7 +86,7 @@ class VacationService {
 
         try {
             const response = await axios.get<Vacation[]>(
-                `${appConfig.apiAddress}api/vacations/active/`,
+                `${appConfig.apiAddress}vacations/active/`,
                 {headers: { Authorization: "Bearer " + token }}
             );
             vacationStore.dispatch({type: VacationActionType.GetVacationList, payload: response.data});
@@ -127,7 +127,7 @@ class VacationService {
         try {
 
             const response = await axios.post<Vacation>(
-                `${appConfig.apiAddress}api/vacation`, formData, {headers: { Authorization: "Bearer " + token }}
+                `${appConfig.apiAddress}vacation`, formData, {headers: { Authorization: "Bearer " + token }}
             );
             vacationStore.dispatch({type: VacationActionType.AddVacation, payload: response.data});
             return response.data;

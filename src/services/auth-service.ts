@@ -9,7 +9,7 @@ class AuthService {
 
     public async register(user: User): Promise<void> {
         try {
-            const response = await axios.post(appConfig.apiAddress + "api/auth/register", user);
+            const response = await axios.post(appConfig.apiAddress + "auth/register", user);
             authStore.dispatch({type: AuthActionType.Register, payload: response.data.token});
         } catch (err) {
             const myErr = err as AxiosError;
@@ -19,7 +19,7 @@ class AuthService {
 
     public async login(credentials: Credentials): Promise<void>  {
         try {
-            const response = await axios.post(appConfig.apiAddress + "api/auth/login", credentials);
+            const response = await axios.post(appConfig.apiAddress + "auth/login", credentials);
             authStore.dispatch({type: AuthActionType.Login, payload: response.data.token});
         } catch (err) {
             const myErr = err as AxiosError;
