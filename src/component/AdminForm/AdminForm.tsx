@@ -1,14 +1,54 @@
-import React, {JSX} from 'react';
+import React, {JSX, useEffect, useRef} from 'react';
 import './AdminForm.css';
-import {NavLink} from "react-router-dom";
+import {NavLink, useParams} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import {User} from "../../models/user.model";
 import {Vacation} from "../../models/vacation.model";
-import {authService} from "../../services/auth-service";
+import {vacationStore} from "../../state/vacation-state";
 import {vacationService} from "../../services/vacation-service";
 
 function AdminForm(): JSX.Element {
-    const {register, formState, handleSubmit} = useForm<Vacation>();
+    const {register, formState, handleSubmit, reset} = useForm<Vacation>();
+
+    const params = useParams();
+    let vacationToUpdate = useRef<Vacation | undefined>(undefined);
+
+    useEffect(() => {
+
+        function getSingleVacation(id: number) {
+            vacationToUpdate.current = vacationStore.getState().vacationList.find((vacation) => vacation.id === id);
+            if (vacationToUpdate.current) {
+                const formData = {
+                    ...vacationToUpdate.current,
+                    startDate: vacationToUpdate.current.startDate.split('T')[0],
+                    endDate: vacationToUpdate.current.endDate.split('T')[0]
+                };
+                reset(formData);
+            }
+        }
+
+        if (params.id) {
+            getSingleVacation(+params.id);
+        }
+
+
+        // async function getSingleCourse() {
+        //     try {
+        //         setLoading(true);
+        //         courseToUpdate.current = await courseService.getSingleCourse(+params.id!);
+        //         setValue("name", courseToUpdate.current.name);
+        //         setValue("duration", courseToUpdate.current.duration);
+        //         setValue("difficulty", courseToUpdate.current.difficulty);
+        //         setValue("numOfStudents", courseToUpdate.current.numOfStudents);
+        //         setValue("lecturerId", courseToUpdate.current.lecturerId);
+        //         setLoading(false);
+        //     }
+        //     catch (err) {
+        //         alert(err)
+        //     }
+        // }
+
+    }, []);
 
     // async function addVacation(event: React.FormEvent<HTMLFormElement>): Promise<void>{
     //     event.preventDefault();
@@ -41,7 +81,7 @@ function AdminForm(): JSX.Element {
         <form onSubmit={handleSubmit(addVacation)}>
             <div className="form">
                 <h1 className="form-headline">
-                    Add Vacation
+                    {params.id ? "Update Vacation" : "Add Vacation"}
                 </h1>
                 <div className="form-split">
                     <div className="form-split-1">
