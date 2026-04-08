@@ -18,9 +18,9 @@ function AdminForm(): JSX.Element {
         function getSingleVacation(id: number) {
             vacationToUpdate.current = vacationStore.getState().vacationList.find((vacation) => vacation.id === id);
             if (vacationToUpdate.current) {
-                // const {startDate, endDate} = vacationToUpdate.current;
-                vacationToUpdate.current.startDate = vacationToUpdate.current.startDate.split('T')[0];
-                vacationToUpdate.current.endDate = vacationToUpdate.current.endDate.split('T')[0];
+                const {startDate, endDate} = vacationToUpdate.current;
+                vacationToUpdate.current.startDate = startDate.split('T')[0];
+                vacationToUpdate.current.endDate = endDate.split('T')[0];
                 reset(vacationToUpdate.current);
             }
         }
@@ -46,7 +46,7 @@ function AdminForm(): JSX.Element {
         //     }
         // }
 
-    }, []);
+    }, [params.id, reset]);
 
     // async function addVacation(event: React.FormEvent<HTMLFormElement>): Promise<void>{
     //     event.preventDefault();
