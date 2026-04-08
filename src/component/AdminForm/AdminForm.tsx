@@ -18,12 +18,10 @@ function AdminForm(): JSX.Element {
         function getSingleVacation(id: number) {
             vacationToUpdate.current = vacationStore.getState().vacationList.find((vacation) => vacation.id === id);
             if (vacationToUpdate.current) {
-                const formData = {
-                    ...vacationToUpdate.current,
-                    startDate: vacationToUpdate.current.startDate.split('T')[0],
-                    endDate: vacationToUpdate.current.endDate.split('T')[0]
-                };
-                reset(formData);
+                // const {startDate, endDate} = vacationToUpdate.current;
+                vacationToUpdate.current.startDate = vacationToUpdate.current.startDate.split('T')[0];
+                vacationToUpdate.current.endDate = vacationToUpdate.current.endDate.split('T')[0];
+                reset(vacationToUpdate.current);
             }
         }
 
@@ -145,7 +143,9 @@ function AdminForm(): JSX.Element {
                         />
                         {formState.errors.cost && <p>{formState.errors.cost?.message}</p>}
                         <div className="form-split-buttons">
-                            <button className="form-button form-element" type="submit">Add Vacation</button>
+                            <button className="form-button form-element" type="submit">
+                                {params.id ? "Update Vacation" : "Add Vacation"}
+                            </button>
                             <button className="form-button form-element form-delete">Cancel</button>
                         </div>
 
