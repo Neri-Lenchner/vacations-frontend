@@ -73,9 +73,9 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
                 <p className="vacation-item-text">
                     {vacation.description}
                 </p>
-                <button className="form-button vacation-item-button">
-                    $ {vacation.cost}
-                </button>
+                <div className="vacation-item-price">
+                    $ {Number(vacation.cost).toFixed(0)}
+                </div>
             </div>
             <div className="vacation-item-title">
                 {vacation.destination}
