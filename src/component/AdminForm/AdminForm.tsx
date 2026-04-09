@@ -75,8 +75,19 @@ function AdminForm(): JSX.Element {
         }
     }
 
+    async function updateVacation(id: number, vacation: Vacation): Promise<void>{
+        console.log("Updating vacation with ID:", id, "Data:", vacation);
+        try {
+            await vacationService.updateVacation(id, vacation);
+        }
+        catch (error) {
+            alert(error);
+            console.error(error);
+        }
+    }
+
     return (
-        <form onSubmit={handleSubmit(addVacation)}>
+        <form onSubmit={params.id ? handleSubmit((vacation) => updateVacation(+params.id!, vacation)) : handleSubmit(addVacation)}>
             <div className="form">
                 <h1 className="form-headline">
                     {params.id ? "Update Vacation" : "Add Vacation"}
@@ -95,8 +106,7 @@ function AdminForm(): JSX.Element {
                             type="file"
                             className="form-file form-element"
                             {...register("image", {
-                                required: { value: true, message: "!" },
-                                min: { value: 1, message: "Image is optional" }
+                                required: false
                             })}
                         />
                         <div className="form-input-message">description</div>
@@ -146,7 +156,7 @@ function AdminForm(): JSX.Element {
                             <button className="form-button form-element" type="submit">
                                 {params.id ? "Update Vacation" : "Add Vacation"}
                             </button>
-                            <button className="form-button form-element form-delete">Cancel</button>
+                            <button type="button" className="form-button form-element form-delete">Cancel</button>
                         </div>
 
                         {/*<div className="form-input-message form-bottom-message">already a member?</div>*/}
