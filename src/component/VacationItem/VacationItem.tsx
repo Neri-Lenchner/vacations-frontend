@@ -22,17 +22,45 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
     const navigate = useNavigate();
     const {vacation, followersList, user} = vacationItemProps;
 
-    useEffect(() => {
-        if (followersList.length) {
-            const followers: Follower[] = followersList.filter(follower => follower.vacationId === vacation.id);
-            setVacationFollowers(followers);
-        }
-    }, [followersList, vacation.id]);
 
-    useEffect((): void => {
-        const follower: Follower | undefined = vacationFollowers.find(follower => follower.userId === user.id);
-        setIsFollowing(!!follower);
-    }, [vacationFollowers, user.id]);
+    // OPTION 1 TWO useEffect:
+
+    // useEffect(() => {
+    //     if (followersList.length) {
+    //         const followers: Follower[] = followersList.filter(follower => follower.vacationId === vacation.id);
+    //         setVacationFollowers(followers);
+    //     }
+    // }, [followersList, vacation.id]);
+    //
+    // useEffect((): void => {
+    //     const follower: Follower | undefined = vacationFollowers.find(follower => follower.userId === user.id);
+    //     setIsFollowing(!!follower);
+    // }, [vacationFollowers, user.id]);
+
+    // OPTION 2 one useEffect:
+
+    useEffect(() => {
+        if (!followersList.length) {
+            setVacationFollowers([]);
+            setIsFollowing(false);
+            return;
+        }
+
+        const followers = followersList.filter(
+            follower => follower.vacationId === vacation.id
+        );
+
+        setVacationFollowers(followers);
+
+        const isUserFollowing = followers.some(
+            follower => follower.userId === user.id
+        );
+
+        setIsFollowing(isUserFollowing);
+
+    }, [followersList, vacation.id, user.id]);
+
+    //--useEffect end --//
 
     const startDate: string = vacation.startDate.split('T')[0].split('-').reverse().join('.');
     const endDate: string = vacation.endDate.split('T')[0].split('-').reverse().join('.');
