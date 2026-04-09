@@ -1,6 +1,6 @@
 import React, {JSX, useEffect, useRef} from 'react';
 import './AdminForm.css';
-import {NavLink, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import {User} from "../../models/user.model";
 import {Vacation} from "../../models/vacation.model";
@@ -15,8 +15,8 @@ function AdminForm(): JSX.Element {
 
     useEffect(() => {
 
-        function getSingleVacation(id: number) {
-            vacationToUpdate.current = vacationStore.getState().vacationList.find((vacation) => vacation.id === id);
+        function getSingleVacation(id: number): void {
+            vacationToUpdate.current = vacationStore.getState().vacationList.find((vacation: Vacation): boolean => vacation.id === id);
             if (vacationToUpdate.current) {
                 const {startDate, endDate} = vacationToUpdate.current;
                 vacationToUpdate.current.startDate = startDate.split('T')[0];
