@@ -36,6 +36,7 @@
 }
 
 .header-button {
+    text-decoration: none;
     color: yellow;
     background-color: transparent;
     border: none;
