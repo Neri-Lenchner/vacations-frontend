@@ -8,6 +8,7 @@ import {followersStore} from '../../state/followers-state';
 import {followersService} from '../../services/followers-service';
 import {authStore} from '../../state/auth-state';
 import "./VacationItem.css";
+import ConformationRoute from "../ConformationRoute/ConformationRoute";
 
 interface VacationItemProps {
     user: User;
@@ -83,6 +84,10 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
         navigate(`/admin-form/${vacation.id}`);
     }
 
+    function navigateToConformationRoute() {
+        navigate("/conformation-route");
+    }
+
     return (
         <div className="vacation-item-container">
             <div className="vacation-item-image-container">
@@ -115,7 +120,8 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
                         onClick={navigateToAdminForm}>
                         &#9998; <div className="vacation-item-admin-click-left-edit">Edit</div>
                     </div>
-                    <div className="vacation-item-admin-click-right">
+                    <div className="vacation-item-admin-click-right"
+                         onClick={navigateToConformationRoute}>
                        <span>&#128465;&#65038;</span> <div className="vacation-item-admin-click-right-delete">Delete</div>
                     </div>
                 </div>
