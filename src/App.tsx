@@ -12,9 +12,9 @@ function App(): JSX.Element {
                 <Header/>
             </header>
             <section className="content">
-                <aside>
-                    <SideBar/>
-                </aside>
+                {/*<aside>*/}
+                {/*    <SideBar/>*/}
+                {/*</aside>*/}
                 <main>
                     <Routing/>
                 </main>
