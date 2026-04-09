@@ -92,7 +92,7 @@ form {
 }
 
 textarea.form-element {
-    height: 250px;     /* fixed height */
+    height: 240px;     /* fixed height */
     resize: none;      /* prevent user from resizing */
 }
 
@@ -130,6 +130,10 @@ textarea.form-element {
     color: gray;
 }
 
+.form-file {
+    height: 160px;
+}
+
 .form-bottom-message {
     align-self: center;
 }
@@ -154,7 +158,6 @@ textarea.form-element {
 }
 
 .form-split-buttons {
-    margin-top: 80px;
     display: flex;
     flex-direction: column;
     gap: 12px;

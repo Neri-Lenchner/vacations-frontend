@@ -102,13 +102,19 @@ function AdminForm(): JSX.Element {
                             }
                         )}/>
                         {formState.errors.destination && <p>{formState.errors.destination?.message}</p>}
+                        <div className="form-input-message">price</div>
                         <input
-                            type="file"
-                            className="form-file form-element"
-                            {...register("image", {
-                                required: false
+                            type="number"
+                            className="form-price form-element"
+                            placeholder="$"
+                            {...register("cost", {
+                                valueAsNumber: true,
+                                required: { value: true, message: "Cost date is required!" },
+                                min: { value: 1, message: "Price can not be negative" },
+                                max: { value: 10000, message: "Price can not be more than 10,000$" }
                             })}
                         />
+                        {formState.errors.cost && <p>{formState.errors.cost?.message}</p>}
                         <div className="form-input-message">description</div>
                         <textarea className="form-description-texterea form-element" {...register("description",
                             {
@@ -139,19 +145,14 @@ function AdminForm(): JSX.Element {
                             })}
                         />
                         {formState.errors.endDate && <p>{formState.errors.endDate?.message}</p>}
-                        <div className="form-input-message">price</div>
+
                         <input
-                            type="number"
-                            className="form-price form-element"
-                            placeholder="$"
-                            {...register("cost", {
-                                valueAsNumber: true,
-                                required: { value: true, message: "Cost date is required!" },
-                                min: { value: 1, message: "Price can not be negative" },
-                                max: { value: 10000, message: "Price can not be more than 10,000$" }
+                            type="file"
+                            className="form-file form-element"
+                            {...register("image", {
+                                required: false
                             })}
                         />
-                        {formState.errors.cost && <p>{formState.errors.cost?.message}</p>}
                         <div className="form-split-buttons">
                             <button className="form-button form-element" type="submit">
                                 {params.id ? "Update Vacation" : "Add Vacation"}
