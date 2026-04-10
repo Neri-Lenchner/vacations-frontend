@@ -131,7 +131,7 @@ textarea.form-element {
 }
 
 .form-file {
-    height: 160px;
+    height: 40px;
 }
 
 .form-bottom-message {
@@ -176,5 +176,9 @@ textarea.form-element {
 .form-split-2 {
 
 }
+
+/*.form-image {*/
+/*    width: 200px;*/
+/*}*/
 
 /* FORM END */

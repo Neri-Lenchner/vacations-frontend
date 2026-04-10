@@ -1,4 +1,4 @@
-import React, {JSX, useEffect, useRef} from 'react';
+import React, {JSX, useEffect, useState} from 'react';
 import './AdminForm.css';
 import {useParams} from "react-router-dom";
 import {useForm} from "react-hook-form";
@@ -6,22 +6,24 @@ import {User} from "../../models/user.model";
 import {Vacation} from "../../models/vacation.model";
 import {vacationStore} from "../../state/vacation-state";
 import {vacationService} from "../../services/vacation-service";
+import {appConfig} from "../../utils/app-config";
 
 function AdminForm(): JSX.Element {
     const {register, formState, handleSubmit, reset} = useForm<Vacation>();
 
     const params = useParams();
-    let vacationToUpdate = useRef<Vacation | undefined>(undefined);
+    let [vacationToUpdate, setVacationToUpdate] = useState<Vacation | undefined>(undefined);
 
     useEffect(() => {
 
         function getSingleVacation(id: number): void {
-            vacationToUpdate.current = vacationStore.getState().vacationList.find((vacation: Vacation): boolean => vacation.id === id);
-            if (vacationToUpdate.current) {
-                const {startDate, endDate} = vacationToUpdate.current;
-                vacationToUpdate.current.startDate = startDate.split('T')[0];
-                vacationToUpdate.current.endDate = endDate.split('T')[0];
-                reset(vacationToUpdate.current);
+             vacationToUpdate = vacationStore.getState().vacationList.find((vacation: Vacation): boolean => vacation.id === id);
+            if (vacationToUpdate) {
+                const {startDate, endDate} = vacationToUpdate;
+                vacationToUpdate.startDate = startDate.split('T')[0];
+                vacationToUpdate.endDate = endDate.split('T')[0];
+                setVacationToUpdate(vacationToUpdate);
+                reset(vacationToUpdate);
             }
         }
 
@@ -85,6 +87,7 @@ function AdminForm(): JSX.Element {
             console.error(error);
         }
     }
+
 
     return (
         <form onSubmit={params.id ? handleSubmit((vacation) => updateVacation(+params.id!, vacation)) : handleSubmit(addVacation)}>
@@ -153,6 +156,9 @@ function AdminForm(): JSX.Element {
                                 required: false
                             })}
                         />
+                        <div className="admin-form-image-container">
+                            <img className="admin-form-img" src={ vacationToUpdate?.image ? appConfig.uploadsAddress + vacationToUpdate.image :  "https://www.shutterstock.com/image-photo/sun-sets-behind-mountain-ranges-600nw-2479236003.jpg"}/>
+                        </div>
                         <div className="form-split-buttons">
                             <button className="form-button form-element" type="submit">
                                 {params.id ? "Update Vacation" : "Add Vacation"}
