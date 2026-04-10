@@ -1,4 +1,5 @@
 .vacation-list-container {
+    /*position: relative;*/
     font-family: "Raleway", Arial, sans-serif;
     width: 100%;
     display: flex;

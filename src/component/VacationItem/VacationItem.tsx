@@ -14,6 +14,8 @@ interface VacationItemProps {
     user: User;
     vacation: Vacation;
     followersList: Follower[];
+    isDelete: boolean;
+    setIsDelete: any;
 }
 
 function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
@@ -21,7 +23,7 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
     let [isFollowing, setIsFollowing] = useState<boolean>(false);
     const [vacationFollowers, setVacationFollowers] = useState<Follower[]>([]);
     const navigate = useNavigate();
-    const {vacation, followersList, user} = vacationItemProps;
+    let {vacation, followersList, user, isDelete, setIsDelete} = vacationItemProps;
 
 
     // OPTION 1 TWO useEffect:
@@ -88,6 +90,11 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
         navigate("/conformation-route");
     }
 
+    function deleteVacation() {
+        isDelete = !isDelete;
+        setIsDelete(isDelete);
+    }
+
     return (
         <div className="vacation-item-container">
             <div className="vacation-item-image-container">
@@ -121,7 +128,7 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
                         &#9998; <div className="vacation-item-admin-click-left-edit">Edit</div>
                     </div>
                     <div className="vacation-item-admin-click-right"
-                         onClick={navigateToConformationRoute}>
+                         onClick={deleteVacation}>
                        <span>&#128465;&#65038;</span> <div className="vacation-item-admin-click-right-delete">Delete</div>
                     </div>
                 </div>
@@ -136,7 +143,6 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
                     </div>
                 </div>
             }
-
         </div>
     );
 }

@@ -125,7 +125,6 @@ class VacationService {
         formData.append("image", vacation.imageName![0]);
 
         try {
-
             const response = await axios.post<Vacation>(
                 `${appConfig.apiAddress}vacation`, formData, {headers: { Authorization: "Bearer " + token }}
             );

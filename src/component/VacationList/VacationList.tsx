@@ -11,6 +11,7 @@ import VacationItem from "../VacationItem/VacationItem";
 import Pagination from "../Pagination/Pagination";
 import {Follower} from "../../models/follower.model";
 import {User} from "../../models/user.model";
+import ConfirmationWindow from "../ConfirmationWindow/ConfirmationWindow";
 
 
 
@@ -24,6 +25,7 @@ function VacationList(): JSX.Element {
         const [showFollowed, setShowFollowed] = useState(false);
         const [showUpcoming, setShowUpcoming] = useState(false);
         const [showActive, setShowActive] = useState(false);
+        let [isDelete, setIsDelete] = useState(false);
 
 
     useEffect(() => {
@@ -187,8 +189,15 @@ function VacationList(): JSX.Element {
                         vacation={vacation}
                         followersList={followersList}
                         key={vacation.id}
+                        isDelete={isDelete}
+                        setIsDelete={setIsDelete}
                     />
                 ))}
+                {isDelete
+                    ? <ConfirmationWindow
+                    isDelete={isDelete}
+                    setIsDelete={setIsDelete}/>
+                    : <div></div>}
             </div>
             <Pagination totalVacations={totalVacations} onPageChange={handlePaginationChange} />
         </>
