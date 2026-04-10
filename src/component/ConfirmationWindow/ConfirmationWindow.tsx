@@ -1,24 +1,31 @@
 import {JSX} from 'react';
 import './ConfirmationWindow.css';
+import {vacationService} from "../../services/vacation-service";
 
 interface ConfirmationWindowProps {
-    isDelete: boolean;
     setIsDelete: any;
+    vacationId: number | undefined;
 }
 
 function ConfirmationWindow(confirmationWindowProps: ConfirmationWindowProps): JSX.Element {
-    let{isDelete, setIsDelete} = confirmationWindowProps;
+    let{setIsDelete, vacationId} = confirmationWindowProps;
 
     function cancel() {
         setIsDelete(false);
     }
+
+    async function confirmDeleteVacation(vacationId: number) {
+        // await vacationService.deleteVacation(vacationId);
+        console.log(vacationId);
+    }
+
     return (
         <div className="confirmation-window-container">
            <div className="confirmation-window-message">
                 <h3>Are you sure you want to delete?</h3>
            </div>
             <div className="confirmation-window-buttons-container">
-                <button>Yes</button>
+                <button onClick={() => confirmDeleteVacation(vacationId!)}>Yes</button>
                 <button onClick={cancel}>Cancel</button>
             </div>
         </div>

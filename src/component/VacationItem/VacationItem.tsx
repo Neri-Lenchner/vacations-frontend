@@ -16,6 +16,7 @@ interface VacationItemProps {
     followersList: Follower[];
     isDelete: boolean;
     setIsDelete: any;
+    setVacationId: any;
 }
 
 function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
@@ -23,7 +24,7 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
     let [isFollowing, setIsFollowing] = useState<boolean>(false);
     const [vacationFollowers, setVacationFollowers] = useState<Follower[]>([]);
     const navigate = useNavigate();
-    let {vacation, followersList, user, isDelete, setIsDelete} = vacationItemProps;
+    let {vacation, followersList, user, isDelete, setIsDelete, setVacationId} = vacationItemProps;
 
 
     // OPTION 1 TWO useEffect:
@@ -93,6 +94,7 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
     function deleteVacation() {
         isDelete = !isDelete;
         setIsDelete(isDelete);
+        setVacationId(vacation.id);
     }
 
     return (

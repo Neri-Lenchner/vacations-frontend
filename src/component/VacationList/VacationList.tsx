@@ -26,6 +26,7 @@ function VacationList(): JSX.Element {
         const [showUpcoming, setShowUpcoming] = useState(false);
         const [showActive, setShowActive] = useState(false);
         let [isDelete, setIsDelete] = useState(false);
+        let [vacationId, setVacationId] = useState<number | undefined>(undefined);
 
 
     useEffect(() => {
@@ -191,12 +192,14 @@ function VacationList(): JSX.Element {
                         key={vacation.id}
                         isDelete={isDelete}
                         setIsDelete={setIsDelete}
+                        setVacationId={setVacationId}
                     />
                 ))}
                 {isDelete
                     ? <ConfirmationWindow
-                    isDelete={isDelete}
-                    setIsDelete={setIsDelete}/>
+                    setIsDelete={setIsDelete}
+                    vacationId={vacationId}
+                    />
                     : <div></div>}
             </div>
             <Pagination totalVacations={totalVacations} onPageChange={handlePaginationChange} />
