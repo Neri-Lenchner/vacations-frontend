@@ -141,6 +141,7 @@ textarea.form-element {
 
 .form-link {
     color: blue;
+    text-decoration: none;
 }
 
 .form-delete {
