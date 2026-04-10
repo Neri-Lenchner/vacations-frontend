@@ -13,7 +13,7 @@ export enum VacationActionType {
     GetTotalVacations = "GetTotalVacations",
     AddVacation = "AddVacation",
     UpdateVacation = "UpdateVacation",
-    // DeleteUser = "DeleteUser",
+    DeleteVacation = "DeleteVacation",
 }
 
 export interface VacationAction {
@@ -40,10 +40,10 @@ export function vacationReducer(vacationState: VacationState = new VacationState
             const indexToUpdate: number = newState.vacationList.findIndex((vacation: Vacation): boolean => vacation.id === action.payload.id);
             newState.vacationList[indexToUpdate] = action.payload;
             break;
-        // case VacationActionType.DeleteUser:
-        //     const indexToDelete = newState.userList.findIndex((user: User): boolean => user.id === action.payload);
-        //     newState.userList.splice(indexToDelete, 1);
-        //     break;
+        case VacationActionType.DeleteVacation:
+            const indexToDelete: number = newState.vacationList.findIndex((vacation: Vacation): boolean => vacation.id === action.payload);
+            newState.vacationList.splice(indexToDelete, 1);
+            break;
     }
 
     return newState;
