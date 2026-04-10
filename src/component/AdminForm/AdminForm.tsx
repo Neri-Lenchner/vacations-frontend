@@ -152,12 +152,12 @@ function AdminForm(): JSX.Element {
                         <input
                             type="file"
                             className="form-file form-element"
-                            {...register("image", {
+                            {...register("imageName", {
                                 required: false
                             })}
                         />
                         <div className="admin-form-image-container">
-                            <img className="admin-form-img" src={ vacationToUpdate?.image ? appConfig.uploadsAddress + vacationToUpdate.image :  "https://www.shutterstock.com/image-photo/sun-sets-behind-mountain-ranges-600nw-2479236003.jpg"}/>
+                            <img className="admin-form-img" src={ vacationToUpdate?.imageName ? appConfig.uploadsAddress + vacationToUpdate.imageName :  "https://www.shutterstock.com/image-photo/sun-sets-behind-mountain-ranges-600nw-2479236003.jpg"}/>
                         </div>
                         <div className="form-split-buttons">
                             <button className="form-button form-element" type="submit">
