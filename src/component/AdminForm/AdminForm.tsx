@@ -126,6 +126,11 @@ function AdminForm(): JSX.Element {
                             }
                         )}/>
                         {formState.errors.description && <p>{formState.errors.description?.message}</p>}
+                        <div className="form-split-buttons">
+                            <button className="form-button form-element" type="submit">
+                                {params.id ? "Update Vacation" : "Add Vacation"}
+                            </button>
+                        </div>
                     </div>
                     <div className="form-split-2">
                         <div className="form-input-message">start date</div>
@@ -149,20 +154,20 @@ function AdminForm(): JSX.Element {
                         />
                         {formState.errors.endDate && <p>{formState.errors.endDate?.message}</p>}
 
+                        <div className="form-input-message">Upload Image</div>
                         <input
                             type="file"
                             className="form-file form-element"
+                            placeholder="Upload Image"
                             {...register("imageName", {
                                 required: false
                             })}
                         />
+
                         <div className="admin-form-image-container">
                             <img className="admin-form-img" src={ vacationToUpdate?.imageName ? appConfig.uploadsAddress + vacationToUpdate.imageName :  "https://www.shutterstock.com/image-photo/sun-sets-behind-mountain-ranges-600nw-2479236003.jpg"}/>
                         </div>
                         <div className="form-split-buttons">
-                            <button className="form-button form-element" type="submit">
-                                {params.id ? "Update Vacation" : "Add Vacation"}
-                            </button>
                             <button type="button" className="form-button form-element form-delete">Cancel</button>
                         </div>
 
