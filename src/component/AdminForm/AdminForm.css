@@ -1,7 +1,9 @@
 .admin-form-image-container{
-    width: 300px;
+
 }
 
 .admin-form-img {
     width: 300px;
+    height: 200px;
+    object-fit: cover;
 }
