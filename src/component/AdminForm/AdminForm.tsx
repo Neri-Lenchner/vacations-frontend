@@ -1,6 +1,6 @@
 import React, {JSX, useEffect, useState} from 'react';
 import './AdminForm.css';
-import {useParams} from "react-router-dom";
+import {NavLink, useParams} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import {User} from "../../models/user.model";
 import {Vacation} from "../../models/vacation.model";
@@ -127,7 +127,11 @@ function AdminForm(): JSX.Element {
                         )}/>
                         {formState.errors.description && <p>{formState.errors.description?.message}</p>}
                         <div className="form-split-buttons">
-                            <button className="form-button form-element" type="submit">
+                            <button
+                                className="form-button form-element"
+                                type="submit"
+                                // onClick={}
+                                >
                                 {params.id ? "Update Vacation" : "Add Vacation"}
                             </button>
                         </div>
@@ -168,7 +172,8 @@ function AdminForm(): JSX.Element {
                             <img className="admin-form-img" src={ vacationToUpdate?.imageName ? appConfig.uploadsAddress + vacationToUpdate.imageName :  "https://www.shutterstock.com/image-photo/sun-sets-behind-mountain-ranges-600nw-2479236003.jpg"}/>
                         </div>
                         <div className="form-split-buttons">
-                            <button type="button" className="form-button form-element form-delete">Cancel</button>
+                            {/*<button type="button" className="form-button form-element form-delete">Cancel</button>*/}
+                            <NavLink className="form-cancel-button" to={"/vacations"}>Cancel</NavLink>
                         </div>
 
                         {/*<div className="form-input-message form-bottom-message">already a member?</div>*/}
