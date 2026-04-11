@@ -14,9 +14,10 @@ function ConfirmationWindow(confirmationWindowProps: ConfirmationWindowProps): J
         setIsDelete(false);
     }
 
-    async function confirmDeleteVacation(vacationId: number) {
+    async function confirmDeleteVacation() {
         // await vacationService.deleteVacation(vacationId);
         console.log(vacationId);
+        setIsDelete(false);
     }
 
     return (
@@ -25,7 +26,7 @@ function ConfirmationWindow(confirmationWindowProps: ConfirmationWindowProps): J
                 <h3>Are you sure you want to delete?</h3>
            </div>
             <div className="confirmation-window-buttons-container">
-                <button onClick={() => confirmDeleteVacation(vacationId!)}>Yes</button>
+                <button onClick={confirmDeleteVacation}>Yes</button>
                 <button onClick={cancel}>Cancel</button>
             </div>
         </div>
