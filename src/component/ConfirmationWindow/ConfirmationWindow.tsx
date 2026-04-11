@@ -17,6 +17,7 @@ function ConfirmationWindow(confirmationWindowProps: ConfirmationWindowProps): J
     async function confirmDeleteVacation() {
         // await vacationService.deleteVacation(vacationId);
         console.log(vacationId);
+
         setIsDelete(false);
     }
 

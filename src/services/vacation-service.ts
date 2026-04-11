@@ -169,6 +169,20 @@ class VacationService {
         }
 
     }
+
+    public async deleteVacation(id: number): Promise<void> {
+        const token: string | null = authStore.getState().token;
+        try {
+            // await axios.delete<void>(appConfig.apiAddress + "course/" + id, {headers: { Authorization: "Bearer " + authStore.getState().token }});
+
+            await axios.delete<void>(`${appConfig.apiAddress}vacation/${id}`,{headers: { Authorization: "Bearer " + token }})
+
+            vacationStore.dispatch({type: VacationActionType.DeleteVacation, payload: id});
+        } catch (err) {
+            console.error("Error from delete Course");
+            throw err;
+        }
+    }
 }
 
 export const vacationService = new VacationService();
