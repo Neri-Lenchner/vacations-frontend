@@ -72,7 +72,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding: 30px;
+    /*padding: 30px;*/
     position: absolute;
     left: 10px;
     top: 10px;
@@ -80,12 +80,17 @@
     height: 30px;
     width: 80px;
     padding: 10px 5px;
-    background-color: lightgray;
+    /*background-color: lightgray;*/
     border: none;
     border-radius: 30px;
     cursor: pointer;
     line-height: 1;
     font-family: Arial, sans-serif !important;
+    transition: all 0.2s ease-in-out;
+}
+
+.vacation-item-likes-container:hover {
+
 }
 
 .vacation-item-svg {
@@ -124,16 +129,40 @@
 
 .vacation-item-isFollowing-true {
     font-family: Arial, sans-serif !important;
-    background-color: black;
+    /*background-color: black;*/
+    /*background: rgba(0,0,0,0.1);*/
     color: white;
-    box-shadow: 0 0 20px 0 white;
-    /*font-weight: bold;*/
+    /*box-shadow: 0 0 20px 0 white;*/
 }
 
 .vacation-item-isFollowing-false {
-    background-color: lightgray;
-    color: black;
+    /*background-color: lightgray;*/
+    /*background-color: rgba(0, 0, 0, 0.5);*/
+    /*background: rgba(0,0,0,0.1);*/
+    color: gray;
+    /*box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.2), 0 2px 8px 0 rgba(0, 0, 0, 0.19);*/
+    /*box-shadow: 0 0 20px 0 black;*/
+}
+
+.vacation-item-isFollowing-true,
+.vacation-item-isFollowing-false {
+    /*background: rgba(0,0,0,0.1);*/
+    /*background: rgba(0, 123, 255, 0.5);*/
+    /*background: rgba(255, 235, 59, 0.1);*/
+    background: rgba(0,0,0,0.6);
     box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.2), 0 2px 8px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+.vacation-item-isFollowing-false:hover {
+    background: rgba(0, 123, 255, 0.4);
+    color: black;
+    /*background: rgba(255, 235, 59, 0.5);*/
+    /*background: rgba(0,0,0,0.5);*/
+}
+
+.vacation-item-isFollowing-true:hover {
+    background: rgba(0, 123, 255, 0.4);
 }
 
 .vacation-item-admin-button-1,
@@ -164,13 +193,19 @@
     height: 30px;
     width: 80px;
     padding: 10px 5px;
-    background-color: lightgray;
+    background: rgba(255, 255, 0, 0.5);
     border: none;
     border-radius: 30px;
     cursor: pointer;
     line-height: 1;
     font-family: Arial, sans-serif !important;
     box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.2), 0 2px 8px 0 rgba(0, 0, 0, 0.19);
+    transition: all 0.2s ease-in-out;
+}
+
+.vacation-item-admin-click-left:hover,
+.vacation-item-admin-click-right:hover {
+    background: rgba(255, 255, 0, 0.8);
 }
 
 .vacation-item-admin-click-left {
