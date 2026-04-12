@@ -1,6 +1,6 @@
 import React, {JSX, useEffect, useState} from 'react';
 import './AdminForm.css';
-import {NavLink, useParams} from "react-router-dom";
+import {NavLink, useNavigate, useParams} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import {User} from "../../models/user.model";
 import {Vacation} from "../../models/vacation.model";
@@ -10,7 +10,7 @@ import {appConfig} from "../../utils/app-config";
 
 function AdminForm(): JSX.Element {
     const {register, formState, handleSubmit, reset} = useForm<Vacation>();
-
+    const navigate = useNavigate();
     const params = useParams();
     let [vacationToUpdate, setVacationToUpdate] = useState<Vacation | undefined>(undefined);
 
@@ -70,6 +70,7 @@ function AdminForm(): JSX.Element {
         console.log("Form data:", vacation);
         try {
             await vacationService.addVacation(vacation);
+            navigate("/vacations");
         }
         catch (error) {
             alert(error);
@@ -81,6 +82,7 @@ function AdminForm(): JSX.Element {
         console.log("Updating vacation with ID:", id, "Data:", vacation);
         try {
             await vacationService.updateVacation(id, vacation);
+            navigate("/vacations");
         }
         catch (error) {
             alert(error);
