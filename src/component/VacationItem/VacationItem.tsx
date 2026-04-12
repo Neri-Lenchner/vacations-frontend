@@ -4,11 +4,8 @@ import {Follower} from '../../models/follower.model';
 import {Vacation} from '../../models/vacation.model';
 import {User} from '../../models/user.model';
 import {appConfig} from "../../utils/app-config";
-import {followersStore} from '../../state/followers-state';
 import {followersService} from '../../services/followers-service';
-import {authStore} from '../../state/auth-state';
 import "./VacationItem.css";
-import ConformationRoute from "../ConformationRoute/ConformationRoute";
 
 interface VacationItemProps {
     user: User;
@@ -24,24 +21,8 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
     let [isFollowing, setIsFollowing] = useState<boolean>(false);
     const [vacationFollowers, setVacationFollowers] = useState<Follower[]>([]);
     const navigate = useNavigate();
+
     let {vacation, followersList, user, isDelete, setIsDelete, setVacationId} = vacationItemProps;
-
-
-    // OPTION 1 TWO useEffect:
-
-    // useEffect(() => {
-    //     if (followersList.length) {
-    //         const followers: Follower[] = followersList.filter(follower => follower.vacationId === vacation.id);
-    //         setVacationFollowers(followers);
-    //     }
-    // }, [followersList, vacation.id]);
-    //
-    // useEffect((): void => {
-    //     const follower: Follower | undefined = vacationFollowers.find(follower => follower.userId === user.id);
-    //     setIsFollowing(!!follower);
-    // }, [vacationFollowers, user.id]);
-
-    // OPTION 2 one useEffect:
 
     useEffect(() => {
         if (!followersList.length) {
@@ -64,8 +45,6 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
 
     }, [followersList, vacation.id, user.id]);
 
-    //--useEffect end --//
-
     const startDate: string = vacation.startDate.split('T')[0].split('-').reverse().join('.');
     const endDate: string = vacation.endDate.split('T')[0].split('-').reverse().join('.');
 
@@ -85,10 +64,6 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
 
     function navigateToAdminForm() {
         navigate(`/admin-form/${vacation.id}`);
-    }
-
-    function navigateToConformationRoute() {
-        navigate("/conformation-route");
     }
 
     function deleteVacation() {
@@ -150,5 +125,3 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
 }
 
 export default VacationItem;
-
-// src={ appConfig.serverAddress + "/" + vacationItemProps.vacation.image|| "https://www.shutterstock.com/image-photo/sun-sets-behind-mountain-ranges-600nw-2479236003.jpg"} />
