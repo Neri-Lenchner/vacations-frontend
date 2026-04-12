@@ -1,6 +1,5 @@
-import redux from 'redux';
-import {JSX, useEffect, useState} from 'react';
-import {vacationStore} from '../../state/vacation-state';
+
+import {JSX} from 'react';
 import {vacationService} from '../../services/vacation-service';
 import './Pagination.css';
 
@@ -13,7 +12,7 @@ function Pagination(paginationProps: PaginationProps): JSX.Element {
 
     const pagesNumbers: number[] = [];
     const limit: number = 10;
-    const pages = Math.ceil(paginationProps.totalVacations / limit) || 1;
+    const pages: number = Math.ceil(paginationProps.totalVacations / limit) || 1;
 
     function changePage(page: number) {
         if (paginationProps.onPageChange) {

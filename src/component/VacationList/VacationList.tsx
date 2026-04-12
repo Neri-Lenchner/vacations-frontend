@@ -20,7 +20,7 @@ function VacationList(): JSX.Element {
         const [totalVacations, setTotalVacations] = useState<number>(vacationStore.getState().totalVacations);
         const [page, setPage] = useState<Vacation[]>(vacationStore.getState().vacationList);
         const [followersList, setFollowersList] = useState<Follower[]>(followersStore.getState().followersList);
-        const [followedList, setFollowedList] = useState<Vacation[]>([]);
+        const [currentList, setCurrentList] = useState<Vacation[]>([]);
         const [user, setUser] = useState<User | null>(authStore.getState().user);
         const [showFollowed, setShowFollowed] = useState(false);
         const [showUpcoming, setShowUpcoming] = useState(false);
@@ -65,7 +65,7 @@ function VacationList(): JSX.Element {
             if (isChecked) {
                 const upcomingList: Vacation[] = await vacationService.getUpcomingVacations();
                 const sortedList: Vacation[] = upcomingList.sort((a, b): number => new Date(a.startDate).getTime() - new Date(b.startDate).getTime());
-                setFollowedList(sortedList);
+                setCurrentList(sortedList);
                 setPage(sortedList.slice(0, 10));
                 setTotalVacations(sortedList.length);
             } else {
@@ -90,7 +90,7 @@ function VacationList(): JSX.Element {
             if (user?.id && isChecked) {
                 const list: Vacation[] = await vacationService.getUsersFollowedVacations(user.id);
                 const sortedList: Vacation[] = list.sort((a, b): number => new Date(b.startDate).getTime() - new Date(a.startDate).getTime());
-                setFollowedList(sortedList);
+                setCurrentList(sortedList);
                 setPage(sortedList.slice(0, 10));
                 setTotalVacations(list.length);
             } else {
@@ -119,7 +119,7 @@ function VacationList(): JSX.Element {
                 const activeList: Vacation[] = await vacationService.getActiveVacations();
                 const sortedList: Vacation[] = activeList.sort((a, b): number => new Date(a.startDate).
                 getTime() - new Date(b.startDate).getTime());
-                setFollowedList(sortedList);
+                setCurrentList(sortedList);
                 setPage(sortedList.slice(0, 10));
                 setTotalVacations(sortedList.length);
             } else {
@@ -137,7 +137,7 @@ function VacationList(): JSX.Element {
         if (showFollowed || showUpcoming || showActive) {
             const startIndex: number = (pageNumber - 1) * 10;
             const endIndex: number = startIndex + 10;
-            setPage(followedList.slice(startIndex, endIndex));
+            setPage(currentList.slice(startIndex, endIndex));
         } else {
             vacationService.fetchPage(pageNumber);
         }
