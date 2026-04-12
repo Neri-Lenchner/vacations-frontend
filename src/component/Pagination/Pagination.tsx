@@ -22,7 +22,7 @@ function Pagination(paginationProps: PaginationProps): JSX.Element {
         }
     }
 
-    for (let i = 1; i <= pages; i++) {
+    for (let i: number = 1; i <= pages; i++) {
         pagesNumbers.push(i);
     }
 

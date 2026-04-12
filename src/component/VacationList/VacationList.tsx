@@ -1,5 +1,4 @@
 import {JSX,useEffect, useState} from "react";
-import redux from 'redux';
 import {Vacation} from '../../models/vacation.model';
 import {vacationStore} from '../../state/vacation-state';
 import {followersStore} from "../../state/followers-state";
@@ -12,7 +11,6 @@ import Pagination from "../Pagination/Pagination";
 import {Follower} from "../../models/follower.model";
 import {User} from "../../models/user.model";
 import ConfirmationWindow from "../ConfirmationWindow/ConfirmationWindow";
-
 
 
 function VacationList(): JSX.Element {
@@ -31,7 +29,6 @@ function VacationList(): JSX.Element {
 
     useEffect(() => {
                 vacationService.fetchData(1);
-
                 followersService.getFollowersList();
 
                 const unSubscribeVacations = vacationStore.subscribe((): void => {
@@ -107,15 +104,12 @@ function VacationList(): JSX.Element {
     async function handleActiveVacations(event: React.ChangeEvent<HTMLInputElement>): Promise<void> {
         const isChecked: boolean = event.target.checked;
         setShowActive(isChecked);
-
         try {
             if (isChecked) {
                 setShowFollowed(false);
                 setShowUpcoming(false);
-
                 await vacationService.fetchData(1);
-                // const allVacations: Vacation[] = vacationStore.getState().vacationList;
-                const today: Date = new Date();
+                // const today: Date = new Date();
                 const activeList: Vacation[] = await vacationService.getActiveVacations();
                 const sortedList: Vacation[] = activeList.sort((a, b): number => new Date(a.startDate).
                 getTime() - new Date(b.startDate).getTime());
@@ -202,7 +196,10 @@ function VacationList(): JSX.Element {
                     />
                     : <div></div>}
             </div>
-            <Pagination totalVacations={totalVacations} onPageChange={handlePaginationChange} />
+            <Pagination
+                totalVacations={totalVacations}
+                onPageChange={handlePaginationChange}
+            />
         </>
     );
 }
