@@ -24,20 +24,20 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
 
     let {vacation, followersList, user, isDelete, setIsDelete, setVacationId} = vacationItemProps;
 
-    useEffect(() => {
+    useEffect((): void => {
         if (!followersList.length) {
             setVacationFollowers([]);
             setIsFollowing(false);
             return;
         }
 
-        const followers = followersList.filter(
+        const followers: Follower[] = followersList.filter(
             follower => follower.vacationId === vacation.id
         );
 
         setVacationFollowers(followers);
 
-        const isUserFollowing = followers.some(
+        const isUserFollowing: boolean = followers.some(
             follower => follower.userId === user.id
         );
 
@@ -62,11 +62,11 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
         }
     }
 
-    function navigateToAdminForm() {
+    function navigateToAdminForm(): void {
         navigate(`/admin-form/${vacation.id}`);
     }
 
-    function deleteVacation() {
+    function deleteVacation(): void {
         isDelete = !isDelete;
         setIsDelete(isDelete);
         setVacationId(vacation.id);
@@ -116,7 +116,10 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
                         : "vacation-item-likes-container vacation-item-isFollowing-false"}>
                     <div
                         className="vacation-item-likes-container-content">
-                        {isFollowing ? "❤️" : "🩶" } Likes {vacationFollowers.length || 0}
+                        {isFollowing
+                            ? "❤️"
+                            : "🩶"
+                        } Likes {vacationFollowers.length || 0}
                     </div>
                 </div>
             }

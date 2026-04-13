@@ -104,7 +104,6 @@ function AdminForm(): JSX.Element {
                             <button
                                 className="form-button form-element"
                                 type="submit"
-                                // onClick={}
                                 >
                                 {params.id ? "Update Vacation" : "Add Vacation"}
                             </button>
