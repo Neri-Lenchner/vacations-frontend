@@ -122,7 +122,12 @@ class VacationService {
         // formData.append("startDate", vacation.startDate);
         // formData.append("endDate", vacation.endDate);
         // formData.append("cost", vacation.cost.toString());
-        formData.append("image", vacation.imageName![0]);
+
+        // formData.append("image", vacation.imageName![0]);
+
+        if (vacation.imageName && vacation.imageName[0]) {
+            formData.append("image", vacation.imageName[0]);
+        }
 
         try {
             const response = await axios.post<Vacation>(

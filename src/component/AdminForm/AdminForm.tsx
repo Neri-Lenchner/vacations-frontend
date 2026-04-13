@@ -2,7 +2,6 @@ import React, {JSX, useEffect, useState} from 'react';
 import './AdminForm.css';
 import {NavLink, useNavigate, useParams} from "react-router-dom";
 import {useForm} from "react-hook-form";
-import {User} from "../../models/user.model";
 import {Vacation} from "../../models/vacation.model";
 import {vacationStore} from "../../state/vacation-state";
 import {vacationService} from "../../services/vacation-service";
@@ -31,42 +30,10 @@ function AdminForm(): JSX.Element {
             getSingleVacation(+params.id);
         }
 
-
-        // async function getSingleCourse() {
-        //     try {
-        //         setLoading(true);
-        //         courseToUpdate.current = await courseService.getSingleCourse(+params.id!);
-        //         setValue("name", courseToUpdate.current.name);
-        //         setValue("duration", courseToUpdate.current.duration);
-        //         setValue("difficulty", courseToUpdate.current.difficulty);
-        //         setValue("numOfStudents", courseToUpdate.current.numOfStudents);
-        //         setValue("lecturerId", courseToUpdate.current.lecturerId);
-        //         setLoading(false);
-        //     }
-        //     catch (err) {
-        //         alert(err)
-        //     }
-        // }
-
     }, [params.id, reset]);
 
-    // async function addVacation(event: React.FormEvent<HTMLFormElement>): Promise<void>{
-    //     event.preventDefault();
-    //     const vacation = watch();
-    //     console.log("Form data:", vacation);
-    //     try {
-    //         await vacationService.addVacation(vacation);
-    //
-    //         // reset();
-    //         // navigate("/vacations");
-    //     }
-    //     catch (error) {
-    //         alert(error);
-    //         console.error(error);
-    //     }
-    // }
-
     async function addVacation(vacation: Vacation): Promise<void>{
+        //     event.preventDefault();
         console.log("Form data:", vacation);
         try {
             await vacationService.addVacation(vacation);
@@ -79,6 +46,7 @@ function AdminForm(): JSX.Element {
     }
 
     async function updateVacation(id: number, vacation: Vacation): Promise<void>{
+        //     event.preventDefault();
         console.log("Updating vacation with ID:", id, "Data:", vacation);
         try {
             await vacationService.updateVacation(id, vacation);
@@ -92,7 +60,7 @@ function AdminForm(): JSX.Element {
 
 
     return (
-        <form onSubmit={params.id ? handleSubmit((vacation) => updateVacation(+params.id!, vacation)) : handleSubmit(addVacation)}>
+        <form onSubmit={params.id ? handleSubmit(vacation => updateVacation(+params.id!, vacation)) : handleSubmit(addVacation)}>
             <div className="form">
                 <h1 className="form-headline">
                     {params.id ? "Update Vacation" : "Add Vacation"}
@@ -155,11 +123,9 @@ function AdminForm(): JSX.Element {
                             className="form-date form-element"
                             {...register("endDate", {
                                 required: { value: true, message: "End date is required!" },
-                                // min: { value: 7, message: "Date must be after Jan 1, 2024" }
                             })}
                         />
                         {formState.errors.endDate && <p>{formState.errors.endDate?.message}</p>}
-
                         <div className="form-input-message">Upload Image</div>
                         <input
                             type="file"
@@ -169,17 +135,12 @@ function AdminForm(): JSX.Element {
                                 required: false
                             })}
                         />
-
                         <div className="admin-form-image-container">
                             <img className="admin-form-img" src={ vacationToUpdate?.imageName ? appConfig.uploadsAddress + vacationToUpdate.imageName :  "https://www.shutterstock.com/image-photo/sun-sets-behind-mountain-ranges-600nw-2479236003.jpg"}/>
                         </div>
                         <div className="form-split-buttons">
-                            {/*<button type="button" className="form-button form-element form-delete">Cancel</button>*/}
                             <NavLink className="form-cancel-button" to={"/vacations"}>Cancel</NavLink>
                         </div>
-
-                        {/*<div className="form-input-message form-bottom-message">already a member?</div>*/}
-                        {/*/!*<NavLink className="form-bottom-message form-link" to="/login-form">login</NavLink>*!/*/}
                     </div>
                 </div>
             </div>
