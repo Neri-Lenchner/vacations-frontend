@@ -61,7 +61,9 @@ function AdminForm(): JSX.Element {
 
 
     return (
-        <form onSubmit={params.id ? handleSubmit(vacation => updateVacation(+params.id!, vacation)) : handleSubmit(addVacation)}>
+        <form onSubmit={params.id
+            ? handleSubmit(vacation => updateVacation(+params.id!, vacation))
+            : handleSubmit(addVacation)}>
             <div className="form">
                 <h1 className="form-headline">
                     {params.id ? "Update Vacation" : "Add Vacation"}
