@@ -1,14 +1,10 @@
 import axios, {AxiosError} from 'axios';
-import {User} from "../models/user.model";
 import {Vacation} from "../models/vacation.model";
 import {appConfig} from "../utils/app-config";
 import {authStore} from "../state/auth-state";
-import {UserActionType, userStore} from "../state/user-state";
 import {VacationActionType, vacationStore} from "../state/vacation-state";
 
 class VacationService {
-
-    constructor() {}
 
     // total number of vacations
     async fetchTotal(): Promise<number> {
@@ -98,8 +94,6 @@ class VacationService {
         }
     }
 
-    // api/vacations/followers/
-
     // fetch total + page
     async fetchData(page: number, limit = 10): Promise<void> {
 
@@ -117,13 +111,6 @@ class VacationService {
 
         const formData = new FormData();
         formData.append("vacation", JSON.stringify(vacation));
-        // formData.append("destination", vacation.destination);
-        // formData.append("description", vacation.description);
-        // formData.append("startDate", vacation.startDate);
-        // formData.append("endDate", vacation.endDate);
-        // formData.append("cost", vacation.cost.toString());
-
-        // formData.append("image", vacation.imageName![0]);
 
         if (vacation.imageName && vacation.imageName[0]) {
             formData.append("image", vacation.imageName[0]);
