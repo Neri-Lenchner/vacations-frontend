@@ -22,6 +22,7 @@ function AdminForm(): JSX.Element {
                 vacationToUpdate.startDate = startDate.split('T')[0];
                 vacationToUpdate.endDate = endDate.split('T')[0];
                 setVacationToUpdate(vacationToUpdate);
+                console.log(vacationToUpdate?.imageName, "vacation id", vacationToUpdate.id);
                 reset(vacationToUpdate);
             }
         }
@@ -71,7 +72,8 @@ function AdminForm(): JSX.Element {
                         <input type="text" className="form-destination form-element" {...register("destination",
                             {
                                 required: {value: true, message: "Destination is required!"},
-                                minLength: {value: 2, message: "Must contain at list 2 letter"}
+                                minLength: {value: 2, message: "Must contain at list 2 letter"},
+                                maxLength: {value: 50, message: "Can not contain more than 50 letters"}
                             }
                         )}/>
                         {formState.errors.destination && <p>{formState.errors.destination?.message}</p>}
