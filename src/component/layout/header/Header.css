@@ -14,6 +14,17 @@
     z-index: 10;
 }
 
+.header-site-name {
+    position: absolute;
+    top: 20px;
+    right: 150px;
+    font-size: 90px;
+    font-weight: bold;
+    color: white;
+    text-shadow: lightgoldenrodyellow 1px 0 10px;
+
+}
+
 .header-button-line {
     display: flex;
     flex-direction: row;
