@@ -63,7 +63,7 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
     }
 
     function navigateToAdminForm(): void {
-        navigate(`/admin-form/${vacation.id}`);
+        navigate(`/admin-form/update/${vacation.id}`);
     }
 
     function deleteVacation(): void {

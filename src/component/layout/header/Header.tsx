@@ -63,7 +63,7 @@ function Header(): JSX.Element {
                                 </NavLink>
                                 <NavLink
                                     className={user.isAdmin && ("header-button")}
-                                    to="/admin-form">
+                                    to="/admin-form/add-vacation">
                                     Add Vacation
                                 </NavLink>
                             </>
