@@ -7,16 +7,19 @@ import {vacationStore} from "../../state/vacation-state";
 import {vacationService} from "../../services/vacation-service";
 import {appConfig} from "../../utils/app-config";
 
+
 function AdminForm(): JSX.Element {
     const {register, formState, handleSubmit, reset} = useForm<Vacation>();
     const navigate = useNavigate();
     const params = useParams();
     let [vacationToUpdate, setVacationToUpdate] = useState<Vacation | undefined>(undefined);
 
-    useEffect(() => {
+    useEffect((): void => {
 
-        function getSingleVacation(id: number): void {
-             vacationToUpdate = vacationStore.getState().vacationList.find((vacation: Vacation): boolean => vacation.id === id);
+        async function getSingleVacation(id: number): Promise<void> {
+            vacationToUpdate = vacationStore.getState().vacationList.find((vacation: Vacation): boolean => vacation.id === id);
+            if (!vacationToUpdate) vacationToUpdate =  await vacationService.getVacationById(id);
+
             if (vacationToUpdate) {
                 const {startDate, endDate} = vacationToUpdate;
                 vacationToUpdate.startDate = startDate.split('T')[0];
@@ -58,7 +61,6 @@ function AdminForm(): JSX.Element {
             console.error(error);
         }
     }
-
 
     return (
         <form onSubmit={params.id
@@ -139,7 +141,7 @@ function AdminForm(): JSX.Element {
                             })}
                         />
                         <div className="admin-form-image-container">
-                            <img className="admin-form-img" src={ vacationToUpdate?.imageName ? appConfig.uploadsAddress + vacationToUpdate.imageName :  "https://www.shutterstock.com/image-photo/sun-sets-behind-mountain-ranges-600nw-2479236003.jpg"}/>
+                            <img className="admin-form-img" src={ vacationToUpdate?.imageName ? appConfig.uploadsAddress + vacationToUpdate.imageName : "https://www.shutterstock.com/image-photo/sun-sets-behind-mountain-ranges-600nw-2479236003.jpg"}/>
                         </div>
                         <div className="form-split-buttons">
                             <NavLink className="form-cancel-button" to={"/vacations"}>Cancel</NavLink>

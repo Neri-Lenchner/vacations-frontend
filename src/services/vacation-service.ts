@@ -106,6 +106,23 @@ class VacationService {
         }
     }
 
+    async getVacationById(id: number): Promise<Vacation> {
+        const token: string | null = authStore.getState().token;
+
+        try {
+            const response = await axios.get<Vacation>(
+                `${appConfig.apiAddress}vacation/${id}`,
+                {headers: { Authorization: "Bearer " + token }}
+            );
+            vacationStore.dispatch({type: VacationActionType.GetSelectedVacation, payload: response.data});
+            return response.data;
+        } catch (err) {
+            console.error("Failed to fetch data", err);
+            throw new Error("Failed to fetch data");
+        }
+
+    }
+
     async addVacation(vacation: Vacation): Promise<Vacation> {
         const token: string | null = authStore.getState().token;
 
