@@ -19,16 +19,16 @@ function AdminForm(): JSX.Element {
     useEffect((): void => {
 
         async function getSingleVacation(id: number): Promise<void> {
-            vacationToUpdate = vacationStore.getState().vacationList.find((vacation: Vacation): boolean => vacation.id === id);
-            if (!vacationToUpdate) vacationToUpdate =  await vacationService.getVacationById(id);
+            let vacation = vacationStore.getState().vacationList.find((vacation: Vacation): boolean => vacation.id === id);
+            if (!vacation) vacation = await vacationService.getVacationById(id);
 
-            if (vacationToUpdate) {
-                const {startDate, endDate} = vacationToUpdate;
-                vacationToUpdate.startDate = startDate.split('T')[0];
-                vacationToUpdate.endDate = endDate.split('T')[0];
-                setVacationToUpdate(vacationToUpdate);
-                console.log(vacationToUpdate?.imageName, "vacation id", vacationToUpdate.id);
-                reset(vacationToUpdate);
+            if (vacation) {
+                const {startDate, endDate} = vacation;
+                vacation.startDate = startDate.split('T')[0];
+                vacation.endDate = endDate.split('T')[0];
+                setVacationToUpdate(vacation);
+                console.log(vacation?.imageName, "vacation id", vacation.id);
+                reset(vacation);
             }
         }
 
