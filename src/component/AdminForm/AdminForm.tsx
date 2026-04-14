@@ -33,7 +33,7 @@ function AdminForm(): JSX.Element {
         }
 
         if (params.id) {
-            getSingleVacation(+params.id);
+            void getSingleVacation(+params.id);
         }
 
     }, [params.id, reset]);
