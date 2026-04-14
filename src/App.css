@@ -3,12 +3,11 @@
     margin: 0;
     scroll-behavior: smooth;
     scrollbar-width: none;
-    /*font-family: "Raleway",Arial, 'Montserrat', sans-serif, sans-serif;*/
 }
 
 body {
     font-family: "Raleway", sans-serif;
-    min-width: 1200px;
+    min-width: 1300px;
 }
 
 html, body {
@@ -25,16 +24,10 @@ section {
     display: flex;
 }
 
-/*aside {*/
-/*    width: 15vw;*/
-/*    flex-stretch: 1;*/
-/*}*/
-
 main {
     flex: 1;
     height: calc(100vh - 20vh);
-    /*height: 100vh;     !* take full viewport height *!*/
-    overflow-y: auto;  /* enable vertical scroll */
+    overflow-y: auto;
     padding-bottom: 200px;
 }
 
@@ -55,7 +48,6 @@ main {
     background-color:  #0056b3;
 
 }
-
 
 /* FORM CSS */
 
@@ -83,9 +75,8 @@ form {
     color: blue;
 }
 
-/* Shared style for inputs + button */
 .form-element {
-    width: 300px;           /* same width for everything */
+    width: 300px;
     border: 1px solid #ccc;
     border-radius: 6px;
     padding: 8px;
@@ -95,24 +86,21 @@ form {
 }
 
 textarea.form-element {
-    height: 255px;     /* fixed height */
-    resize: none;      /* prevent user from resizing */
+    height: 255px;
+    resize: none;
 }
 
-/* Same height for inputs + button */
 .form-headline,
 .form-date,
 .form button {
     height: 40px;
 }
 
-/* Taller textarea */
 .form-add-content {
     height: 120px;
-    resize: none; /* optional: prevents resizing */
+    resize: none;
 }
 
-/* Optional: nicer button */
 .form-button {
     background-color: #007bff;
     font-weight: bold;
@@ -180,9 +168,5 @@ textarea.form-element {
 .form-split-2 {
 
 }
-
-/*.form-image {*/
-/*    width: 200px;*/
-/*}*/
 
 /* FORM END */
