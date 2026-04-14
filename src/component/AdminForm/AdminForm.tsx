@@ -141,7 +141,9 @@ function AdminForm(): JSX.Element {
                             })}
                         />
                         <div className="admin-form-image-container">
-                            <img className="admin-form-img" src={ vacationToUpdate?.imageName ? appConfig.uploadsAddress + vacationToUpdate.imageName : "https://www.shutterstock.com/image-photo/sun-sets-behind-mountain-ranges-600nw-2479236003.jpg"}/>
+                            <img className="admin-form-img" src={ vacationToUpdate?.imageName
+                                ? appConfig.uploadsAddress + vacationToUpdate.imageName
+                                : "https://www.shutterstock.com/image-photo/sun-sets-behind-mountain-ranges-600nw-2479236003.jpg"}/>
                         </div>
                         <div className="form-split-buttons">
                             <NavLink className="form-cancel-button" to={"/vacations"}>Cancel</NavLink>
