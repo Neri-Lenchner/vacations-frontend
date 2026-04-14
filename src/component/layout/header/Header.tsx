@@ -75,9 +75,6 @@ function Header(): JSX.Element {
                     Please login
                 </h2>
             }
-            <div className="header-site-name">
-                TraveLentz
-            </div>
         </div>
     );
 }

@@ -4,26 +4,22 @@
     scroll-behavior: smooth;
     scrollbar-width: none;
     /*font-family: "Raleway",Arial, 'Montserrat', sans-serif, sans-serif;*/
+
 }
 
 body {
     font-family: "Raleway", sans-serif;
-    min-width: 1000px;
+    min-width: 1200px;
 }
 
 html, body {
     height: 100%;
-    overflow-x: auto;
-}
-
-body {
-    min-width: 1200px;
+    overflow: hidden;
 }
 
 header {
     height: 20vh;
     width: 100%;
-    /*min-width: 1500px;*/
 }
 
 section {
