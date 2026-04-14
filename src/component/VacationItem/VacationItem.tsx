@@ -75,7 +75,10 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
     return (
         <div className="vacation-item-container">
             <div className="vacation-item-image-container">
-                <img className="vacation-item-img" src={vacation.imageName ? appConfig.uploadsAddress + vacation.imageName : "https://www.shutterstock.com/image-photo/sun-sets-behind-mountain-ranges-600nw-2479236003.jpg"} />
+                <img className="vacation-item-img" src={vacation.imageName
+                    ? appConfig.uploadsAddress + vacation.imageName
+                    : "/default-pic.jpg"
+                } />
             </div>
             <div className="vacation-item-dates">
                 <svg className="vacation-item-svg" viewBox="0 0 24 24" fill="none">
