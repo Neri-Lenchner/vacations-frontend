@@ -1,4 +1,4 @@
-import React, {JSX, useEffect, useState} from 'react';
+import React, {JSX, useEffect, useRef, useState} from 'react';
 import './AdminForm.css';
 import {NavLink, useNavigate, useParams} from "react-router-dom";
 import {useForm} from "react-hook-form";
@@ -13,6 +13,8 @@ function AdminForm(): JSX.Element {
     const navigate = useNavigate();
     const params = useParams();
     let [vacationToUpdate, setVacationToUpdate] = useState<Vacation | undefined>(undefined);
+    let [previewImage, setPreviewImage] = useState<string | null>(null);
+    const fileInputRef = useRef<HTMLInputElement>(null);
 
     useEffect((): void => {
 
@@ -37,8 +39,9 @@ function AdminForm(): JSX.Element {
     }, [params.id, reset]);
 
     async function addVacation(vacation: Vacation): Promise<void>{
-        //     event.preventDefault();
-        console.log("Form data:", vacation);
+        if (fileInputRef.current?.files) {
+            vacation.imageName = fileInputRef.current.files as any;
+        }
         try {
             await vacationService.addVacation(vacation);
             navigate("/vacations");
@@ -50,8 +53,9 @@ function AdminForm(): JSX.Element {
     }
 
     async function updateVacation(id: number, vacation: Vacation): Promise<void>{
-        //     event.preventDefault();
-        console.log("Updating vacation with ID:", id, "Data:", vacation);
+        if (fileInputRef.current?.files) {
+            vacation.imageName = fileInputRef.current.files as any;
+        }
         try {
             await vacationService.updateVacation(id, vacation);
             navigate("/vacations");
@@ -59,6 +63,18 @@ function AdminForm(): JSX.Element {
         catch (error) {
             alert(error);
             console.error(error);
+        }
+    }
+
+    function handleImageChange(event: React.ChangeEvent<HTMLInputElement>): void {
+        const file: File | undefined = event.target.files?.[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (fileReaderEvent): void => {
+                const image: any = fileReaderEvent.target?.result;
+                setPreviewImage(image);
+            };
+            reader.readAsDataURL(file);
         }
     }
 
@@ -136,14 +152,14 @@ function AdminForm(): JSX.Element {
                             type="file"
                             className="form-file form-element"
                             placeholder="Upload Image"
-                            {...register("imageName", {
-                                required: false
-                            })}
+                            name="imageName"
+                            ref={fileInputRef}
+                            onChange={handleImageChange}
                         />
                         <div className="admin-form-image-container">
-                            <img className="admin-form-img" src={ vacationToUpdate?.imageName
+                            <img className="admin-form-img" src={ previewImage || (vacationToUpdate?.imageName
                                 ? appConfig.uploadsAddress + vacationToUpdate.imageName
-                                : "/default-pic.jpg"} />
+                                : "/default-pic.jpg")} />
                         </div>
                         <div className="form-split-buttons">
                             <NavLink className="form-cancel-button" to={"/vacations"}>Cancel</NavLink>
