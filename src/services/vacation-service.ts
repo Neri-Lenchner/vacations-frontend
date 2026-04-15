@@ -6,7 +6,6 @@ import {VacationActionType, vacationStore} from "../state/vacation-state";
 
 class VacationService {
 
-    // total number of vacations
     async fetchTotal(): Promise<number> {
         const token: string | null = authStore.getState().token;
         try {
@@ -15,21 +14,16 @@ class VacationService {
                 {headers: { Authorization: "Bearer " + token }}
             );
             vacationStore.dispatch({type: VacationActionType.GetTotalVacations, payload: response.data});
-
-            // Axios auto-parses JSON, so total.data is already the number
             return response.data;
-
         } catch (err) {
             console.error("Failed to fetch total count", err);
             throw new Error("Failed to fetch total count");
         }
     }
 
-    // paginated list of vacations
     async fetchPage(page: number, limit = 10): Promise<Vacation[]> {
         const token: string | null = authStore.getState().token;
         const offset: number = (page - 1) * limit;
-
         try {
             const response = await axios.get<Vacation[]>(
                 `${appConfig.apiAddress}vacations?limit=${limit}&offset=${offset}`,
@@ -96,7 +90,6 @@ class VacationService {
 
     // fetch total + page
     async fetchData(page: number, limit = 10): Promise<void> {
-
         try {
             await this.fetchTotal();
             const data: Vacation[] = await this.fetchPage(page, limit);
@@ -108,7 +101,6 @@ class VacationService {
 
     async getVacationById(id: number): Promise<Vacation> {
         const token: string | null = authStore.getState().token;
-
         try {
             const response = await axios.get<Vacation>(
                 `${appConfig.apiAddress}vacation/${id}`,
@@ -120,19 +112,16 @@ class VacationService {
             console.error("Failed to fetch data", err);
             throw new Error("Failed to fetch data");
         }
-
     }
 
     async addVacation(vacation: Vacation, imageFile?: File): Promise<Vacation> {
         const token: string | null = authStore.getState().token;
-
         const formData = new FormData();
         formData.append("vacation", JSON.stringify(vacation));
-
+        console.log(vacation);
         if (imageFile) {
             formData.append("image", imageFile);
         }
-
         try {
             const response = await axios.post<Vacation>(
                 `${appConfig.apiAddress}vacation`, formData, {headers: { Authorization: "Bearer " + token }}
@@ -168,16 +157,12 @@ class VacationService {
             console.error(data);
             throw error;
         }
-
     }
 
     public async deleteVacation(id: number): Promise<void> {
         const token: string | null = authStore.getState().token;
         try {
-            // await axios.delete<void>(appConfig.apiAddress + "course/" + id, {headers: { Authorization: "Bearer " + authStore.getState().token }});
-
             await axios.delete<void>(`${appConfig.apiAddress}vacation/${id}`,{headers: { Authorization: "Bearer " + token }})
-
             vacationStore.dispatch({type: VacationActionType.DeleteVacation, payload: id});
         } catch (err) {
             console.error("Error from delete Course");
