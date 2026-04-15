@@ -39,11 +39,9 @@ function AdminForm(): JSX.Element {
     }, [params.id, reset]);
 
     async function addVacation(vacation: Vacation): Promise<void>{
-        if (fileInputRef.current?.files) {
-            vacation.imageName = fileInputRef.current.files as any;
-        }
+        const imageFile = fileInputRef.current?.files?.[0];
         try {
-            await vacationService.addVacation(vacation);
+            await vacationService.addVacation(vacation, imageFile);
             navigate("/vacations");
         }
         catch (error) {
@@ -53,13 +51,9 @@ function AdminForm(): JSX.Element {
     }
 
     async function updateVacation(id: number, vacation: Vacation): Promise<void>{
-        if (fileInputRef.current?.files?.length) {
-            vacation.imageName = fileInputRef.current.files as any;
-        } else {
-            vacation.imageName = undefined;
-        }
+        const imageFile = fileInputRef.current?.files?.[0];
         try {
-            await vacationService.updateVacation(id, vacation);
+            await vacationService.updateVacation(id, vacation, imageFile);
             navigate("/vacations");
         }
         catch (error) {

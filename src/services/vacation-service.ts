@@ -123,14 +123,14 @@ class VacationService {
 
     }
 
-    async addVacation(vacation: Vacation): Promise<Vacation> {
+    async addVacation(vacation: Vacation, imageFile?: File): Promise<Vacation> {
         const token: string | null = authStore.getState().token;
 
         const formData = new FormData();
         formData.append("vacation", JSON.stringify(vacation));
 
-        if (vacation.imageName && vacation.imageName[0]) {
-            formData.append("image", vacation.imageName[0]);
+        if (imageFile) {
+            formData.append("image", imageFile);
         }
 
         try {
@@ -148,12 +148,12 @@ class VacationService {
         }
     }
 
-    async updateVacation(id: number, vacation: Vacation): Promise<Vacation> {
+    async updateVacation(id: number, vacation: Vacation, imageFile?: File): Promise<Vacation> {
         const token: string | null = authStore.getState().token;
         const formData = new FormData();
         formData.append("vacation", JSON.stringify(vacation));
-        if (vacation.imageName && vacation.imageName[0]) {
-            formData.append("image", vacation.imageName[0]);
+        if (imageFile) {
+            formData.append("image", imageFile);
         }
         try {
             const response = await axios.put<Vacation>(
