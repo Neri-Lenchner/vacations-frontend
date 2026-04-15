@@ -53,8 +53,10 @@ function AdminForm(): JSX.Element {
     }
 
     async function updateVacation(id: number, vacation: Vacation): Promise<void>{
-        if (fileInputRef.current?.files) {
+        if (fileInputRef.current?.files?.length) {
             vacation.imageName = fileInputRef.current.files as any;
+        } else {
+            vacation.imageName = undefined;
         }
         try {
             await vacationService.updateVacation(id, vacation);
