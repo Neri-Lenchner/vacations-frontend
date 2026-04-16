@@ -10,13 +10,14 @@ interface PaginationProps {
 
 function Pagination(paginationProps: PaginationProps): JSX.Element {
 
+    const {totalVacations, onPageChange} = paginationProps;
     const pagesNumbers: number[] = [];
     const limit: number = 10;
-    const pages: number = Math.ceil(paginationProps.totalVacations / limit) || 1;
+    const pages: number = Math.ceil(totalVacations / limit) || 1;
 
     function changePage(page: number) {
-        if (paginationProps.onPageChange) {
-            paginationProps.onPageChange(page);
+        if (onPageChange) {
+            onPageChange(page);
         } else {
             vacationService.fetchPage(page);
         }
