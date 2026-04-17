@@ -1,7 +1,8 @@
 .header {
-    background-image: url("../../../../public/Tropical-beach-at-sunrise-with-aircraft.png");
-    background-position: center 55%;
-    background-size: cover;
+    /*background-image: url("../../../../public/Tropical-beach-at-sunrise-with-aircraft.png");*/
+    /*background-position: center 55%;*/
+    /*background-size: cover;*/
+    background-color: #181860;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -20,8 +21,8 @@
     right: 10px;
     font-size: 150px;
     font-weight: bold;
-    color: white;
-    text-shadow: lightgoldenrodyellow 1px 0 10px;
+    color: yellow;
+    /*text-shadow: lightgoldenrodyellow 1px 0 10px;*/
 
 }
 

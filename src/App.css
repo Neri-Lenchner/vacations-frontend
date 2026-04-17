@@ -37,7 +37,7 @@ main {
     padding: 10px;
     font-size: 16px;
     font-weight: bold;
-    background-color:  #007bff;
+    background-color:  #181860;
     color: white;
     border: none;
     cursor: pointer;
@@ -45,7 +45,7 @@ main {
 }
 
 .general-button:hover {
-    background-color:  #0056b3;
+    background-color:  blue;
 
 }
 
@@ -72,7 +72,7 @@ form {
 }
 
 .form-headline {
-    color: blue;
+    color: #181860;
 }
 
 .form-element {
@@ -102,7 +102,7 @@ textarea.form-element {
 }
 
 .form-button {
-    background-color: #007bff;
+    background-color: #181860;
     font-weight: bold;
     color: white;
     cursor: pointer;
@@ -111,7 +111,7 @@ textarea.form-element {
 }
 
 .form-button:hover {
-    background-color: #0056b3;
+    background-color: blue;
 }
 
 .form-input-price,
