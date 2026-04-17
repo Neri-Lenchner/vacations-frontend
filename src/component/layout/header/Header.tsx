@@ -4,6 +4,10 @@ import {Unsubscribe} from 'redux';
 import {AuthActionType, authStore} from '../../../state/auth-state';
 import './Header.css';
 import {User} from '../../../models/user.model';
+import {GiAirplaneDeparture} from 'react-icons/gi';
+import { AiFillHome } from "react-icons/ai";
+
+
 
 
 function Header(): JSX.Element {
@@ -46,37 +50,43 @@ function Header(): JSX.Element {
                 ? <>
                     <div className="header-headline">
                         Hello <span>{userName}</span>
+                        <div className="header-headline-container">
+                            <div>
+                                <AiFillHome className="header-icon" />
+                            </div>
+                            <div className="header-button-line">
+                                <button
+                                    onClick={logOut}
+                                    className="header-button"
+                                >
+                                    Logout
+                                </button>
+                                {user?.isAdmin
+                                    ? <>
+                                        <NavLink
+                                            className={user.isAdmin && ("header-button")}
+                                            to="/vacations">
+                                            Vacations
+                                        </NavLink>
+                                        <NavLink
+                                            className={user.isAdmin && ("header-button")}
+                                            to="/admin-form/add-vacation">
+                                            Add Vacation
+                                        </NavLink>
+                                    </>
+                                    : <div></div>
+                                }
+                            </div>
+                        </div>
                     </div>
-                    <div className="header-button-line">
-                        <button
-                            onClick={logOut}
-                            className="header-button"
-                        >
-                            Logout
-                        </button>
-                        {user?.isAdmin
-                            ? <>
-                                <NavLink
-                                    className={user.isAdmin && ("header-button")}
-                                    to="/vacations">
-                                    Vacations
-                                </NavLink>
-                                <NavLink
-                                    className={user.isAdmin && ("header-button")}
-                                    to="/admin-form/add-vacation">
-                                    Add Vacation
-                                </NavLink>
-                            </>
-                           : <div></div>
-                        }
-                    </div>
+
                 </>
                 : <h2 className="header-headline">
                     Please login
                 </h2>
             }
             <div className="header-site-name">
-                TraveLentz
+               TraveLentz<GiAirplaneDeparture className="header-icon"/>
             </div>
         </div>
     );

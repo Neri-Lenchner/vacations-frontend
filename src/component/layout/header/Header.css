@@ -64,3 +64,12 @@
 .display-none {
     display: none;
 }
+
+.header-icon {
+    height: 70px;
+}
+
+.header-headline-container {
+    display: flex;
+    align-items: center;
+}
