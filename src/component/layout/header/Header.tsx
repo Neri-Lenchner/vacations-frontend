@@ -92,7 +92,7 @@ function Header(): JSX.Element {
                         <AiFillHome className="header-icon header-home-icon" />
                     </div>
                     <NavLink
-                        className="header-home-link"
+                        className="header-home-link header-login-link"
                         to="/login-form">
                         Login
                     </NavLink>
