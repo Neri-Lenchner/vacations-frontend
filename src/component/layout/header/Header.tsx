@@ -77,7 +77,14 @@ function Header(): JSX.Element {
                                             Add Vacation
                                         </NavLink>
                                     </>
-                                    : <div></div>
+
+                                    :
+                                        <NavLink
+                                            className="header-button"
+                                            to="/vacations">
+                                            Vacations
+                                        </NavLink>
+
                                 }
                             </div>
                         </div>
