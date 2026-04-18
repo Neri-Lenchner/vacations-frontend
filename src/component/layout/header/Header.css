@@ -73,7 +73,14 @@
 }
 
 .header-icon {
+    height: 90px;
+
+}
+
+.header-home-icon {
     height: 70px;
+    width: 40px;
+    margin-bottom: 20px;
 }
 
 .header-headline-container {

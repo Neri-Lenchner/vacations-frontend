@@ -13,7 +13,6 @@ import { AiFillHome } from "react-icons/ai";
 function Header(): JSX.Element {
 
     const navigate = useNavigate();
-
     const [userName, setUserName] = useState<string | undefined>(
         authStore.getState().token
             ? (`${authStore.getState().user?.firstName!} ${authStore.getState().user?.lastName}` )
@@ -90,7 +89,7 @@ function Header(): JSX.Element {
                     <div
                         className="header-icon header-button"
                         onClick={goHome}>
-                        <AiFillHome className="header-icon" />
+                        <AiFillHome className="header-icon header-home-icon" />
                     </div>
                     <NavLink
                         className="header-home-link"
@@ -98,8 +97,6 @@ function Header(): JSX.Element {
                         Login
                     </NavLink>
                 </div>
-
-
             }
             <div className="header-site-name">
                TraveLentz<GiAirplaneDeparture className="header-icon"/>
