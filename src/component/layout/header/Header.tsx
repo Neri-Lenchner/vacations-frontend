@@ -50,6 +50,10 @@ function Header(): JSX.Element {
         navigate('/home');
     }
 
+    function navigateToLoginForm(): void {
+        navigate('/login-form');
+    }
+
 
     return (
         <div className="header">
@@ -104,12 +108,12 @@ function Header(): JSX.Element {
                         onClick={goHome}>
                         <AiFillHome className="header-icon header-home-icon" />
                     </div>
-                    <RiLoginBoxFill />
-                    <NavLink
+                    <button
                         className="header-button header-button-adding"
-                        to="/login-form">
+                        onClick={navigateToLoginForm}>
+                        <RiLoginBoxFill  className="header-logout-icon"/>
                         Login
-                    </NavLink>
+                    </button>
                 </div>
             }
             <div className="header-site-name">
