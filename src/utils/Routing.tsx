@@ -21,8 +21,8 @@ function Routing(): JSX.Element {
             <Route path="/admin-form/add-vacation" element={<PrivateRouteAdmin child={<AdminForm key="add" />}/>}/>
             <Route path="/conformation-route" element={<PrivateRouteAdmin child={<ConformationRoute/>}/>}/>
             <Route path="/vacations" element={<PrivateRoute child={<VacationLIst/>}/>}/>
-            <Route path="/" element={<PrivateRoute child={<VacationLIst />}/>}/>
-            <Route path="*" element={<PrivateRoute child={<VacationLIst/>}/>}/>
+            <Route path="/" element={<HomePage />}/>
+            <Route path="*"  element={<HomePage />}/>
         </Routes>
     );
 }

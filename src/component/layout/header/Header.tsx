@@ -38,10 +38,11 @@ function Header(): JSX.Element {
     }, []);
 
     function logOut(): void {
+        navigate('/home');
         authStore.dispatch({
             type: AuthActionType.Logout, payload: ""
         });
-        navigate('/home');
+
     }
 
     function goHome(): void {

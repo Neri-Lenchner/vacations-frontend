@@ -31,7 +31,7 @@ function PrivateRoute(privateRouteProps: PrivateRouteProps): JSX.Element {
 
 
     if (!user) {
-        return (<Navigate to="/login-form" />);
+        return (<Navigate to="/home" />);
     }
 
     if (user?.isAdmin) {
