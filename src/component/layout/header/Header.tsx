@@ -7,6 +7,7 @@ import {User} from '../../../models/user.model';
 import {GiAirplaneDeparture} from 'react-icons/gi';
 import { AiFillHome } from "react-icons/ai";
 import { RiLogoutBoxFill } from "react-icons/ri";
+import { RiLoginBoxFill } from "react-icons/ri";
 
 
 
@@ -49,6 +50,7 @@ function Header(): JSX.Element {
         navigate('/home');
     }
 
+
     return (
         <div className="header">
             {userName
@@ -57,7 +59,7 @@ function Header(): JSX.Element {
                         Hello <span>{userName}</span>
                         <div className="header-headline-container">
                             <div onClick={goHome}>
-                                <AiFillHome className="header-icon header-home-icon-2" />
+                                <AiFillHome className="header-icon header-home-icon-2 header-button" />
                             </div>
                             <div className="header-button-line">
                                 <button
@@ -102,8 +104,9 @@ function Header(): JSX.Element {
                         onClick={goHome}>
                         <AiFillHome className="header-icon header-home-icon" />
                     </div>
+                    <RiLoginBoxFill />
                     <NavLink
-                        className="header-button"
+                        className="header-button header-button-adding"
                         to="/login-form">
                         Login
                     </NavLink>
