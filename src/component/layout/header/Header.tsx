@@ -41,7 +41,11 @@ function Header(): JSX.Element {
         authStore.dispatch({
             type: AuthActionType.Logout, payload: ""
         });
-        navigate('/login');
+        navigate('/home');
+    }
+
+    function goHome(): void {
+        navigate('/home');
     }
 
     return (
@@ -51,7 +55,7 @@ function Header(): JSX.Element {
                     <div className="header-headline">
                         Hello <span>{userName}</span>
                         <div className="header-headline-container">
-                            <div>
+                            <div onClick={goHome}>
                                 <AiFillHome className="header-icon" />
                             </div>
                             <div className="header-button-line">
@@ -81,9 +85,21 @@ function Header(): JSX.Element {
                     </div>
 
                 </>
-                : <h2 className="header-headline">
-                    Please login
-                </h2>
+                :
+                <div className="header-button-line-2">
+                    <div
+                        className="header-icon header-button"
+                        onClick={goHome}>
+                        <AiFillHome className="header-icon" />
+                    </div>
+                    <NavLink
+                        className="header-home-link"
+                        to="/login-form">
+                        Login
+                    </NavLink>
+                </div>
+
+
             }
             <div className="header-site-name">
                TraveLentz<GiAirplaneDeparture className="header-icon"/>

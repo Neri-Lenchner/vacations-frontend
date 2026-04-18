@@ -7,6 +7,7 @@ import VacationLIst from "../component/VacationList/VacationList";
 import AdminForm from "../component/AdminForm/AdminForm";
 import PrivateRouteAdmin from "../component/PrivateRouteAdmin";
 import ConformationRoute from "../component/ConformationRoute/ConformationRoute";
+import HomePage from "../component/HomePage/HomePage";
 
 
 
@@ -15,6 +16,7 @@ function Routing(): JSX.Element {
         <Routes>
             <Route path="/registration-form" element={<RegistrationForm />}/>
             <Route path="/login-form" element={<LoginForm />}/>
+            <Route path="/home" element={<HomePage />}/>
             <Route path="/admin-form/update/:id" element={<PrivateRouteAdmin child={<AdminForm key="update"/>}/>}/>
             <Route path="/admin-form/add-vacation" element={<PrivateRouteAdmin child={<AdminForm key="add" />}/>}/>
             <Route path="/conformation-route" element={<PrivateRouteAdmin child={<ConformationRoute/>}/>}/>

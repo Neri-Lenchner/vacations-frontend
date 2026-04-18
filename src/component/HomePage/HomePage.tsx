@@ -2,7 +2,7 @@ import './HomePage.css'
 
 function HomePage() {
     return (
-        <div>
+        <div className="home-page-container">
             Home Page
         </div>
     );
