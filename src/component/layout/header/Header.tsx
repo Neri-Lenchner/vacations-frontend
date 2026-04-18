@@ -6,6 +6,7 @@ import './Header.css';
 import {User} from '../../../models/user.model';
 import {GiAirplaneDeparture} from 'react-icons/gi';
 import { AiFillHome } from "react-icons/ai";
+import { RiLogoutBoxFill } from "react-icons/ri";
 
 
 
@@ -55,13 +56,15 @@ function Header(): JSX.Element {
                         Hello <span>{userName}</span>
                         <div className="header-headline-container">
                             <div onClick={goHome}>
-                                <AiFillHome className="header-icon" />
+                                <AiFillHome className="header-icon header-home-icon-2" />
                             </div>
                             <div className="header-button-line">
                                 <button
                                     onClick={logOut}
                                     className="header-button"
                                 >
+                                    <RiLogoutBoxFill
+                                    className="header-logout-icon"/>
                                     Logout
                                 </button>
                                 {user?.isAdmin
@@ -99,7 +102,7 @@ function Header(): JSX.Element {
                         <AiFillHome className="header-icon header-home-icon" />
                     </div>
                     <NavLink
-                        className="header-home-link header-login-link"
+                        className="header-button"
                         to="/login-form">
                         Login
                     </NavLink>

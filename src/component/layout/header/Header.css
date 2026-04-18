@@ -34,6 +34,8 @@
 }
 
 .header-button-line-2 {
+    display: flex;
+    align-items: center;
     position: absolute;
     top: -10px;
     left: 10px;
@@ -80,15 +82,25 @@
 
 }
 
-.header-home-icon {
+.header-home-icon,
+.header-home-icon-2 {
     height: 70px;
-    width: 40px;
-    margin-bottom: 20px;
+    width: 30px;
+    margin-top: 5px;
+}
+
+.header-home-icon-2 {
+    margin-top: 0;
+}
+
+.header-logout-icon {
+    margin-right: 5px;
 }
 
 .header-headline-container {
     display: flex;
     align-items: center;
+    justify-content: flex-start;
 }
 
 .header-home-link {
@@ -100,3 +112,5 @@
 .header-login-link {
    text-align: end;
 }
+
+
