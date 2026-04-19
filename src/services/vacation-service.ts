@@ -21,6 +21,21 @@ class VacationService {
         }
     }
 
+    async getAllVacations(): Promise<Vacation[]> {
+        const token: string | null = authStore.getState().token;
+        try {
+            const response = await axios.get<Vacation[]>(
+                `${appConfig.apiAddress}vacation-list/`,
+                {headers: { Authorization: "Bearer " + token }}
+            );
+            vacationStore.dispatch({type: VacationActionType.GetVacationList, payload: response.data});
+            return response.data;
+        } catch (err) {
+            console.error("Failed to fetch all vacations", err);
+            throw new Error("Failed to fetch all vacations");
+        }
+    }
+
     async fetchPage(page: number, limit = 10): Promise<Vacation[]> {
         const token: string | null = authStore.getState().token;
         const offset: number = (page - 1) * limit;
