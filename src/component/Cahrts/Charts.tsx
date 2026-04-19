@@ -1,10 +1,11 @@
-import {Chart as ChartsJS, defaults} from 'chart.js/auto';
+import {Chart as ChartsJS, Color, defaults} from 'chart.js/auto';
 import {Radar, Line, Bar, Doughnut, Pie} from 'react-chartjs-2';
 import {data} from "react-router-dom";
 import {vacationStore} from '../../state/vacation-state';
 import "./Charts.css";
 import {useEffect, useState} from "react";
 import {Follower} from "../../models/follower.model";
+import {Vacation} from "../../models/vacation.model";
 import {followersStore} from "../../state/followers-state";
 import {followersService} from "../../services/followers-service";
 
@@ -12,8 +13,13 @@ import {followersService} from "../../services/followers-service";
 
 function Charts() {
     const [followersList, setFollowersList] = useState<Follower[]>(followersStore.getState().followersList);
+    const [vacationList, setVacationList] = useState<Vacation[]>([]);
+    const [colors, setColors] = useState<Color[]>([]);
 
     useEffect(() => {
+        const unSubscribeVacations = vacationStore.subscribe(() => {
+            setVacationList(vacationStore.getState().vacationList)
+        })
         followersService.getFollowersList();
 
         const unSubscribeFollowers = followersStore.subscribe((): void => {
@@ -22,8 +28,11 @@ function Charts() {
 
         return () => {
             unSubscribeFollowers();
+            unSubscribeVacations();
         }
-    })
+    });
+
+
     return (
         <div className="Charts-container">
            {/*<Bar*/}
