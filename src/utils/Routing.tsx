@@ -8,6 +8,8 @@ import AdminForm from "../component/AdminForm/AdminForm";
 import PrivateRouteAdmin from "../component/PrivateRouteAdmin";
 import ConformationRoute from "../component/ConformationRoute/ConformationRoute";
 import HomePage from "../component/HomePage/HomePage";
+import {Chart} from "react-chartjs-2";
+import Charts from "../component/Cahrts/Charts";
 
 
 
@@ -18,6 +20,7 @@ function Routing(): JSX.Element {
             <Route path="/login-form" element={<LoginForm />}/>
             <Route path="/home" element={<HomePage />}/>
             <Route path="/admin-form/update/:id" element={<PrivateRouteAdmin child={<AdminForm key="update"/>}/>}/>
+            <Route path="/charts" element={<PrivateRouteAdmin child={<Charts/>}/>}/>
             <Route path="/admin-form/add-vacation" element={<PrivateRouteAdmin child={<AdminForm key="add" />}/>}/>
             <Route path="/conformation-route" element={<PrivateRouteAdmin child={<ConformationRoute/>}/>}/>
             <Route path="/vacations" element={<PrivateRoute child={<VacationLIst/>}/>}/>
