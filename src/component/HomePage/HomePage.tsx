@@ -10,22 +10,6 @@ function HomePage() {
                 emphasizes sustainability and meaningful local connections, ensuring responsible travel while helping
                 clients discover the authentic beauty and spirit of every destination.
             </p>
-            {/*<div className="travel-bg">*/}
-            {/*    <div className="cloud cloud1"></div>*/}
-            {/*    <div className="cloud cloud2"></div>*/}
-            {/*    <div className="cloud cloud3"></div>*/}
-            {/*</div>*/}
-
-            {/*<div className="travel-bg">*/}
-            {/*    <div className="sky">*/}
-            {/*        <div className="plane"></div>*/}
-            {/*    </div>*/}
-
-            {/*    <div className="sea">*/}
-            {/*        <div className="boat"></div>*/}
-            {/*    </div>*/}
-            {/*</div>*/}
-
             <div className="travel-bg">
                 <div className="sky">
                     <div className="sun"></div>

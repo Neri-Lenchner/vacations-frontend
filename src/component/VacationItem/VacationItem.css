@@ -78,7 +78,7 @@
     top: 10px;
     font-size: 14px;
     height: 30px;
-    width: 80px;
+    width: 90px;
     padding: 10px 5px;
     /*background-color: lightgray;*/
     border: none;
@@ -139,7 +139,7 @@
     /*background-color: lightgray;*/
     /*background-color: rgba(0, 0, 0, 0.5);*/
     /*background: rgba(0,0,0,0.1);*/
-    color: gray;
+    color: lightgray;
     /*box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.2), 0 2px 8px 0 rgba(0, 0, 0, 0.19);*/
     /*box-shadow: 0 0 20px 0 black;*/
 }
@@ -149,7 +149,8 @@
     /*background: rgba(0,0,0,0.1);*/
     /*background: rgba(0, 123, 255, 0.5);*/
     /*background: rgba(255, 235, 59, 0.1);*/
-    background: rgba(0,0,0,0.6);
+    /*background: rgba(0,0,0,0.6);*/
+    background: rgba(0, 0, 139, 0.9);
     box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.2), 0 2px 8px 0 rgba(0, 0, 0, 0.19);
 }
 
