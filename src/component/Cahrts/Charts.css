@@ -1,0 +1,5 @@
+.Charts-container {
+    position: fixed;
+    height: calc(100vh - 20vh);
+    width: 100vw;
+}
