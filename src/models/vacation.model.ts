@@ -6,6 +6,7 @@ export class Vacation {
         public startDate: string,
         public endDate: string,
         public cost : number,
+        public followers: number = 0,
         public imageName?: string,
         public id?: number
         ) { }
