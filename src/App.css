@@ -17,6 +17,7 @@ html, body {
 
 header {
     height: 20vh;
+    min-height: 145px;
     width: 100%;
 }
 

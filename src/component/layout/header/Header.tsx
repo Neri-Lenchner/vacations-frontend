@@ -117,8 +117,10 @@ function Header(): JSX.Element {
                 </div>
             }
             <div className="header-site-name">
-               TraveLentz<GiAirplaneDeparture className="header-icon"/>
+               TraveLentz
+                {/*<GiAirplaneDeparture className="header-icon"/>*/}
             </div>
+            <img src="/plain-image-no-background.png" className="header-plain-image" />
         </div>
     );
 }
