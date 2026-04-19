@@ -31,12 +31,29 @@ function Charts() {
            {/*         labels: vacationStore.getState().vacationList.map(vacation => vacation.destination),*/}
            {/*         datasets: [*/}
            {/*             {*/}
-           {/*                 label: "Vacations",*/}
-           {/*                 data: vacationStore.getState().vacationList.map(vacation => vacation.destination)*/}
+           {/*                 label: "Vacations destinations",*/}
+           {/*                 data: vacationStore.getState().vacationList.map(vacation => {*/}
+           {/*                     followersStore.getState().followersList.map(follower => follower.vacationId === vacation.id);*/}
+           {/*                     }*/}
+           {/*                 )*/}
            {/*             }*/}
            {/*         ]*/}
            {/*     }}*/}
            {/*/>*/}
+
+            <Bar
+                data={{
+                    labels: vacationStore.getState().vacationList.map(v => v.destination),
+                    datasets: [
+                        {
+                            label: "Followers per vacation",
+                            data: vacationStore.getState().vacationList.map(vacation =>
+                                followersList.filter(f => f.vacationId === vacation.id).length
+                            )
+                        }
+                    ]
+                }}
+            />
         </div>
     );
 }
