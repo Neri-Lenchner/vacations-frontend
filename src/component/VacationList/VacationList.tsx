@@ -28,8 +28,8 @@ function VacationList(): JSX.Element {
 
 
     useEffect(() => {
-                vacationService.fetchData(1);
-                followersService.getFollowersList();
+                void vacationService.fetchData(1);
+                void followersService.getFollowersList();
 
                 const unSubscribeVacations = vacationStore.subscribe((): void => {
                         setTotalVacations(vacationStore.getState().totalVacations);

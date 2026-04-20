@@ -80,6 +80,7 @@ import { Follower } from "../../models/follower.model";
 import { Vacation } from "../../models/vacation.model";
 import { followersStore } from "../../state/followers-state";
 import {vacationService} from "../../services/vacation-service";
+import {followersService} from "../../services/followers-service";
 
 function Charts() {
 
@@ -94,6 +95,7 @@ function Charts() {
     useEffect(() => {
 
         void vacationService.getAllVacations();
+        if (!followersStore.getState().followersList.length) void followersService.getFollowersList();
         const unSubscribeVacations = vacationStore.subscribe((): void => {
             setVacationList(vacationStore.getState().vacationList);
         });
@@ -123,7 +125,7 @@ function Charts() {
                     labels: vacationList.map(vacation => vacation.destination),
                     datasets: [
                         {
-                            label: "Followers per vacation",
+                            label: "Followers Map",
                             data: vacationList.map(vacation =>
                                 followersList.filter(follower => follower.vacationId === vacation.id).length
                             ),
