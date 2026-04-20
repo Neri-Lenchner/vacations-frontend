@@ -137,6 +137,10 @@ function Charts() {
                         }
                     ]
                 }}
+                options={{
+                    responsive: true,
+                    maintainAspectRatio: false // 👈 THIS is the missing piece
+                }}
             />
         </div>
     );
