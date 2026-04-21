@@ -12,14 +12,14 @@ function Charts() {
         followersStore.getState().followersList
     );
 
-    const [followersVacationIdList, setFollowersVacationIdList] = useState<VacationDestinationIdModel[]>(
-        followersStore.getState().followersVacationIdList
+    const [vacationDestinationIdList, setFollowersVacationIdList] = useState<VacationDestinationIdModel[]>(
+        followersStore.getState().vacationDestinationIdList
     );
 
     useEffect(() => {
 
         void followersService.getFollowersVacationIdList();
-        if (!followersStore.getState().followersVacationIdList.length) void followersService.getFollowersVacationIdList();
+        if (!followersStore.getState().vacationDestinationIdList.length) void followersService.getFollowersVacationIdList();
         if (!followersStore.getState().followersList.length) void followersService.getFollowersList();
 
         const unSubscribeFollowers = followersStore.subscribe((): void => {
@@ -27,7 +27,7 @@ function Charts() {
         });
 
         const unSubscribeFollowersVacationIdList = followersStore.subscribe((): void => {
-            setFollowersVacationIdList(followersStore.getState().followersVacationIdList);
+            setFollowersVacationIdList(followersStore.getState().vacationDestinationIdList);
         });
 
         return (): void => {
@@ -38,7 +38,7 @@ function Charts() {
     }, []);
 
 
-    if (!followersVacationIdList.length) {
+    if (!vacationDestinationIdList.length) {
         return <div className="Charts-container">Loading...</div>;
     }
 
@@ -46,16 +46,16 @@ function Charts() {
         <div className="Charts-container">
             <Bar
                 data={{
-                    labels: followersVacationIdList.map(vacation => vacation.vacationDestination),
+                    labels: vacationDestinationIdList.map(vacation => vacation.vacationDestination),
                     datasets: [
                         {
                             label: "Followers Map",
-                            data: followersVacationIdList.map(vacation =>
+                            data: vacationDestinationIdList.map(vacation =>
                                 followersList.filter(follower => follower.vacationId === vacation.vacationId).length
                             ),
-                            // backgroundColor: followersVacationIdList.map(() => `hsl(${Math.random() * 360}, 65%, 55%)`),
-                            backgroundColor: followersVacationIdList.map((_vacation, i): string => {
-                                const hue: number = (i * 360) / followersVacationIdList.length;
+                            // backgroundColor: vacationDestinationIdList.map(() => `hsl(${Math.random() * 360}, 65%, 55%)`),
+                            backgroundColor: vacationDestinationIdList.map((_vacation, i): string => {
+                                const hue: number = (i * 360) / vacationDestinationIdList.length;
                                 return `hsl(${hue}, 65%, 55%)`;
                             }),
                             borderWidth: 1

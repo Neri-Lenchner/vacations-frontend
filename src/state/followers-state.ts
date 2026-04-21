@@ -8,12 +8,12 @@ import {VacationDestinationIdModel} from "../models/vacation-destinationId.model
 
 export class FollowersState {
     followersList: Follower[] = [];
-    followersVacationIdList: VacationDestinationIdModel[] = [];
+    vacationDestinationIdList: VacationDestinationIdModel[] = [];
 }
 
 export enum FollowerActionType {
     GetFollowersList = "GetFollowersList",
-    GetFollowersIdList = "GetFollowersIdList",
+    GetVacationDestinationIdList = "GetVacationDestinationIdList",
     AddFollower = "AddFollower",
     // UpdateUser = "UpdateUser",
     DeleteFollower = "DeleteFollower",
@@ -33,8 +33,8 @@ export function followersReducer(followersState: FollowersState = new FollowersS
         case FollowerActionType.GetFollowersList:
             newState.followersList = action.payload;
             break;
-        case FollowerActionType.GetFollowersIdList:
-            newState.followersVacationIdList = action.payload;
+        case FollowerActionType.GetVacationDestinationIdList:
+            newState.vacationDestinationIdList = action.payload;
             break;
         case FollowerActionType.AddFollower:
             newState.followersList.push(action.payload);
