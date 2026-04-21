@@ -29,19 +29,9 @@ function PrivateRouteAdmin(privateRoutePropsAdmin: PrivateRoutePropsAdmin): JSX.
         return () => unsubscribe();
     }, [])
 
-
-    if (!user) {
+    if (!user || !user?.isAdmin) {
         return (<Navigate to="/login-form" />);
     }
-
-    if (!user?.isAdmin) {
-        return (<Navigate to="/login-form" />);
-    }
-
-
-    // if (!privateRouteProps.permissionIdList.includes(authStore.getState().user!.roleId)) {
-    //     return (<Navigate to="/" />);
-    // }
 
     return (
         <>{privateRoutePropsAdmin.child}</>

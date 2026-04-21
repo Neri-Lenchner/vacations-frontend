@@ -111,8 +111,7 @@ function VacationList(): JSX.Element {
                 await vacationService.fetchData(1);
                 // const today: Date = new Date();
                 const activeList: Vacation[] = await vacationService.getActiveVacations();
-                const sortedList: Vacation[] = activeList.sort((a, b): number => new Date(a.startDate).
-                getTime() - new Date(b.startDate).getTime());
+                const sortedList: Vacation[] = activeList.sort((a, b): number => new Date(a.startDate).getTime() - new Date(b.startDate).getTime());
                 setCurrentList(sortedList);
                 setPage(sortedList.slice(0, 10));
                 setTotalVacations(sortedList.length);
@@ -133,7 +132,7 @@ function VacationList(): JSX.Element {
             const endIndex: number = startIndex + 10;
             setPage(currentList.slice(startIndex, endIndex));
         } else {
-            vacationService.fetchPage(pageNumber);
+            void vacationService.fetchPage(pageNumber);
         }
     }
 
@@ -191,9 +190,9 @@ function VacationList(): JSX.Element {
                 ))}
                 {isDelete
                     ? <ConfirmationWindow
-                    setIsDelete={setIsDelete}
-                    vacationId={vacationId}
-                    />
+                        setIsDelete={setIsDelete}
+                        vacationId={vacationId}
+                        />
                     : <div></div>}
             </div>
             <Pagination

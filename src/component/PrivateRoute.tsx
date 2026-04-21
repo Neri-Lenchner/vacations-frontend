@@ -10,7 +10,6 @@ interface PrivateRouteProps {
 
 function PrivateRoute(privateRouteProps: PrivateRouteProps): JSX.Element {
 
-
     const [user, setUser] = useState<User | null>(
         authStore.getState().user
             ? authStore.getState().user
@@ -26,22 +25,12 @@ function PrivateRoute(privateRouteProps: PrivateRouteProps): JSX.Element {
                 setUser(null);
             }
         });
-        return () => unsubscribe();
+        return (): void => unsubscribe();
     }, [])
-
 
     if (!user) {
         return (<Navigate to="/home" />);
     }
-
-    if (user?.isAdmin) {
-
-    }
-
-
-    // if (!privateRouteProps.permissionIdList.includes(authStore.getState().user!.roleId)) {
-    //     return (<Navigate to="/" />);
-    // }
 
     return (
         <>{privateRouteProps.child}</>
