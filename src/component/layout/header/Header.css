@@ -122,4 +122,18 @@
     height: 150px;
 }
 
+.header-ship-image {
+    position: absolute;
+    top: -30px;
+    left: 30%;
+    height: 250px;
+    z-index: -1;
+}
 
+.header-balloon-image {
+    position: absolute;
+    top: 0;
+    left: 65%;
+    height: 100px;
+    z-index: -1;
+}

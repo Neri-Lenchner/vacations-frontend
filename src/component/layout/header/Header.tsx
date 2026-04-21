@@ -113,6 +113,8 @@ function Header(): JSX.Element {
                TraveLentz
             </div>
             <img src="/plain-image-no-background.png" className="header-plain-image" />
+            <img src="/ship-image-no-background.png" className="header-ship-image" />
+            <img src="/balloon-image-no-background.png" className="header-balloon-image" />
         </div>
     );
 }
