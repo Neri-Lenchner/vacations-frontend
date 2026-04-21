@@ -3,7 +3,7 @@ import {Follower} from '../models/follower.model';
 import {User} from "../models/user.model";
 import {appConfig} from "../utils/app-config";
 import {authStore} from "../state/auth-state";
-import {vacationStore} from "../state/vacation-state";
+import {vacationStore, VacationActionType} from "../state/vacation-state";
 import {UserActionType, userStore} from "../state/user-state";
 import {FollowerActionType, followersStore} from "../state/followers-state";
 import {VacationDestinationIdModel} from "../models/vacation-destinationId.model";
@@ -19,8 +19,8 @@ class FollowerService {
     public async getFollowersVacationIdList(): Promise<VacationDestinationIdModel[]> {
         const response = await axios.get<VacationDestinationIdModel[]>(
             appConfig.apiAddress + "vacations/followers/id-list", {headers: {Authorization: "Bearer " + authStore.getState().token}});
-        followersStore.dispatch({type: FollowerActionType.GetVacationDestinationIdList, payload: response.data});
-        return followersStore.getState().vacationDestinationIdList;
+        vacationStore.dispatch({type: VacationActionType.GetVacationDestinationIdList, payload: response.data});
+        return vacationStore.getState().vacationDestinationIdList;
     }
 
     public async getFollowersListById(id: number): Promise<Follower[]> {

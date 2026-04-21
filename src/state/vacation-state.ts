@@ -1,18 +1,22 @@
 import {Vacation} from "../models/vacation.model";
 import {jwtDecode} from "jwt-decode";
 import {createStore} from "redux";
+import {FollowerActionType} from "./followers-state";
+import {VacationDestinationIdModel} from "../models/vacation-destinationId.model";
 
 
 export class VacationState {
     vacationList: Vacation[] = [];
     selectedVacation: Vacation | null = null;
     totalVacations: number = 0;
+    vacationDestinationIdList: VacationDestinationIdModel[] = [];
 }
 
 export enum VacationActionType {
     GetVacationList = "GetVacationList",
     GetTotalVacations = "GetTotalVacations",
     GetSelectedVacation = "GetSelectedVacation",
+    GetVacationDestinationIdList = "GetVacationDestinationIdList",
     AddVacation = "AddVacation",
     UpdateVacation = "UpdateVacation",
     DeleteVacation = "DeleteVacation",
@@ -37,6 +41,9 @@ export function vacationReducer(vacationState: VacationState = new VacationState
             break;
         case VacationActionType.GetSelectedVacation:
             newState.selectedVacation = action.payload;
+            break;
+        case VacationActionType.GetVacationDestinationIdList:
+            newState.vacationDestinationIdList = action.payload;
             break;
         case VacationActionType.AddVacation:
             newState.vacationList.push(action.payload);

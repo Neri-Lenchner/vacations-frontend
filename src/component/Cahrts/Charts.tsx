@@ -5,6 +5,7 @@ import { Follower } from "../../models/follower.model";
 import { followersStore } from "../../state/followers-state";
 import {followersService} from "../../services/followers-service";
 import {VacationDestinationIdModel} from "../../models/vacation-destinationId.model";
+import {vacationStore} from "../../state/vacation-state";
 
 function Charts() {
 
@@ -13,21 +14,20 @@ function Charts() {
     );
 
     const [vacationDestinationIdList, setVacationDestinationIdList] = useState<VacationDestinationIdModel[]>(
-        followersStore.getState().vacationDestinationIdList
+        vacationStore.getState().vacationDestinationIdList
     );
 
     useEffect(() => {
 
-        void followersService.getFollowersVacationIdList();
-        if (!followersStore.getState().vacationDestinationIdList.length) void followersService.getFollowersVacationIdList();
+        if (!vacationStore.getState().vacationDestinationIdList.length) void followersService.getFollowersVacationIdList();
         if (!followersStore.getState().followersList.length) void followersService.getFollowersList();
 
         const unSubscribeFollowers = followersStore.subscribe((): void => {
             setFollowersList(followersStore.getState().followersList);
         });
 
-        const unSubscribeFollowersVacationIdList = followersStore.subscribe((): void => {
-            setVacationDestinationIdList(followersStore.getState().vacationDestinationIdList);
+        const unSubscribeFollowersVacationIdList = vacationStore.subscribe((): void => {
+            setVacationDestinationIdList(vacationStore.getState().vacationDestinationIdList);
         });
 
         return (): void => {

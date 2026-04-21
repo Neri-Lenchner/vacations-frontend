@@ -2,18 +2,16 @@ import {User} from "../models/user.model";
 import {jwtDecode} from "jwt-decode";
 import {createStore} from "redux";
 import {Follower} from "../models/follower.model";
-import {VacationDestinationIdModel} from "../models/vacation-destinationId.model";
+
 
 
 
 export class FollowersState {
     followersList: Follower[] = [];
-    vacationDestinationIdList: VacationDestinationIdModel[] = [];
 }
 
 export enum FollowerActionType {
     GetFollowersList = "GetFollowersList",
-    GetVacationDestinationIdList = "GetVacationDestinationIdList",
     AddFollower = "AddFollower",
     // UpdateUser = "UpdateUser",
     DeleteFollower = "DeleteFollower",
@@ -32,9 +30,6 @@ export function followersReducer(followersState: FollowersState = new FollowersS
     switch (action.type) {
         case FollowerActionType.GetFollowersList:
             newState.followersList = action.payload;
-            break;
-        case FollowerActionType.GetVacationDestinationIdList:
-            newState.vacationDestinationIdList = action.payload;
             break;
         case FollowerActionType.AddFollower:
             newState.followersList.push(action.payload);
