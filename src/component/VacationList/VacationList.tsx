@@ -1,4 +1,4 @@
-import {JSX,useEffect, useState} from "react";
+import React, {JSX,useEffect, useState} from "react";
 import {Vacation} from '../../models/vacation.model';
 import {vacationStore} from '../../state/vacation-state';
 import {followersStore} from "../../state/followers-state";
