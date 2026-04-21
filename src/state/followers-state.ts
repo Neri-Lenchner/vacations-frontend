@@ -7,10 +7,12 @@ import {Follower} from "../models/follower.model";
 
 export class FollowersState {
     followersList: Follower[] = [];
+    followersIdList: number[] = [];
 }
 
 export enum FollowerActionType {
     GetFollowersList = "GetFollowersList",
+    GetFollowersIdList = "GetFollowersIdList",
     AddFollower = "AddFollower",
     // UpdateUser = "UpdateUser",
     DeleteFollower = "DeleteFollower",
@@ -29,6 +31,9 @@ export function followersReducer(followersState: FollowersState = new FollowersS
     switch (action.type) {
         case FollowerActionType.GetFollowersList:
             newState.followersList = action.payload;
+            break;
+        case FollowerActionType.GetFollowersIdList:
+            newState.followersIdList = action.payload;
             break;
         case FollowerActionType.AddFollower:
             newState.followersList.push(action.payload);
