@@ -2,12 +2,13 @@ import {User} from "../models/user.model";
 import {jwtDecode} from "jwt-decode";
 import {createStore} from "redux";
 import {Follower} from "../models/follower.model";
+import {VacationDestinationIdModel} from "../models/vacation-destinationId.model";
 
 
 
 export class FollowersState {
     followersList: Follower[] = [];
-    followersVacationIdList: number[] = [];
+    followersVacationIdList: VacationDestinationIdModel[] = [];
 }
 
 export enum FollowerActionType {

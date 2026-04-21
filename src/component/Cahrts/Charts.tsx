@@ -1,77 +1,3 @@
-// import {Chart as ChartsJS, Color, defaults} from 'chart.js/auto';
-// import {Radar, Line, Bar, Doughnut, Pie} from 'react-chartjs-2';
-// import {data} from "react-router-dom";
-// import {vacationStore} from '../../state/vacation-state';
-// import "./Charts.css";
-// import {useEffect, useState} from "react";
-// import {Follower} from "../../models/follower.model";
-// import {Vacation} from "../../models/vacation.model";
-// import {followersStore} from "../../state/followers-state";
-// import {followersService} from "../../services/followers-service";
-//
-//
-//
-// function Charts() {
-//     const [followersList, setFollowersList] = useState<Follower[]>(followersStore.getState().followersList);
-//     const [vacationList, setVacationList] = useState<Vacation[]>([]);
-//     const [colors, setColors] = useState<Color[]>([]);
-//
-//     useEffect(() => {
-//         const unSubscribeVacations = vacationStore.subscribe(() => {
-//             setVacationList(vacationStore.getState().vacationList)
-//         })
-//         followersService.getFollowersList();
-//
-//         const unSubscribeFollowers = followersStore.subscribe((): void => {
-//             setFollowersList(followersStore.getState().followersList);
-//         });
-//
-//         return () => {
-//             unSubscribeFollowers();
-//             unSubscribeVacations();
-//         }
-//     });
-//
-//
-//     return (
-//         <div className="Charts-container">
-//            {/*<Bar*/}
-//            {/*     data={{*/}
-//            {/*         labels: vacationStore.getState().vacationList.map(vacation => vacation.destination),*/}
-//            {/*         datasets: [*/}
-//            {/*             {*/}
-//            {/*                 label: "Vacations destinations",*/}
-//            {/*                 data: vacationStore.getState().vacationList.map(vacation => {*/}
-//            {/*                     followersStore.getState().followersList.map(follower => follower.vacationId === vacation.id);*/}
-//            {/*                     }*/}
-//            {/*                 )*/}
-//            {/*             }*/}
-//            {/*         ]*/}
-//            {/*     }}*/}
-//            {/*/>*/}
-//
-//             <Bar
-//                 data={{
-//                     labels: vacationStore.getState().vacationList.map(v => v.destination),
-//                     datasets: [
-//                         {
-//                             label: "Followers per vacation",
-//                             data: vacationStore.getState().vacationList.map(vacation =>
-//                                 followersList.filter(f => f.vacationId === vacation.id).length
-//                             )
-//                         }
-//                     ]
-//                 }}
-//             />
-//         </div>
-//     );
-// }
-//
-// export default Charts;
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 import { Bar } from 'react-chartjs-2';
 import { vacationStore } from '../../state/vacation-state';
 import "./Charts.css";
@@ -81,6 +7,7 @@ import { Vacation } from "../../models/vacation.model";
 import { followersStore } from "../../state/followers-state";
 import {vacationService} from "../../services/vacation-service";
 import {followersService} from "../../services/followers-service";
+import {VacationDestinationIdModel} from "../../models/vacation-destinationId.model";
 
 function Charts() {
 
@@ -88,24 +15,24 @@ function Charts() {
         followersStore.getState().followersList
     );
 
-    const [followersVacationIdList, setFollowersVacationIdList] = useState<number[]>(
+    const [followersVacationIdList, setFollowersVacationIdList] = useState<VacationDestinationIdModel[]>(
         followersStore.getState().followersVacationIdList
     );
 
-    const [vacationList, setVacationList] = useState<Vacation[]>(
-        vacationStore.getState().vacationList
-    );
+    // const [vacationList, setVacationList] = useState<Vacation[]>(
+    //     vacationStore.getState().vacationList
+    // );
 
     useEffect(() => {
 
-        void vacationService.getAllVacations();
-        void followersService.followersVacationIdList();
-        if (!followersStore.getState().followersVacationIdList.length) void followersService.followersVacationIdList();
+        // void vacationService.getAllVacations();
+        void followersService.getFollowersVacationIdList();
+        if (!followersStore.getState().followersVacationIdList.length) void followersService.getFollowersVacationIdList();
         if (!followersStore.getState().followersList.length) void followersService.getFollowersList();
 
-        const unSubscribeVacations = vacationStore.subscribe((): void => {
-            setVacationList(vacationStore.getState().vacationList);
-        });
+        // const unSubscribeVacations = vacationStore.subscribe((): void => {
+        //     setVacationList(vacationStore.getState().vacationList);
+        // });
 
 
         // vacationService.getAllVacations();
@@ -120,14 +47,14 @@ function Charts() {
 
         return (): void => {
             unSubscribeFollowers();
-            unSubscribeVacations();
+            // unSubscribeVacations();
             unSubscribeFollowersVacationIdList();
         };
 
     }, []);
 
 
-    if (!vacationList.length) {
+    if (!followersVacationIdList.length) {
         return <div className="Charts-container">Loading...</div>;
     }
 
@@ -136,20 +63,16 @@ function Charts() {
             <Bar
                 data={{
                     // labels: vacationList.map(vacation => vacation.destination),
-                    labels: followersVacationIdList.map(vacationId =>
-                        vacationList.find(v => v.id === vacationId)?.destination || 'Unknown'
-                    ),
+                    labels: followersVacationIdList.map(vacation => vacation.vacationDestination),
                     datasets: [
                         {
                             label: "Followers Map",
-                            // data: followersList.map(vacation =>
-                            //     followersList.filter(follower => follower.vacationId === vacation.id).length
-                            // ),
-                            data: followersVacationIdList.map(vacationId =>
-                                followersList.filter(follower => follower.vacationId === vacationId).length
+                            data: followersVacationIdList.map(vacation =>
+                                followersList.filter(follower => follower.vacationId === vacation.vacationId).length
                             ),
-                            backgroundColor: vacationList.map((_, i): string => {
-                                const hue: number = (i * 360) / vacationList.length;
+                            // backgroundColor: followersVacationIdList.map(() => `hsl(${Math.random() * 360}, 65%, 55%)`),
+                            backgroundColor: followersVacationIdList.map((_vacation, i): string => {
+                                const hue: number = (i * 360) / followersVacationIdList.length;
                                 return `hsl(${hue}, 65%, 55%)`;
                             }),
                             borderWidth: 1
