@@ -186,7 +186,7 @@ class VacationService {
         }
     }
 
-    public async getFollowersVacationAndIdList(): Promise<VacationDestinationIdModel[]> {
+    public async getVacatioDestenationAndIdList(): Promise<VacationDestinationIdModel[]> {
         const response = await axios.get<VacationDestinationIdModel[]>(
             appConfig.apiAddress + "vacations/destination-and-id-list", {headers: {Authorization: "Bearer " + authStore.getState().token}});
         vacationStore.dispatch({type: VacationActionType.GetVacationDestinationIdList, payload: response.data});
