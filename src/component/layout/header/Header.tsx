@@ -42,7 +42,6 @@ function Header(): JSX.Element {
         authStore.dispatch({
             type: AuthActionType.Logout, payload: ""
         });
-
     }
 
     function goHome(): void {
@@ -52,7 +51,6 @@ function Header(): JSX.Element {
     function navigateToLoginForm(): void {
         navigate('/login-form');
     }
-
 
     return (
         <div className="header">
@@ -91,22 +89,17 @@ function Header(): JSX.Element {
                                             Charts
                                         </NavLink>
                                     </>
-
-                                    :
-                                        <NavLink
-                                            className="header-button"
-                                            to="/vacations">
-                                            Vacations
-                                        </NavLink>
-
+                                    : <NavLink
+                                        className="header-button"
+                                        to="/vacations">
+                                        Vacations
+                                     </NavLink>
                                 }
                             </div>
                         </div>
                     </div>
-
                 </>
-                :
-                <div className="header-button-line-2">
+                : <div className="header-button-line-2">
                     <div
                         className="header-icon header-button"
                         onClick={goHome}>
@@ -118,7 +111,7 @@ function Header(): JSX.Element {
                         <RiLoginBoxFill  className="header-logout-icon"/>
                         Login
                     </button>
-                </div>
+                 </div>
             }
             <div className="header-site-name">
                TraveLentz

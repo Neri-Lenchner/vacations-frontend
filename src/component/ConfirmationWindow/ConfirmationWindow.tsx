@@ -10,12 +10,11 @@ interface ConfirmationWindowProps {
 function ConfirmationWindow(confirmationWindowProps: ConfirmationWindowProps): JSX.Element {
     let{setIsDelete, vacationId} = confirmationWindowProps;
 
-    function cancel() {
+    function cancel(): void {
         setIsDelete(false);
     }
 
-    async function confirmDeleteVacation() {
-        // await vacationService.deleteVacation(vacationId);
+    async function confirmDeleteVacation(): Promise<void> {
         console.log("vacation id:", vacationId, "was deleted successfully.");
         await vacationService.deleteVacation(vacationId!);
         setIsDelete(false);

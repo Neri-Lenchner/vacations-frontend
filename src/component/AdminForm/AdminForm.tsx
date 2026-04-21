@@ -39,7 +39,7 @@ function AdminForm(): JSX.Element {
     }, [params.id, reset]);
 
     async function addVacation(vacation: Vacation): Promise<void>{
-        const imageFile = fileInputRef.current?.files?.[0];
+        const imageFile: File | undefined = fileInputRef.current?.files?.[0];
         try {
             await vacationService.addVacation(vacation, imageFile);
             navigate("/vacations");
@@ -51,7 +51,7 @@ function AdminForm(): JSX.Element {
     }
 
     async function updateVacation(id: number, vacation: Vacation): Promise<void>{
-        const imageFile = fileInputRef.current?.files?.[0];
+        const imageFile: File | undefined = fileInputRef.current?.files?.[0];
         try {
             await vacationService.updateVacation(id, vacation, imageFile);
             navigate("/vacations");
