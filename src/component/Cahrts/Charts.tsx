@@ -1,11 +1,8 @@
 import { Bar } from 'react-chartjs-2';
-import { vacationStore } from '../../state/vacation-state';
 import "./Charts.css";
 import { useEffect, useState } from "react";
 import { Follower } from "../../models/follower.model";
-import { Vacation } from "../../models/vacation.model";
 import { followersStore } from "../../state/followers-state";
-import {vacationService} from "../../services/vacation-service";
 import {followersService} from "../../services/followers-service";
 import {VacationDestinationIdModel} from "../../models/vacation-destinationId.model";
 
@@ -19,23 +16,11 @@ function Charts() {
         followersStore.getState().followersVacationIdList
     );
 
-    // const [vacationList, setVacationList] = useState<Vacation[]>(
-    //     vacationStore.getState().vacationList
-    // );
-
     useEffect(() => {
 
-        // void vacationService.getAllVacations();
         void followersService.getFollowersVacationIdList();
         if (!followersStore.getState().followersVacationIdList.length) void followersService.getFollowersVacationIdList();
         if (!followersStore.getState().followersList.length) void followersService.getFollowersList();
-
-        // const unSubscribeVacations = vacationStore.subscribe((): void => {
-        //     setVacationList(vacationStore.getState().vacationList);
-        // });
-
-
-        // vacationService.getAllVacations();
 
         const unSubscribeFollowers = followersStore.subscribe((): void => {
             setFollowersList(followersStore.getState().followersList);
@@ -47,7 +32,6 @@ function Charts() {
 
         return (): void => {
             unSubscribeFollowers();
-            // unSubscribeVacations();
             unSubscribeFollowersVacationIdList();
         };
 
@@ -62,7 +46,6 @@ function Charts() {
         <div className="Charts-container">
             <Bar
                 data={{
-                    // labels: vacationList.map(vacation => vacation.destination),
                     labels: followersVacationIdList.map(vacation => vacation.vacationDestination),
                     datasets: [
                         {
@@ -81,7 +64,7 @@ function Charts() {
                 }}
                 options={{
                     responsive: true,
-                    maintainAspectRatio: false // 👈 THIS is the missing piece
+                    maintainAspectRatio: false
                 }}
             />
         </div>
