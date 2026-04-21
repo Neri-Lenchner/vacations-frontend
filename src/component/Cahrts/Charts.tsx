@@ -88,8 +88,8 @@ function Charts() {
         followersStore.getState().followersList
     );
 
-    const [followersIdList, setFollowersIdList] = useState<number[]>(
-        followersStore.getState().followersIdList
+    const [followersVacationIdList, setFollowersVacationIdList] = useState<number[]>(
+        followersStore.getState().followersVacationIdList
     );
 
     const [vacationList, setVacationList] = useState<Vacation[]>(
@@ -99,8 +99,8 @@ function Charts() {
     useEffect(() => {
 
         void vacationService.getAllVacations();
-        void followersService.getFollowersIdList();
-        if (!followersStore.getState().followersIdList.length) void followersService.getFollowersIdList();
+        void followersService.followersVacationIdList();
+        if (!followersStore.getState().followersVacationIdList.length) void followersService.followersVacationIdList();
         if (!followersStore.getState().followersList.length) void followersService.getFollowersList();
 
         const unSubscribeVacations = vacationStore.subscribe((): void => {
@@ -114,14 +114,14 @@ function Charts() {
             setFollowersList(followersStore.getState().followersList);
         });
 
-        const unSubscribeFollowersIdList = followersStore.subscribe((): void => {
-            setFollowersIdList(followersStore.getState().followersIdList);
+        const unSubscribeFollowersVacationIdList = followersStore.subscribe((): void => {
+            setFollowersVacationIdList(followersStore.getState().followersVacationIdList);
         });
 
         return (): void => {
             unSubscribeFollowers();
             unSubscribeVacations();
-            unSubscribeFollowersIdList();
+            unSubscribeFollowersVacationIdList();
         };
 
     }, []);
@@ -136,7 +136,7 @@ function Charts() {
             <Bar
                 data={{
                     // labels: vacationList.map(vacation => vacation.destination),
-                    labels: followersIdList.map(vacationId =>
+                    labels: followersVacationIdList.map(vacationId =>
                         vacationList.find(v => v.id === vacationId)?.destination || 'Unknown'
                     ),
                     datasets: [
@@ -145,7 +145,7 @@ function Charts() {
                             // data: followersList.map(vacation =>
                             //     followersList.filter(follower => follower.vacationId === vacation.id).length
                             // ),
-                            data: followersIdList.map(vacationId =>
+                            data: followersVacationIdList.map(vacationId =>
                                 followersList.filter(follower => follower.vacationId === vacationId).length
                             ),
                             backgroundColor: vacationList.map((_, i): string => {

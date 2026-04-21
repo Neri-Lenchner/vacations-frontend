@@ -7,7 +7,7 @@ import {Follower} from "../models/follower.model";
 
 export class FollowersState {
     followersList: Follower[] = [];
-    followersIdList: number[] = [];
+    followersVacationIdList: number[] = [];
 }
 
 export enum FollowerActionType {
@@ -33,7 +33,7 @@ export function followersReducer(followersState: FollowersState = new FollowersS
             newState.followersList = action.payload;
             break;
         case FollowerActionType.GetFollowersIdList:
-            newState.followersIdList = action.payload;
+            newState.followersVacationIdList = action.payload;
             break;
         case FollowerActionType.AddFollower:
             newState.followersList.push(action.payload);
