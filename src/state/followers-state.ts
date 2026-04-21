@@ -40,7 +40,7 @@ export function followersReducer(followersState: FollowersState = new FollowersS
             newState.followersList.push(action.payload);
             break;
         case FollowerActionType.DeleteFollower:
-            const indexToDelete = newState.followersList.findIndex((follower: Follower  ): boolean => follower.id === action.payload);
+            const indexToDelete: number = newState.followersList.findIndex((follower: Follower  ): boolean => follower.id === action.payload);
             newState.followersList.splice(indexToDelete, 1);
             break;
     }

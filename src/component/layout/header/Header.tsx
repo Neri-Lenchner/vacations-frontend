@@ -4,7 +4,6 @@ import {Unsubscribe} from 'redux';
 import {AuthActionType, authStore} from '../../../state/auth-state';
 import './Header.css';
 import {User} from '../../../models/user.model';
-import {GiAirplaneDeparture} from 'react-icons/gi';
 import { AiFillHome } from "react-icons/ai";
 import { RiLogoutBoxFill } from "react-icons/ri";
 import { RiLoginBoxFill } from "react-icons/ri";
@@ -25,7 +24,7 @@ function Header(): JSX.Element {
 
     useEffect((): Unsubscribe => {
         const unsubscribe: Unsubscribe = authStore.subscribe((): void => {
-            const currentUser = authStore.getState().user;
+            const currentUser: User | null = authStore.getState().user;
             if (currentUser !== null) {
                 console.log(currentUser?.firstName);
                 setUserName(`${currentUser?.firstName!} ${currentUser?.lastName}`);
@@ -35,7 +34,7 @@ function Header(): JSX.Element {
                 setUser(null);
             }
         });
-        return () => unsubscribe();
+        return (): void => unsubscribe();
     }, []);
 
     function logOut(): void {
@@ -123,7 +122,6 @@ function Header(): JSX.Element {
             }
             <div className="header-site-name">
                TraveLentz
-                {/*<GiAirplaneDeparture className="header-icon"/>*/}
             </div>
             <img src="/plain-image-no-background.png" className="header-plain-image" />
         </div>
@@ -131,6 +129,3 @@ function Header(): JSX.Element {
 }
 
 export default Header;
-
-// <input type="datetime-local"/>
-// <input file="datetime-local"/>
