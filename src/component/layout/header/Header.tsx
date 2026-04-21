@@ -9,14 +9,11 @@ import { RiLogoutBoxFill } from "react-icons/ri";
 import { RiLoginBoxFill } from "react-icons/ri";
 
 
-
-
 function Header(): JSX.Element {
-
     const navigate = useNavigate();
     const [userName, setUserName] = useState<string | undefined>(
         authStore.getState().token
-            ? (`${authStore.getState().user?.firstName!} ${authStore.getState().user?.lastName}` )
+            ? (`${authStore.getState().user?.firstName!} ${authStore.getState().user?.lastName}`)
             : undefined
     );
 
@@ -65,8 +62,7 @@ function Header(): JSX.Element {
                             <div className="header-button-line">
                                 <button
                                     onClick={logOut}
-                                    className="header-button"
-                                >
+                                    className="header-button">
                                     <RiLogoutBoxFill
                                     className="header-logout-icon"/>
                                     Logout

@@ -15,11 +15,11 @@ function Pagination(paginationProps: PaginationProps): JSX.Element {
     const limit: number = 10;
     const pages: number = Math.ceil(totalVacations / limit) || 1;
 
-    function changePage(page: number) {
+    function changePage(page: number): void {
         if (onPageChange) {
             onPageChange(page);
         } else {
-            vacationService.fetchPage(page);
+            void vacationService.fetchPage(page);
         }
     }
 

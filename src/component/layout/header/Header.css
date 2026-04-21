@@ -1,8 +1,4 @@
 .header {
-    /*background-image: url("../../../../public/Tropical-beach-at-sunrise-with-aircraft.png");*/
-    /*background-position: center 55%;*/
-    /*background-size: cover;*/
-    /*background-color: #181860;*/
     background: linear-gradient(90deg, #181860, #050535);
     height: 100%;
     display: flex;
@@ -27,8 +23,6 @@
     font-size: 70px;
     font-weight: bold;
     color: yellow;
-    /*text-shadow: yellow 1px 1px 1px;*/
-
 }
 
 .header-button-line,
@@ -70,10 +64,6 @@
     background-color: transparent;
     border: none;
     font-size: 20px;
-}
-
-.header-button-adding {
-
 }
 
 .header-button:hover {

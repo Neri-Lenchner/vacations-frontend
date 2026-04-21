@@ -21,7 +21,6 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
     let [isFollowing, setIsFollowing] = useState<boolean>(false);
     const [vacationFollowers, setVacationFollowers] = useState<Follower[]>([]);
     const navigate = useNavigate();
-
     let {vacation, followersList, user, isDelete, setIsDelete, setVacationId} = vacationItemProps;
 
     useEffect((): void => {
@@ -100,8 +99,7 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
                 {vacation.destination}
             </div>
             {user.isAdmin
-                ?
-                <div className="vacation-item-admin-clicks">
+                ? <div className="vacation-item-admin-clicks">
                     <div
                         className="vacation-item-admin-click-left"
                         onClick={navigateToAdminForm}>
@@ -112,19 +110,19 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
                        <span>&#128465;&#65038;</span> <div className="vacation-item-admin-click-right-delete">Delete</div>
                     </div>
                 </div>
-            : <div
+                : <div
                     onClick={like}
                     className={isFollowing
                         ? "vacation-item-likes-container vacation-item-isFollowing-true"
                         : "vacation-item-likes-container vacation-item-isFollowing-false"}>
-                    <div
-                        className="vacation-item-likes-container-content">
-                        {isFollowing
-                            ? "❤️"
-                            : "🩶"
-                        } Likes {vacationFollowers.length || 0}
-                    </div>
-                </div>
+                        <div
+                            className="vacation-item-likes-container-content">
+                            {isFollowing
+                                ? "❤️"
+                                : "🩶"
+                            } Likes {vacationFollowers.length || 0}
+                        </div>
+                  </div>
             }
         </div>
     );

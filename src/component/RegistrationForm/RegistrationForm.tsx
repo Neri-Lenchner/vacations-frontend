@@ -9,15 +9,13 @@ import {useNavigate} from "react-router-dom";
 
 function RegistrationForm(): JSX.Element {
 
-    const {register, watch, formState, handleSubmit, reset, setValue } = useForm<User>();
+    const {register, formState, handleSubmit, reset} = useForm<User>();
     const navigate = useNavigate();
 
-    async function registerUser(user: User) {
-
+    async function registerUser(user: User): Promise<void> {
         try {
-                user.isAdmin = false;
-                await authService.register(user);
-
+            user.isAdmin = false;
+            await authService.register(user);
             reset();
             navigate("/vacations");
         }
@@ -71,7 +69,6 @@ function RegistrationForm(): JSX.Element {
                 <NavLink className="form-bottom-message form-link" to="/login-form">login</NavLink>
             </div>
         </form>
-
     );
 }
 

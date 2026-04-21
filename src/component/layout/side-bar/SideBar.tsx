@@ -7,13 +7,11 @@ function SideBar(): JSX.Element {
     return (
         <div className="sidebar">
           <div className="sidebar-links">
-              {/*<NavLink to="/registration-form">Register</NavLink>*/}
               <NavLink to="/login-form">Login</NavLink>
               <NavLink to="/vacations">Vacations</NavLink>
               <NavLink to="/">Link</NavLink>
               <NavLink to="/">Link</NavLink>
               <NavLink to="/">Link</NavLink>
-
           </div>
         </div>
     );
