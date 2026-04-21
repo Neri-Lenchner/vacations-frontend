@@ -12,7 +12,7 @@ function Charts() {
         followersStore.getState().followersList
     );
 
-    const [vacationDestinationIdList, setFollowersVacationIdList] = useState<VacationDestinationIdModel[]>(
+    const [vacationDestinationIdList, setVacationDestinationIdList] = useState<VacationDestinationIdModel[]>(
         followersStore.getState().vacationDestinationIdList
     );
 
@@ -27,7 +27,7 @@ function Charts() {
         });
 
         const unSubscribeFollowersVacationIdList = followersStore.subscribe((): void => {
-            setFollowersVacationIdList(followersStore.getState().vacationDestinationIdList);
+            setVacationDestinationIdList(followersStore.getState().vacationDestinationIdList);
         });
 
         return (): void => {
