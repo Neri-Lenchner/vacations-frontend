@@ -9,7 +9,7 @@ export class VacationState {
     vacationList: Vacation[] = [];
     selectedVacation: Vacation | null = null;
     totalVacations: number = 0;
-    vacationDestinationIdList: VacationDestinationIdModel[] = [];
+    vacationDestinationAndIdList: VacationDestinationIdModel[] = [];
 }
 
 export enum VacationActionType {
@@ -43,7 +43,7 @@ export function vacationReducer(vacationState: VacationState = new VacationState
             newState.selectedVacation = action.payload;
             break;
         case VacationActionType.GetVacationDestinationIdList:
-            newState.vacationDestinationIdList = action.payload;
+            newState.vacationDestinationAndIdList = action.payload;
             break;
         case VacationActionType.AddVacation:
             newState.vacationList.push(action.payload);

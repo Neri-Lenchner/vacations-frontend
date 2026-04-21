@@ -3,6 +3,7 @@ import {Vacation} from "../models/vacation.model";
 import {appConfig} from "../utils/app-config";
 import {authStore} from "../state/auth-state";
 import {VacationActionType, vacationStore} from "../state/vacation-state";
+import {VacationDestinationIdModel} from "../models/vacation-destinationId.model";
 
 class VacationService {
 
@@ -185,6 +186,12 @@ class VacationService {
         }
     }
 
+    public async getFollowersVacationAndIdList(): Promise<VacationDestinationIdModel[]> {
+        const response = await axios.get<VacationDestinationIdModel[]>(
+            appConfig.apiAddress + "vacations/destination-and-id-list", {headers: {Authorization: "Bearer " + authStore.getState().token}});
+        vacationStore.dispatch({type: VacationActionType.GetVacationDestinationIdList, payload: response.data});
+        return vacationStore.getState().vacationDestinationAndIdList;
+    }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
