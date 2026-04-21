@@ -20,20 +20,20 @@ function Charts() {
 
     useEffect(() => {
 
-        if (!vacationStore.getState().vacationDestinationAndIdList.length) void vacationService.getVacatioDestenationAndIdList();
+        void vacationService.getVacatioDestenationAndIdList();
         if (!followersStore.getState().followersList.length) void followersService.getFollowersList();
 
         const unSubscribeFollowers = followersStore.subscribe((): void => {
             setFollowersList(followersStore.getState().followersList);
         });
 
-        const unSubscribeFollowersVacationIdList = vacationStore.subscribe((): void => {
+        const unSubscribeVacationIdList = vacationStore.subscribe((): void => {
             setVacationDestinationIdList(vacationStore.getState().vacationDestinationAndIdList);
         });
 
         return (): void => {
             unSubscribeFollowers();
-            unSubscribeFollowersVacationIdList();
+            unSubscribeVacationIdList();
         };
 
     }, []);
