@@ -54,18 +54,16 @@
     opacity: 0.8;
 }
 
-/* ✈️ Plane (SVG-like shape) */
+/* 🎈 Balloon */
 .plane {
     position: absolute;
     top: 45%;
     left: -120px;
     width: 80px;
-    height: 30px;
-    background: #ffffff;
-    clip-path: polygon(
-            0% 55%, 55% 55%, 70% 35%, 100% 55%,
-            70% 75%, 55% 55%
-    );
+    height: 80px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
     animation: fly 30s linear infinite;
 }
@@ -117,39 +115,18 @@
 }
 
 
-/* 🚤 Boat */
+/* 🚤 Ship */
 .boat {
     position: absolute;
     bottom: 35px;
-    left: 20%;
-    width: 90px;
-    height: 40px;
-    background: linear-gradient(to bottom, #ffffff, #dcdcdc);
-    border-radius: 0 0 40px 40px;
-    animation: boatFloat 4s ease-in-out infinite;
-}
-
-/* sail */
-.boat::before {
-    content: "";
-    position: absolute;
-    left: 35px;
-    bottom: 40px;
-    border-left: 18px solid transparent;
-    border-right: 18px solid transparent;
-    border-bottom: 45px solid white;
+    right: 50px;
+    width: 250px;
+    height: 220px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     filter: drop-shadow(0 2px 2px rgba(0,0,0,0.2));
-}
-
-/* mast */
-.boat::after {
-    content: "";
-    position: absolute;
-    left: 43px;
-    bottom: 40px;
-    width: 3px;
-    height: 45px;
-    background: #999;
+    animation: boatFloat 4s ease-in-out infinite;
 }
 
 /* gentle floating */

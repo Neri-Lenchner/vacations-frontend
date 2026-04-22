@@ -13,13 +13,13 @@ function HomePage() {
             <div className="travel-bg">
                 <div className="sky">
                     <div className="sun"></div>
-                    <div className="plane"></div>
+                    <div className="plane" style={{ backgroundImage: "url('/balloon-image-no-background.png')" }}></div>
                 </div>
 
                 <div className="sea">
                     <div className="wave wave1"></div>
                     <div className="wave wave2"></div>
-                    <div className="boat"></div>
+                    <div className="boat" style={{ backgroundImage: "url('/ship-image-no-background.png')" }}></div>
                 </div>
             </div>
         </div>
