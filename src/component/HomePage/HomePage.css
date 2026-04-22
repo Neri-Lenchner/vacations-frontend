@@ -81,7 +81,6 @@
     height: 35%;
     position: relative;
     background: linear-gradient(to top, #0a5fa3, #1e88e5);
-    overflow: hidden;
 }
 
 /* 🌊 Waves (layered for realism) */
