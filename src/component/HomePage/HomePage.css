@@ -29,6 +29,7 @@
 /*/////////////////////////////////////////////////*/
 
 .travel-bg {
+    min-height: 500px;
     position: absolute;
     inset: 0;
     overflow: hidden;
