@@ -26,9 +26,8 @@ section {
     background-color: #e4e4e4;
     background-image: url('../public/ship-image-no-background.png');
     background-size: cover;
-    background-position: center 10%;
+    background-position: center 40%;
     background-repeat: no-repeat;
-    background-attachment: fixed;
 }
 
 main {
