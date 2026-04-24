@@ -5,6 +5,7 @@ import {appConfig} from "../utils/app-config";
 import {authStore} from "../state/auth-state";
 import {UserActionType, userStore} from "../state/user-state";
 import {FollowerActionType, followersStore} from "../state/followers-state";
+import {VacationDestinationIdModel} from "../models/vacation-destinationId.model";
 
 class FollowerService {
     public async getFollowersList(): Promise<Follower[]> {
@@ -41,6 +42,12 @@ class FollowerService {
             console.error("Error from delete Follower");
             throw err;
         }
+    }
+
+    public async getVacationDestinationWithFollowerCount(): Promise<VacationDestinationIdModel[]> {
+        const response = await axios.get<VacationDestinationIdModel[]>(
+            appConfig.apiAddress + "vacations/destination-followers", {headers: {Authorization: "Bearer " + authStore.getState().token}});
+        return response.data;
     }
 
 }
