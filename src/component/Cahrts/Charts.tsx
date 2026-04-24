@@ -20,7 +20,7 @@ function Charts() {
 
     useEffect(() => {
 
-        void vacationService.getVacatioDestenationAndIdList();
+        void vacationService.getVacationDestinationAndIdList();
         if (!followersStore.getState().followersList.length) void followersService.getFollowersList();
 
         const unSubscribeFollowers = followersStore.subscribe((): void => {
