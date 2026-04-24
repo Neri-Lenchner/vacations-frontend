@@ -104,7 +104,6 @@ class VacationService {
         }
     }
 
-    // fetch total + page
     async fetchData(page: number, limit = 10): Promise<void> {
         try {
             await this.fetchTotal();
@@ -145,7 +144,6 @@ class VacationService {
             vacationStore.dispatch({type: VacationActionType.AddVacation, payload: response.data});
             return response.data;
         } catch (error) {
-           // throw new Error("Failed to add Vacation");
             const myErr = error as AxiosError;
             const data = myErr.response?.data as {error: string};
             console.error(data);
@@ -167,7 +165,6 @@ class VacationService {
             vacationStore.dispatch({type: VacationActionType.UpdateVacation, payload: response.data});
             return response.data;
         } catch (error) {
-            // throw new Error("Failed to add Vacation");
             const myErr = error as AxiosError;
             const data = myErr.response?.data as {error: string};
             console.error(data);

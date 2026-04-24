@@ -21,13 +21,7 @@
     width: 300px;
     height: 25px;
     margin-top: 20px;
-    /*border-radius: 4px;*/
-    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
 }
-
-/*.vacation-item-price:hover {*/
-/*    background-color: blue !important;*/
-/*}*/
 
 .vacation-item-image-container {
     height: 200px;
@@ -35,7 +29,6 @@
     border-radius: 4px 4px 0 0;
     overflow: hidden;
 }
-
 
 .vacation-item-content-container {
     display: flex;
@@ -52,7 +45,6 @@
     padding: 10px;
     font-size: 17px;
     overflow: hidden;
-    padding-bottom: 10px;
 }
 
 .vacation-item-dates {
@@ -72,7 +64,6 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    /*padding: 30px;*/
     position: absolute;
     left: 10px;
     top: 10px;
@@ -80,7 +71,6 @@
     height: 30px;
     width: 90px;
     padding: 10px 5px;
-    /*background-color: lightgray;*/
     border: none;
     border-radius: 30px;
     cursor: pointer;
@@ -121,7 +111,6 @@
     left: 10px;
     top: 160px;
     text-shadow: 1px 1px 2px black;
-    /*font-size: 20px;*/
     color: white;
 }
 
@@ -129,27 +118,15 @@
 
 .vacation-item-isFollowing-true {
     font-family: Arial, sans-serif !important;
-    /*background-color: black;*/
-    /*background: rgba(0,0,0,0.1);*/
     color: white;
-    /*box-shadow: 0 0 20px 0 white;*/
 }
 
 .vacation-item-isFollowing-false {
-    /*background-color: lightgray;*/
-    /*background-color: rgba(0, 0, 0, 0.5);*/
-    /*background: rgba(0,0,0,0.1);*/
     color: lightgray;
-    /*box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.2), 0 2px 8px 0 rgba(0, 0, 0, 0.19);*/
-    /*box-shadow: 0 0 20px 0 black;*/
 }
 
 .vacation-item-isFollowing-true,
 .vacation-item-isFollowing-false {
-    /*background: rgba(0,0,0,0.1);*/
-    /*background: rgba(0, 123, 255, 0.5);*/
-    /*background: rgba(255, 235, 59, 0.1);*/
-    /*background: rgba(0,0,0,0.6);*/
     background: rgba(0, 0, 139, 0.9);
     box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.2), 0 2px 8px 0 rgba(0, 0, 0, 0.19);
 }
@@ -158,17 +135,10 @@
 .vacation-item-isFollowing-false:hover {
     background: rgba(0, 123, 255, 0.4);
     color: black;
-    /*background: rgba(255, 235, 59, 0.5);*/
-    /*background: rgba(0,0,0,0.5);*/
 }
 
 .vacation-item-isFollowing-true:hover {
     background: rgba(0, 123, 255, 0.4);
-}
-
-.vacation-item-admin-button-1,
-.vacation-item-admin-button-2{
-
 }
 
 .vacation-item-admin-clicks{
@@ -176,11 +146,6 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-
-}
-
-.vacation-item-admin-clicks {
-
 }
 
 .vacation-item-admin-click-left,

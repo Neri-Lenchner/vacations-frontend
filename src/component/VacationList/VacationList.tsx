@@ -109,7 +109,6 @@ function VacationList(): JSX.Element {
                 setShowFollowed(false);
                 setShowUpcoming(false);
                 await vacationService.fetchData(1);
-                // const today: Date = new Date();
                 const activeList: Vacation[] = await vacationService.getActiveVacations();
                 const sortedList: Vacation[] = activeList.sort((a, b): number => new Date(a.startDate).getTime() - new Date(b.startDate).getTime());
                 setCurrentList(sortedList);
