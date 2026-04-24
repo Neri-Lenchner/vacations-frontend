@@ -196,7 +196,7 @@ function VacationList(): JSX.Element {
             </div>
             <Pagination
                 totalVacations={totalVacations}
-                onPageChange={handlePaginationChange}
+                handlePaginationChange={handlePaginationChange}
             />
         </>
     );

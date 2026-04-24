@@ -5,19 +5,19 @@ import './Pagination.css';
 
 interface PaginationProps {
     totalVacations: number;
-    onPageChange?: (page: number) => void;
+    handlePaginationChange?: (page: number) => void;
 }
 
 function Pagination(paginationProps: PaginationProps): JSX.Element {
 
-    const {totalVacations, onPageChange} = paginationProps;
+    const {totalVacations, handlePaginationChange} = paginationProps;
     const pagesNumbers: number[] = [];
     const limit: number = 10;
     const pages: number = Math.ceil(totalVacations / limit) || 1;
 
     function changePage(page: number): void {
-        if (onPageChange) {
-            onPageChange(page);
+        if (handlePaginationChange) {
+            handlePaginationChange(page);
         } else {
             void vacationService.fetchPage(page);
         }
