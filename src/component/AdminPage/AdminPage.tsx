@@ -7,11 +7,11 @@ function AdminPage(): JSX.Element {
     const handleDownloadFollowersList = async () => {
         try {
             setLoading(true);
-            const followers = await followersService.getFollowersList();
-            await followersService.downloadFollowersCSV(followers);
+            const vacationData = await followersService.getVacationDestinationWithFollowerCount();
+            await followersService.downloadVacationDestinationCSV(vacationData);
         } catch (error) {
-            console.error("Failed to download followers list:", error);
-            alert("Failed to download followers list");
+            console.error("Failed to download vacation followers list:", error);
+            alert("Failed to download vacation followers list");
         } finally {
             setLoading(false);
         }
