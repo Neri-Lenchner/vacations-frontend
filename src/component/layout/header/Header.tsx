@@ -84,6 +84,11 @@ function Header(): JSX.Element {
                                             to="/charts">
                                             Charts
                                         </NavLink>
+                                        <NavLink
+                                            className={user.isAdmin && ("header-button")}
+                                            to="/admin-page">
+                                            CSV-Download
+                                        </NavLink>
                                     </>
                                     : <NavLink
                                         className="header-button"

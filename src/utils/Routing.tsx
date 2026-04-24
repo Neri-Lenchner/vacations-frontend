@@ -8,6 +8,7 @@ import AdminForm from "../component/AdminForm/AdminForm";
 import PrivateRouteAdmin from "../component/PrivateRouteAdmin";
 import HomePage from "../component/HomePage/HomePage";
 import Charts from "../component/Cahrts/Charts";
+import AdminPage from "../component/AdminPage/AdminPage";
 
 
 
@@ -18,6 +19,7 @@ function Routing(): JSX.Element {
             <Route path="/login-form" element={<LoginForm />}/>
             <Route path="/home" element={<HomePage />}/>
             <Route path="/admin-form/update/:id" element={<PrivateRouteAdmin child={<AdminForm key="update"/>}/>}/>
+            <Route path="/admin-page" element={<PrivateRouteAdmin child={<AdminPage/>}/>}/>
             <Route path="/charts" element={<PrivateRouteAdmin child={<Charts/>}/>}/>
             <Route path="/admin-form/add-vacation" element={<PrivateRouteAdmin child={<AdminForm key="add" />}/>}/>
             <Route path="/vacations" element={<PrivateRoute child={<VacationLIst/>}/>}/>
