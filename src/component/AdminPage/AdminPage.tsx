@@ -1,4 +1,5 @@
- import {JSX, useState} from 'react';
+import {JSX, useState} from 'react';
+import './AdminPage.css';
 import {followersService} from '../../services/followers-service';
 
 function AdminPage(): JSX.Element {
@@ -18,8 +19,8 @@ function AdminPage(): JSX.Element {
     };
 
     return (
-        <div>
-            <h1>Admin Page</h1>
+        <div className="admin-page-container">
+            <h1>Download Followers Map CSV</h1>
             <button
                 onClick={handleDownloadFollowersList}
                 disabled={loading}

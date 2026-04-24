@@ -1,0 +1,23 @@
+.admin-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+    color: #050535;
+}
+
+.admin-page-container h1 {
+    margin: 20px;
+}
+
+.admin-page-container button {
+    background-color: #181860;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    border: none;
+    transition: 0.2s;
+    height: 40px;
+}
