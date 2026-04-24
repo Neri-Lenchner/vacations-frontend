@@ -19,7 +19,7 @@ function AdminForm(): JSX.Element {
     useEffect((): void => {
 
         async function getSingleVacation(id: number): Promise<void> {
-            let vacation = vacationStore.getState().vacationList.find((vacation: Vacation): boolean => vacation.id === id);
+            let vacation: Vacation | undefined = vacationStore.getState().vacationList.find((vacation: Vacation): boolean => vacation.id === id);
             if (!vacation) vacation = await vacationService.getVacationById(id);
 
             if (vacation) {
@@ -130,7 +130,6 @@ function AdminForm(): JSX.Element {
                             className="form-date form-element"
                             {...register("startDate", {
                                 required: { value: true, message: "Start date is required!" },
-                                // min: { value: 7, message: "Date must be after Jan 1, 2024" }
                             })}
                         />
                         {formState.errors.startDate && <p>{formState.errors.startDate?.message}</p>}

@@ -54,7 +54,6 @@ function Charts() {
                             data: vacationDestinationAndIdList.map(vacation =>
                                 followersList.filter(follower => follower.vacationId === vacation.vacationId).length
                             ),
-                            // backgroundColor: vacationDestinationAndIdList.map(() => `hsl(${Math.random() * 360}, 65%, 55%)`),
                             backgroundColor: vacationDestinationAndIdList.map((_vacation, i): string => {
                                 const hue: number = (i * 360) / vacationDestinationAndIdList.length;
                                 return `hsl(${hue}, 65%, 55%)`;
