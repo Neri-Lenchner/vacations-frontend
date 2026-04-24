@@ -50,6 +50,30 @@ class FollowerService {
         return response.data;
     }
 
+    public async downloadFollowersCSV(followers: Follower[]): Promise<void> {
+        try {
+            const response = await axios.post<string>(
+                appConfig.apiAddress + "vacations/followers/csv",
+                followers,
+                {
+                    headers: { Authorization: "Bearer " + authStore.getState().token },
+                    responseType: 'blob'
+                }
+            );
+            const url = window.URL.createObjectURL(new Blob([response.data]));
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', 'followers.csv');
+            document.body.appendChild(link);
+            link.click();
+            link.parentNode?.removeChild(link);
+            window.URL.revokeObjectURL(url);
+        } catch (err) {
+            console.error("Error downloading followers CSV");
+            throw err;
+        }
+    }
+
 }
 
 export const followersService = new FollowerService();
