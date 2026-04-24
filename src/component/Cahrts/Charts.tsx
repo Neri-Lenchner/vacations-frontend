@@ -10,7 +10,7 @@ function Charts() {
 
     useEffect(() => {
         async function fetchData() {
-            const data = await followersService.getVacationDestinationWithFollowerCount();
+            const data: VacationDestinationIdModel[] = await followersService.getVacationDestinationWithFollowerCount();
             setVacationDestinationIdList(data);
         }
         void fetchData();
