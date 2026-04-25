@@ -13,11 +13,24 @@
 }
 
 .admin-page-container button {
+    font-size: 20px;
     background-color: #181860;
     font-weight: bold;
     color: white;
     cursor: pointer;
     border: none;
+    border-radius: 5px;
     transition: 0.2s;
-    height: 40px;
+    padding: 10px;
+    width: 480px
+}
+
+.admin-page-container button:hover {
+    background-color: blue;
+}
+
+.admin-page-container button:active {
+    background-color: white;
+    color:  #181860;
+    border: 1px solid #181860;
 }
