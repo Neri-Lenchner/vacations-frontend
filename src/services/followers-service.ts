@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { saveAs } from 'file-saver';
 import {Follower} from '../models/follower.model';
 import {User} from "../models/user.model";
 import {appConfig} from "../utils/app-config";
@@ -52,7 +53,7 @@ class FollowerService {
 
     public async downloadVacationDestinationCSV(vacationData: VacationDestinationIdModel[]): Promise<void> {
         try {
-            const response = await axios.post<string>(
+            const response = await axios.post<Blob>(
                 appConfig.apiAddress + "vacations/followers/csv",
                 vacationData,
                 {
@@ -60,14 +61,7 @@ class FollowerService {
                     responseType: 'blob'
                 }
             );
-            const url = window.URL.createObjectURL(new Blob([response.data]));
-            const link = document.createElement('a');
-            link.href = url;
-            link.setAttribute('download', 'vacation-followers.csv');
-            document.body.appendChild(link);
-            link.click();
-            link.parentNode?.removeChild(link);
-            window.URL.revokeObjectURL(url);
+            saveAs(response.data, 'vacation-followers.csv');
         } catch (err) {
             console.error("Error downloading vacation destination CSV");
             throw err;
