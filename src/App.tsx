@@ -10,7 +10,7 @@ function App(): JSX.Element {
             <header>
                 <Header/>
             </header>
-            <section className="content">
+            <section>
                 <main>
                     <Routing/>
                 </main>
