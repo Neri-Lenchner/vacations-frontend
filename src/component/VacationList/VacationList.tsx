@@ -12,6 +12,7 @@ import {Follower} from "../../models/follower.model";
 import {VacationDestinationIdModel} from "../../models/vacation-destinationId.model";
 import {User} from "../../models/user.model";
 import ConfirmationWindow from "../ConfirmationWindow/ConfirmationWindow";
+import {Unsubscribe} from "redux";
 
 
 function VacationList(): JSX.Element {
@@ -34,16 +35,16 @@ function VacationList(): JSX.Element {
                 void followersService.getFollowersListByUserId(authStore.getState().user!.id!);
                 void followersService.getVacationDestinationWithFollowerCount();
 
-                const unSubscribeVacations = vacationStore.subscribe((): void => {
+                const unSubscribeVacations: Unsubscribe = vacationStore.subscribe((): void => {
                         setTotalVacations(vacationStore.getState().totalVacations);
                         setPage(vacationStore.getState().vacationList);
                 });
 
-                const unSubscribeUser = authStore.subscribe((): void => {
+                const unSubscribeUser: Unsubscribe = authStore.subscribe((): void => {
                     setUser(authStore.getState().user);
                 });
 
-                const unSubscribeFollowers = followersStore.subscribe((): void => {
+                const unSubscribeFollowers: Unsubscribe = followersStore.subscribe((): void => {
                     setCurrentUserFollowedVacations(followersStore.getState().currentUserFollowedVacations);
                     setFollowersCountList(followersStore.getState().followersCountList);
                 });
