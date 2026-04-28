@@ -37,9 +37,9 @@ class VacationService {
         }
     }
 
-    async fetchPage(page: number, limit = 10): Promise<Vacation[]> {
+    async fetchPage(pageNumber: number, limit = 10): Promise<Vacation[]> {
         const token: string | null = authStore.getState().token;
-        const offset: number = (page - 1) * limit;
+        const offset: number = (pageNumber - 1) * limit;
         try {
             const response = await axios.get<Vacation[]>(
                 `${appConfig.apiAddress}vacations?limit=${limit}&offset=${offset}`,
@@ -104,10 +104,10 @@ class VacationService {
         }
     }
 
-    async fetchData(page: number, limit = 10): Promise<void> {
+    async fetchData(pageNumber: number, limit = 10): Promise<void> {
         try {
             await this.fetchTotal();
-            const data: Vacation[] = await this.fetchPage(page, limit);
+            const data: Vacation[] = await this.fetchPage(pageNumber, limit);
             vacationStore.dispatch({type: VacationActionType.GetVacationList, payload: data});
         } catch (err) {
             console.error("Failed to fetch data", err);
