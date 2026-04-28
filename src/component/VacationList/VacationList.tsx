@@ -9,6 +9,7 @@ import "./VacationList.css";
 import VacationItem from "../VacationItem/VacationItem";
 import Pagination from "../Pagination/Pagination";
 import {Follower} from "../../models/follower.model";
+import {VacationDestinationIdModel} from "../../models/vacation-destinationId.model";
 import {User} from "../../models/user.model";
 import ConfirmationWindow from "../ConfirmationWindow/ConfirmationWindow";
 
@@ -18,6 +19,7 @@ function VacationList(): JSX.Element {
         const [totalVacations, setTotalVacations] = useState<number>(vacationStore.getState().totalVacations);
         const [page, setPage] = useState<Vacation[]>(vacationStore.getState().vacationList);
         const [followersList, setFollowersList] = useState<Follower[]>(followersStore.getState().followersList);
+        const [followersCountList, setFollowersCountList] = useState<VacationDestinationIdModel[]>(followersStore.getState().followersCountList);
         const [currentList, setCurrentList] = useState<Vacation[]>([]);
         const [user, setUser] = useState<User | null>(authStore.getState().user);
         const [showFollowed, setShowFollowed] = useState(false);
@@ -29,7 +31,8 @@ function VacationList(): JSX.Element {
 
     useEffect(() => {
                 void vacationService.fetchData(1);
-                void followersService.getFollowersList();
+                void followersService.getFollowersListById(authStore.getState().user!.id!);
+                void followersService.getVacationDestinationWithFollowerCount();
 
                 const unSubscribeVacations = vacationStore.subscribe((): void => {
                         setTotalVacations(vacationStore.getState().totalVacations);
@@ -42,6 +45,7 @@ function VacationList(): JSX.Element {
 
                 const unSubscribeFollowers = followersStore.subscribe((): void => {
                     setFollowersList(followersStore.getState().followersList);
+                    setFollowersCountList(followersStore.getState().followersCountList);
                 });
 
                 return (): void => {
@@ -181,6 +185,7 @@ function VacationList(): JSX.Element {
                         user={user!}
                         vacation={vacation}
                         followersList={followersList}
+                        followersCountList={followersCountList}
                         key={vacation.id}
                         isDelete={isDelete}
                         setIsDelete={setIsDelete}

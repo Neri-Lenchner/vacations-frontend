@@ -17,10 +17,6 @@ function Charts() {
     }, []);
 
 
-    if (!vacationDestinationAndIdList.length) {
-        return <div className="Charts-container">Loading...</div>;
-    }
-
     return (
         <div className="Charts-container">
             <Bar

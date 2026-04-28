@@ -5,12 +5,14 @@ import {Vacation} from '../../models/vacation.model';
 import {User} from '../../models/user.model';
 import {appConfig} from "../../utils/app-config";
 import {followersService} from '../../services/followers-service';
+import {VacationDestinationIdModel} from "../../models/vacation-destinationId.model";
 import "./VacationItem.css";
 
 interface VacationItemProps {
     user: User;
     vacation: Vacation;
     followersList: Follower[];
+    followersCountList: VacationDestinationIdModel[];
     isDelete: boolean;
     setIsDelete: any;
     setVacationId: any;
@@ -21,7 +23,7 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
     let [isFollowing, setIsFollowing] = useState<boolean>(false);
     const [vacationFollowers, setVacationFollowers] = useState<Follower[]>([]);
     const navigate = useNavigate();
-    let {vacation, followersList, user, isDelete, setIsDelete, setVacationId} = vacationItemProps;
+    let {vacation, followersList, followersCountList, user, isDelete, setIsDelete, setVacationId} = vacationItemProps;
 
     useEffect((): void => {
         if (!followersList.length) {
@@ -53,11 +55,13 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
             if (follower?.id) {
                 setIsFollowing(false);
                 await followersService.deleteFollower(follower.id);
+                await followersService.getVacationDestinationWithFollowerCount();
             }
         } else {
             setIsFollowing(true);
             const follower = new Follower(user.id!, vacation.id!);
             await followersService.addFollower(follower);
+            await followersService.getVacationDestinationWithFollowerCount();
         }
     }
 
@@ -120,7 +124,7 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
                             {isFollowing
                                 ? "❤️"
                                 : "🩶"
-                            } Likes {vacationFollowers.length || 0}
+                            } Likes {followersCountList.find(followerCount => followerCount.vacationId === vacation.id)?.followerCount ?? 0}
                         </div>
                   </div>
             }
