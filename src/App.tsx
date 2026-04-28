@@ -10,11 +10,9 @@ function App(): JSX.Element {
             <header>
                 <Header/>
             </header>
-            <section>
-                <main>
-                    <Routing/>
-                </main>
-            </section>
+            <main>
+                <Routing/>
+            </main>
         </div>
     );
 }

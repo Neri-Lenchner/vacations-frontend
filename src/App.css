@@ -21,17 +21,12 @@ header {
     width: 100%;
 }
 
-section {
-    display: flex;
+main {
     background-color: #e4e4e4;
     background-image: url('../public/ship-image-no-background.png');
     background-size: cover;
     background-position: center 40%;
     background-repeat: no-repeat;
-}
-
-main {
-    flex: 1;
     height: calc(100vh - 20vh);
     overflow-y: auto;
     padding-bottom: 200px;
