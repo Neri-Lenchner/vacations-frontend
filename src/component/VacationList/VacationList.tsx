@@ -6,6 +6,7 @@ import {authStore} from "../../state/auth-state";
 import {followersService} from '../../services/followers-service';
 import {vacationService} from '../../services/vacation-service';
 import "./VacationList.css";
+import CheckBoxItem from "../CheckBoxItem/CheckBoxItem";
 import VacationItem from "../VacationItem/VacationItem";
 import Pagination from "../Pagination/Pagination";
 import {Follower} from "../../models/follower.model";
@@ -143,42 +144,24 @@ function VacationList(): JSX.Element {
     return (
         <>
             <div className="Vacation-list-checkbox-container">
-                <label
-                    className={user?.isAdmin ? "display-none" : "checkbox-label"}
-                    htmlFor="followed-checkbox">
-                    <input
-                        id="followed-checkbox"
-                        className="checkbox"
-                        type="checkbox"
-                        checked={showFollowed}
-                        onChange={handleFollowedVacations}
-                    />
-                    <h4>Followed Vacations</h4>
-                </label>
-                <label
-                    className="checkbox-label"
-                    htmlFor="upcoming-vacations-checkbox">
-                    <input
-                        id="upcoming-vacations-checkbox"
-                        className="checkbox"
-                        type="checkbox"
-                        checked={showUpcoming}
-                        onChange={handleUpcomingVacations}
-                    />
-                    <h4>Didn't start yet</h4>
-                </label>
-                <label
-                    className="checkbox-label"
-                    htmlFor="active-checkbox">
-                    <input
-                        id="active-checkbox"
-                        className="checkbox"
-                        type="checkbox"
-                        checked={showActive}
-                        onChange={handleActiveVacations}
-                    />
-                    <h4>Active vacations</h4>
-                </label>
+                <CheckBoxItem
+                    isAdmin={user!.isAdmin}
+                    showFunction={showFollowed}
+                    handleVacationFunction={handleFollowedVacations}
+                    headLine={"Followed Vacations"}
+                />
+                <CheckBoxItem
+                    isAdmin={false}
+                    showFunction={showUpcoming}
+                    handleVacationFunction={handleUpcomingVacations}
+                    headLine={"Didn't start yet"}
+                />
+                <CheckBoxItem
+                    isAdmin={false}
+                    showFunction={showActive}
+                    handleVacationFunction={handleActiveVacations}
+                    headLine={"Active vacations"}
+                />
             </div>
             <div className="vacation-list-container">
                 {page.map(vacation => (
@@ -209,3 +192,40 @@ function VacationList(): JSX.Element {
 }
 
 export default VacationList;
+
+{/*<label*/}
+{/*    className={user?.isAdmin ? "display-none" : "checkbox-label"}*/}
+{/*    htmlFor="followed-checkbox">*/}
+{/*    <input*/}
+{/*        id="followed-checkbox"*/}
+{/*        className="checkbox"*/}
+{/*        type="checkbox"*/}
+{/*        checked={showFollowed}*/}
+{/*        onChange={handleFollowedVacations}*/}
+{/*    />*/}
+{/*    <h4>Followed Vacations</h4>*/}
+{/*</label>*/}
+{/*<label*/}
+{/*    className="checkbox-label"*/}
+{/*    htmlFor="upcoming-vacations-checkbox">*/}
+{/*    <input*/}
+{/*        id="upcoming-vacations-checkbox"*/}
+{/*        className="checkbox"*/}
+{/*        type="checkbox"*/}
+{/*        checked={showUpcoming}*/}
+{/*        onChange={handleUpcomingVacations}*/}
+{/*    />*/}
+{/*    <h4>Didn't start yet</h4>*/}
+{/*</label>*/}
+{/*<label*/}
+{/*    className="checkbox-label"*/}
+{/*    htmlFor="active-checkbox">*/}
+{/*    <input*/}
+{/*        id="active-checkbox"*/}
+{/*        className="checkbox"*/}
+{/*        type="checkbox"*/}
+{/*        checked={showActive}*/}
+{/*        onChange={handleActiveVacations}*/}
+{/*    />*/}
+{/*    <h4>Active vacations</h4>*/}
+{/*</label>*/}
