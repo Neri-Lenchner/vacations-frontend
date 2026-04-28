@@ -1,0 +1,19 @@
+.checkbox-container{
+    background-color: transparent;
+}
+
+.checkbox-label {
+    display: flex;
+    gap: 16px;
+    cursor: pointer;
+    z-index: 50;
+}
+
+.checkbox {
+    cursor: pointer;
+    z-index: 50;
+}
+
+.checkbox-display-none {
+    display: none;
+}
