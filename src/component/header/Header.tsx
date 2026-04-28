@@ -1,9 +1,9 @@
 import React, {JSX, useEffect, useState} from 'react';
 import {NavLink, useNavigate} from "react-router-dom";
 import {Unsubscribe} from 'redux';
-import {AuthActionType, authStore} from '../../../state/auth-state';
+import {AuthActionType, authStore} from '../../state/auth-state';
 import './Header.css';
-import {User} from '../../../models/user.model';
+import {User} from '../../models/user.model';
 import { AiFillHome } from "react-icons/ai";
 import { RiLogoutBoxFill } from "react-icons/ri";
 import { RiLoginBoxFill } from "react-icons/ri";

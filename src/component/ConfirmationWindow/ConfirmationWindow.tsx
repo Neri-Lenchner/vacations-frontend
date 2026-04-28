@@ -27,8 +27,16 @@ function ConfirmationWindow(confirmationWindowProps: ConfirmationWindowProps): J
                     <h3>Are you sure you want to delete?</h3>
                 </div>
                 <div className="confirmation-window-buttons-container">
-                    <button className="conformation-window-delete" onClick={confirmDeleteVacation}>Delete</button>
-                    <button className="conformation-window-cancel" onClick={cancel}>Cancel</button>
+                    <button
+                        className="conformation-window-delete"
+                        onClick={confirmDeleteVacation}>
+                        Delete
+                    </button>
+                    <button
+                        className="conformation-window-cancel"
+                        onClick={cancel}>
+                        Cancel
+                    </button>
                 </div>
             </div>
         </div>

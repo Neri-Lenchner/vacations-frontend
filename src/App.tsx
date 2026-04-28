@@ -1,6 +1,6 @@
 import React, {JSX} from 'react';
 import './App.css';
-import Header from "./component/layout/header/Header";
+import Header from "./component/header/Header";
 import Routing from "./utils/Routing";
 
 function App(): JSX.Element {
