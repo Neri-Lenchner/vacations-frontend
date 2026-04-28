@@ -18,7 +18,7 @@ function VacationList(): JSX.Element {
 
         const [totalVacations, setTotalVacations] = useState<number>(vacationStore.getState().totalVacations);
         const [page, setPage] = useState<Vacation[]>(vacationStore.getState().vacationList);
-        const [followersList, setFollowersList] = useState<Follower[]>(followersStore.getState().followersList);
+        const [currentUserFollowedVacations, setCurrentUserFollowedVacations] = useState<Follower[]>(followersStore.getState().currentUserFollowedVacations);
         const [followersCountList, setFollowersCountList] = useState<VacationDestinationIdModel[]>(followersStore.getState().followersCountList);
         const [currentList, setCurrentList] = useState<Vacation[]>([]);
         const [user, setUser] = useState<User | null>(authStore.getState().user);
@@ -31,7 +31,7 @@ function VacationList(): JSX.Element {
 
     useEffect(() => {
                 void vacationService.fetchData(1);
-                void followersService.getFollowersListById(authStore.getState().user!.id!);
+                void followersService.getFollowersListByUserId(authStore.getState().user!.id!);
                 void followersService.getVacationDestinationWithFollowerCount();
 
                 const unSubscribeVacations = vacationStore.subscribe((): void => {
@@ -44,7 +44,7 @@ function VacationList(): JSX.Element {
                 });
 
                 const unSubscribeFollowers = followersStore.subscribe((): void => {
-                    setFollowersList(followersStore.getState().followersList);
+                    setCurrentUserFollowedVacations(followersStore.getState().currentUserFollowedVacations);
                     setFollowersCountList(followersStore.getState().followersCountList);
                 });
 
@@ -184,7 +184,7 @@ function VacationList(): JSX.Element {
                     <VacationItem
                         user={user!}
                         vacation={vacation}
-                        followersList={followersList}
+                        currentUserFollowedVacations={currentUserFollowedVacations}
                         followersCountList={followersCountList}
                         key={vacation.id}
                         isDelete={isDelete}

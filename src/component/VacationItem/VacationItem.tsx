@@ -11,7 +11,7 @@ import "./VacationItem.css";
 interface VacationItemProps {
     user: User;
     vacation: Vacation;
-    followersList: Follower[];
+    currentUserFollowedVacations: Follower[];
     followersCountList: VacationDestinationIdModel[];
     isDelete: boolean;
     setIsDelete: any;
@@ -21,40 +21,24 @@ interface VacationItemProps {
 function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
 
     let [isFollowing, setIsFollowing] = useState<boolean>(false);
-    const [vacationFollowers, setVacationFollowers] = useState<Follower[]>([]);
+    const [currentUserFollower, setCurrentUserFollower] = useState<Follower | undefined>(undefined);
     const navigate = useNavigate();
-    let {vacation, followersList, followersCountList, user, isDelete, setIsDelete, setVacationId} = vacationItemProps;
+    let {vacation, currentUserFollowedVacations, followersCountList, user, isDelete, setIsDelete, setVacationId} = vacationItemProps;
 
     useEffect((): void => {
-        if (!followersList.length) {
-            setVacationFollowers([]);
-            setIsFollowing(false);
-            return;
-        }
-
-        const followers: Follower[] = followersList.filter(
-            follower => follower.vacationId === vacation.id
-        );
-
-        setVacationFollowers(followers);
-
-        const isUserFollowing: boolean = followers.some(
-            follower => follower.userId === user.id
-        );
-
-        setIsFollowing(isUserFollowing);
-
-    }, [followersList, vacation.id, user.id]);
+        const userIsFollowing: Follower | undefined = currentUserFollowedVacations.find(follower => follower.vacationId === vacation.id);
+        setCurrentUserFollower(userIsFollowing);
+        setIsFollowing(!!userIsFollowing);
+    }, [currentUserFollowedVacations, vacation.id]);
 
     const startDate: string = vacation.startDate.split('T')[0].split('-').reverse().join('.');
     const endDate: string = vacation.endDate.split('T')[0].split('-').reverse().join('.');
 
     async function like(): Promise<void> {
         if (isFollowing) {
-            const follower: Follower | undefined = vacationFollowers.find(vacationFollower => vacationFollower.userId === user.id);
-            if (follower?.id) {
+            if (currentUserFollower?.id) {
                 setIsFollowing(false);
-                await followersService.deleteFollower(follower.id);
+                await followersService.deleteFollower(currentUserFollower.id);
                 await followersService.getVacationDestinationWithFollowerCount();
             }
         } else {

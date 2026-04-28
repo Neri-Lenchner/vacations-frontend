@@ -8,12 +8,12 @@ import {VacationDestinationIdModel} from "../models/vacation-destinationId.model
 
 
 export class FollowersState {
-    followersList: Follower[] = [];
+    currentUserFollowedVacations: Follower[] = [];
     followersCountList: VacationDestinationIdModel[] = [];
 }
 
 export enum FollowerActionType {
-    GetFollowersList = "GetFollowersList",
+    GetCurrentUserFollowedVacations = "GetCurrentUserFollowedVacations",
     GetFollowersCountList = "GetFollowersCountList",
     AddFollower = "AddFollower",
     // UpdateUser = "UpdateUser",
@@ -28,22 +28,22 @@ export interface FollowerAction {
 export function followersReducer(followersState: FollowersState = new FollowersState(), action: FollowerAction): FollowersState {
 
     const newState = {...followersState}
-    newState.followersList = [...newState.followersList];
+    newState.currentUserFollowedVacations = [...newState.currentUserFollowedVacations];
     newState.followersCountList = [...newState.followersCountList];
 
     switch (action.type) {
-        case FollowerActionType.GetFollowersList:
-            newState.followersList = action.payload;
+        case FollowerActionType.GetCurrentUserFollowedVacations:
+            newState.currentUserFollowedVacations = action.payload;
             break;
         case FollowerActionType.GetFollowersCountList:
             newState.followersCountList = action.payload;
             break;
         case FollowerActionType.AddFollower:
-            newState.followersList.push(action.payload);
+            newState.currentUserFollowedVacations.push(action.payload);
             break;
         case FollowerActionType.DeleteFollower:
-            const indexToDelete: number = newState.followersList.findIndex((follower: Follower  ): boolean => follower.id === action.payload);
-            newState.followersList.splice(indexToDelete, 1);
+            const indexToDelete: number = newState.currentUserFollowedVacations.findIndex((follower: Follower  ): boolean => follower.id === action.payload);
+            newState.currentUserFollowedVacations.splice(indexToDelete, 1);
             break;
     }
 
