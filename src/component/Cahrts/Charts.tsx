@@ -17,6 +17,13 @@ function Charts() {
     }, []);
 
 
+    function getBackgroundColors(): string[] {
+        return vacationDestinationAndIdList.map((_vacation, i): string => {
+            const hue: number = (i * 360) / vacationDestinationAndIdList.length;
+            return `hsl(${hue}, 65%, 55%)`;
+        });
+    }
+
     return (
         <div className="Charts-container">
             <Bar
@@ -26,10 +33,7 @@ function Charts() {
                         {
                             label: "Followers Map",
                             data: vacationDestinationAndIdList.map(vacation => vacation.followerCount || 0),
-                            backgroundColor: vacationDestinationAndIdList.map((_vacation, i): string => {
-                                const hue: number = (i * 360) / vacationDestinationAndIdList.length;
-                                return `hsl(${hue}, 65%, 55%)`;
-                            }),
+                            backgroundColor: getBackgroundColors(),
                             borderWidth: 1
                         }
                     ]
