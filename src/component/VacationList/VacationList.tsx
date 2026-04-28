@@ -146,19 +146,19 @@ function VacationList(): JSX.Element {
             <div className="Vacation-list-checkbox-container">
                 <CheckBoxItem
                     isAdmin={user!.isAdmin}
-                    showFunction={showFollowed}
+                    isShown={showFollowed}
                     handleVacationFunction={handleFollowedVacations}
                     headLine={"Followed Vacations"}
                 />
                 <CheckBoxItem
                     isAdmin={false}
-                    showFunction={showUpcoming}
+                    isShown={showUpcoming}
                     handleVacationFunction={handleUpcomingVacations}
                     headLine={"Didn't start yet"}
                 />
                 <CheckBoxItem
                     isAdmin={false}
-                    showFunction={showActive}
+                    isShown={showActive}
                     handleVacationFunction={handleActiveVacations}
                     headLine={"Active vacations"}
                 />

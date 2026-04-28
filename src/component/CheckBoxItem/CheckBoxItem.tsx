@@ -3,14 +3,14 @@ import './CheckBoxItem.css';
 
 interface CheckBoxItemProps {
     isAdmin: boolean;
-    showFunction: any;
-    handleVacationFunction: any;
+    isShown: boolean;
+    handleVacationFunction: (event: React.ChangeEvent<HTMLInputElement>) => void;
     headLine: string;
 }
 
 function CheckBoxItem(checkBoxItemProps: CheckBoxItemProps): JSX.Element {
 
-    const {isAdmin, showFunction, handleVacationFunction, headLine} = checkBoxItemProps;
+    const {isAdmin, isShown, handleVacationFunction, headLine} = checkBoxItemProps;
 
     return (
         <div className="checkbox-item-container">
@@ -19,7 +19,7 @@ function CheckBoxItem(checkBoxItemProps: CheckBoxItemProps): JSX.Element {
                 <input
                     className="checkbox"
                     type="checkbox"
-                    checked={showFunction}
+                    checked={isShown}
                     onChange={handleVacationFunction}
                 />
                 <h4>{headLine}</h4>
