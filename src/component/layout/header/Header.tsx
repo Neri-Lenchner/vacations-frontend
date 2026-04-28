@@ -64,8 +64,8 @@ function Header(): JSX.Element {
                                     onClick={logOut}
                                     className="header-button">
                                     <RiLogoutBoxFill
-                                    className="header-logout-icon"/>
-                                    Logout
+                                        className="header-logout-icon"/>
+                                        Logout
                                 </button>
                                 {user?.isAdmin
                                     ? <>
@@ -109,8 +109,9 @@ function Header(): JSX.Element {
                     <button
                         className="header-button header-button-adding"
                         onClick={navigateToLoginForm}>
-                        <RiLoginBoxFill  className="header-logout-icon"/>
-                        Login
+                        <RiLoginBoxFill
+                            className="header-logout-icon"/>
+                            Login
                     </button>
                  </div>
             }
