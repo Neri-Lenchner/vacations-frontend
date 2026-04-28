@@ -70,22 +70,22 @@ function Header(): JSX.Element {
                                 {user?.isAdmin
                                     ? <>
                                         <NavLink
-                                            className={user.isAdmin && "header-button"}
+                                            className="header-button"
                                             to="/vacations">
                                             Vacations
                                         </NavLink>
                                         <NavLink
-                                            className={user.isAdmin && "header-button"}
+                                            className="header-button"
                                             to="/admin-form/add-vacation">
                                             Add Vacation
                                         </NavLink>
                                         <NavLink
-                                            className={user.isAdmin && "header-button"}
+                                            className="header-button"
                                             to="/charts">
                                             Charts
                                         </NavLink>
                                         <NavLink
-                                            className={user.isAdmin && "header-button"}
+                                            className="header-button"
                                             to="/admin-page">
                                             CSV-Download
                                         </NavLink>
