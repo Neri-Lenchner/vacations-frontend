@@ -1,9 +1,8 @@
-import axios, {AxiosError} from "axios";
+import axios from "axios";
 import {appConfig} from "../utils/app-config";
 import {User} from "../models/user.model";
 import {Credentials} from "../models/credentials.model";
 import {AuthActionType, authStore} from "../state/auth-state";
-import {ErrorModel} from "../models/error.model";
 // import {Credentials} from "../models/credentials.model";
 
 class AuthService {
@@ -13,8 +12,6 @@ class AuthService {
             const response = await axios.post(appConfig.apiAddress + "auth/register", user);
             authStore.dispatch({type: AuthActionType.Register, payload: response.data.token});
         } catch (err) {
-            const myErr = err as AxiosError;
-            const data = myErr.response?.data as ErrorModel;
             throw err;
         }
     }
@@ -24,8 +21,6 @@ class AuthService {
             const response = await axios.post(appConfig.apiAddress + "auth/login", credentials);
             authStore.dispatch({type: AuthActionType.Login, payload: response.data.token});
         } catch (err) {
-            const myErr = err as AxiosError;
-            const data = myErr.response?.data as ErrorModel;
             throw err;
         }
     }

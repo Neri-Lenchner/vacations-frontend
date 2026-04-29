@@ -1,5 +1,4 @@
-import axios, {AxiosError} from 'axios';
-import {ErrorModel} from "../models/error.model";
+import axios from 'axios';
 import {Vacation} from "../models/vacation.model";
 import {appConfig} from "../utils/app-config";
 import {authStore} from "../state/auth-state";
@@ -17,8 +16,6 @@ class VacationService {
             vacationStore.dispatch({type: VacationActionType.GetTotalVacations, payload: response.data});
             return response.data;
         } catch (error) {
-            const myErr = error as AxiosError;
-            const data = myErr.response?.data as ErrorModel;
             throw error;
         }
     }
@@ -33,8 +30,6 @@ class VacationService {
             vacationStore.dispatch({type: VacationActionType.GetVacationList, payload: response.data});
             return response.data;
         } catch (error) {
-            const myErr = error as AxiosError;
-            const data = myErr.response?.data as ErrorModel;
             throw error;
         }
     }
@@ -50,8 +45,6 @@ class VacationService {
             vacationStore.dispatch({type: VacationActionType.GetVacationList, payload: response.data});
             return response.data;
         } catch (error) {
-            const myErr = error as AxiosError;
-            const data = myErr.response?.data as ErrorModel;
             throw error;
         }
     }
@@ -68,8 +61,6 @@ class VacationService {
             vacationStore.dispatch({type: VacationActionType.GetTotalVacations, payload: response.data.length});
             return response.data;
         } catch (error) {
-            const myErr = error as AxiosError;
-            const data = myErr.response?.data as ErrorModel;
             throw error;
         }
     }
@@ -86,8 +77,6 @@ class VacationService {
             vacationStore.dispatch({type: VacationActionType.GetTotalVacations, payload: response.data.length});
             return response.data;
         } catch (error) {
-            const myErr = error as AxiosError;
-            const data = myErr.response?.data as ErrorModel;
             throw error;
         }
     }
@@ -104,8 +93,6 @@ class VacationService {
             vacationStore.dispatch({type: VacationActionType.GetTotalVacations, payload: response.data.length});
             return response.data;
         } catch (error) {
-            const myErr = error as AxiosError;
-            const data = myErr.response?.data as ErrorModel;
             throw error;
         }
     }
@@ -126,8 +113,6 @@ class VacationService {
             vacationStore.dispatch({type: VacationActionType.GetSelectedVacation, payload: response.data});
             return response.data;
         } catch (error) {
-            const myErr = error as AxiosError;
-            const data = myErr.response?.data as ErrorModel;
             throw error;
         }
     }
@@ -147,8 +132,6 @@ class VacationService {
             vacationStore.dispatch({type: VacationActionType.AddVacation, payload: response.data});
             return response.data;
         } catch (error) {
-            const myErr = error as AxiosError;
-            const data = myErr.response?.data as ErrorModel;
             throw error;
         }
     }
@@ -167,8 +150,6 @@ class VacationService {
             vacationStore.dispatch({type: VacationActionType.UpdateVacation, payload: response.data});
             return response.data;
         } catch (error) {
-            const myErr = error as AxiosError;
-            const data = myErr.response?.data as ErrorModel;
             throw error;
         }
     }
@@ -179,8 +160,6 @@ class VacationService {
             await axios.delete<void>(`${appConfig.apiAddress}vacation/${id}`,{headers: { Authorization: "Bearer " + token }})
             vacationStore.dispatch({type: VacationActionType.DeleteVacation, payload: id});
         } catch (error) {
-            const myErr = error as AxiosError;
-            const data = myErr.response?.data as ErrorModel;
             throw error;
         }
     }

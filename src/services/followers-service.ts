@@ -1,5 +1,4 @@
-import axios, {AxiosError} from 'axios';
-import {ErrorModel} from "../models/error.model";
+import axios from 'axios';
 import { saveAs } from 'file-saver';
 import {Follower} from '../models/follower.model';
 import {User} from "../models/user.model";
@@ -31,8 +30,6 @@ class FollowerService {
             followersStore.dispatch({type: FollowerActionType.AddFollower, payload: response.data});
             return response.data;
         } catch (error) {
-            const myErr = error as AxiosError;
-            const data = myErr.response?.data as ErrorModel;
             throw error;
         }
     }
@@ -42,8 +39,6 @@ class FollowerService {
             await axios.delete<void>(appConfig.apiAddress + "vacations/followers/" + id, {headers: { Authorization: "Bearer " + authStore.getState().token }});
             followersStore.dispatch({type: FollowerActionType.DeleteFollower, payload: id});
         } catch (error) {
-            const myErr = error as AxiosError;
-            const data = myErr.response?.data as ErrorModel;
             throw error;
         }
     }
@@ -67,8 +62,6 @@ class FollowerService {
             );
             saveAs(response.data, 'vacation-followers.csv');
         } catch (error) {
-            const myErr = error as AxiosError;
-            const data = myErr.response?.data as ErrorModel;
             throw error;
         }
     }
