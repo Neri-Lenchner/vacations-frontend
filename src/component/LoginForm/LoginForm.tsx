@@ -30,7 +30,9 @@ function LoginForm(): JSX.Element {
                 <h1 className="form-headline">
                     Login
                 </h1>
-                <div className="form-input-message">email</div>
+                <div className="form-input-message">
+                    email
+                </div>
                 <input type="email" className="form-email form-element" {...register("email",
                     {
                         required: {value: true, message: "Email is required!"},
@@ -38,17 +40,27 @@ function LoginForm(): JSX.Element {
                     }
                 )}/>
                 {formState.errors.email && <p>{formState.errors.email?.message}</p>}
-                <div className="form-input-message">password</div>
+                <div className="form-input-message">
+                    password
+                </div>
                 <input type="password" className="form-password form-element" {...register("password",
                     {
                         required: {value: true, message: "Password is required!"},
-                        minLength: {value: 2, message: "Password must contain at list 4 characters"}
+                        minLength: {value: 4, message: "Password must contain at list 4 characters"}
                     }
                 )}/>
                 {formState.errors.password && <p>{formState.errors.password?.message}</p>}
-                <button className="form-button form-element" type="submit">Login</button>
-                <div className="form-input-message form-bottom-message">don't have an account?</div>
-                <NavLink className="form-bottom-message form-link" to="/registration-form">register now</NavLink>
+                <button className="form-button form-element" type="submit">
+                    Login
+                </button>
+                <div className="form-input-message form-bottom-message">
+                    don't have an account yet?
+                </div>
+                <NavLink
+                    className="form-bottom-message form-link"
+                    to="/registration-form">
+                    register now
+                </NavLink>
             </div>
         </form>
     );
