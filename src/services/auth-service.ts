@@ -15,7 +15,6 @@ class AuthService {
         } catch (err) {
             const myErr = err as AxiosError;
             const data = myErr.response?.data as ErrorModel;
-            console.error(data?.error ?? err);
             throw err;
         }
     }
@@ -27,7 +26,6 @@ class AuthService {
         } catch (err) {
             const myErr = err as AxiosError;
             const data = myErr.response?.data as ErrorModel;
-            console.error(data?.error ?? err);
             throw err;
         }
     }

@@ -17,7 +17,6 @@ class UserService {
             } catch (error) {
                 const myErr = error as AxiosError;
                 const data = myErr.response?.data as ErrorModel;
-                console.error(data?.error ?? error);
                 throw error;
             }
         }
