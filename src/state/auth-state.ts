@@ -9,7 +9,7 @@ export class AuthState {
     token: string | null = null;
 
     constructor() {
-        const tokenFromLocalStorage = localStorage.getItem("token");
+        const tokenFromLocalStorage: string | null = localStorage.getItem("token");
         if (tokenFromLocalStorage) {
             this.token = tokenFromLocalStorage;
             const userWrapper: UserWrapper = jwtDecode(tokenFromLocalStorage);
@@ -37,7 +37,7 @@ export function authReducer(authState: AuthState = new AuthState(), action: Auth
     switch (action.type) {
         case AuthActionType.Register:
         case AuthActionType.Login:
-            const token = action.payload;
+            const token: any = action.payload;
             newState.token = token;
             const userWrapper: UserWrapper = jwtDecode(token);
             newState.user = userWrapper.user;
@@ -47,7 +47,6 @@ export function authReducer(authState: AuthState = new AuthState(), action: Auth
             localStorage.removeItem("token");
             newState.token = null;
             newState.user = null;
-            // courseService.isFetched = false;
             break;
     }
 

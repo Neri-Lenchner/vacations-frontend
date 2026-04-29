@@ -1,10 +1,6 @@
-import {User} from "../models/user.model";
-import {jwtDecode} from "jwt-decode";
 import {createStore} from "redux";
 import {Follower} from "../models/follower.model";
 import {VacationDestinationIdModel} from "../models/vacation-destinationId.model";
-
-
 
 
 export class FollowersState {
@@ -16,7 +12,6 @@ export enum FollowerActionType {
     GetCurrentUserFollowedVacations = "GetCurrentUserFollowedVacations",
     GetFollowersCountList = "GetFollowersCountList",
     AddFollower = "AddFollower",
-    // UpdateUser = "UpdateUser",
     DeleteFollower = "DeleteFollower",
 }
 

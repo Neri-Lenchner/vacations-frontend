@@ -1,7 +1,5 @@
 import {Vacation} from "../models/vacation.model";
-import {jwtDecode} from "jwt-decode";
 import {createStore} from "redux";
-import {FollowerActionType} from "./followers-state";
 import {VacationDestinationIdModel} from "../models/vacation-destinationId.model";
 
 
