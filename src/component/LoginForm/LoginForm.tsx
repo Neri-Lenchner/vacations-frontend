@@ -19,7 +19,7 @@ function LoginForm(): JSX.Element {
         }
         catch (error) {
             const myErr = error as AxiosError;
-            const message = (myErr.response?.data as ErrorModel)?.error;
+            const message: string = (myErr.response?.data as ErrorModel)?.error;
             alert(message || "Something went wrong");
         }
     }
