@@ -31,7 +31,7 @@ function Charts() {
                     labels: vacationDestinationAndIdList.map(vacation => vacation.vacationDestination),
                     datasets: [
                         {
-                            label: "Followers Map",
+                            label: "Number Of Followers",
                             data: vacationDestinationAndIdList.map(vacation => vacation.followerCount || 0),
                             backgroundColor: getBackgroundColors(),
                             borderWidth: 1
@@ -40,7 +40,10 @@ function Charts() {
                 }}
                 options={{
                     responsive: true,
-                    maintainAspectRatio: false
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    }
                 }}
             />
         </div>
