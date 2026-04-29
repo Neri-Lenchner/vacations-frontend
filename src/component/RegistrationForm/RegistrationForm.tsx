@@ -1,4 +1,6 @@
 import React, {JSX} from 'react';
+import {AxiosError} from 'axios';
+import {ErrorModel} from "../../models/error.model";
 import {useForm} from "react-hook-form";
 import {User} from "../../models/user.model";
 import './RegistrationForm.css';
@@ -20,8 +22,9 @@ function RegistrationForm(): JSX.Element {
             navigate("/vacations");
         }
         catch (error) {
-            alert(error);
-            console.error(error);
+            const myErr = error as AxiosError;
+            const message = (myErr.response?.data as ErrorModel)?.error;
+            alert(message || "Something went wrong");
         }
     }
 

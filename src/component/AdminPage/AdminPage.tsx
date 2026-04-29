@@ -9,7 +9,6 @@ function AdminPage(): JSX.Element {
             const vacationData = await followersService.getVacationDestinationWithFollowerCount();
             await followersService.downloadVacationDestinationCSV(vacationData);
         } catch (error) {
-            console.error("Failed to download vacation followers list:", error);
             alert("Failed to download vacation followers list");
         }
     };

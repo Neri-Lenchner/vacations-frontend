@@ -1,4 +1,5 @@
-import axios from 'axios';
+import axios, {AxiosError} from 'axios';
+import {ErrorModel} from "../models/error.model";
 import { saveAs } from 'file-saver';
 import {Follower} from '../models/follower.model';
 import {User} from "../models/user.model";
@@ -29,9 +30,11 @@ class FollowerService {
             const response = await axios.post<Follower>(appConfig.apiAddress + "vacations/followers", follower, {headers: {Authorization: "Bearer " + authStore.getState().token }});
             followersStore.dispatch({type: FollowerActionType.AddFollower, payload: response.data});
             return response.data;
-        } catch (err) {
-            console.error("Error from addFollower");
-            throw err;
+        } catch (error) {
+            const myErr = error as AxiosError;
+            const data = myErr.response?.data as ErrorModel;
+            console.error(data?.error ?? error);
+            throw error;
         }
     }
 
@@ -39,9 +42,11 @@ class FollowerService {
         try {
             await axios.delete<void>(appConfig.apiAddress + "vacations/followers/" + id, {headers: { Authorization: "Bearer " + authStore.getState().token }});
             followersStore.dispatch({type: FollowerActionType.DeleteFollower, payload: id});
-        } catch (err) {
-            console.error("Error from delete Follower");
-            throw err;
+        } catch (error) {
+            const myErr = error as AxiosError;
+            const data = myErr.response?.data as ErrorModel;
+            console.error(data?.error ?? error);
+            throw error;
         }
     }
 
@@ -63,9 +68,11 @@ class FollowerService {
                 }
             );
             saveAs(response.data, 'vacation-followers.csv');
-        } catch (err) {
-            console.error("Error downloading vacation destination CSV");
-            throw err;
+        } catch (error) {
+            const myErr = error as AxiosError;
+            const data = myErr.response?.data as ErrorModel;
+            console.error(data?.error ?? error);
+            throw error;
         }
     }
 

@@ -3,6 +3,7 @@ import {appConfig} from "../utils/app-config";
 import {User} from "../models/user.model";
 import {Credentials} from "../models/credentials.model";
 import {AuthActionType, authStore} from "../state/auth-state";
+import {ErrorModel} from "../models/error.model";
 // import {Credentials} from "../models/credentials.model";
 
 class AuthService {
@@ -13,7 +14,9 @@ class AuthService {
             authStore.dispatch({type: AuthActionType.Register, payload: response.data.token});
         } catch (err) {
             const myErr = err as AxiosError;
-            throw new Error((myErr.response?.data as any)?.error);
+            const data = myErr.response?.data as ErrorModel;
+            console.error(data?.error ?? err);
+            throw err;
         }
     }
 
@@ -23,7 +26,9 @@ class AuthService {
             authStore.dispatch({type: AuthActionType.Login, payload: response.data.token});
         } catch (err) {
             const myErr = err as AxiosError;
-            throw new Error((myErr.response?.data as any)?.error);
+            const data = myErr.response?.data as ErrorModel;
+            console.error(data?.error ?? err);
+            throw err;
         }
     }
 

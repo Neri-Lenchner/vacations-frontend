@@ -77,7 +77,6 @@ function VacationList(): JSX.Element {
                 setTotalVacations(vacationStore.getState().totalVacations);
             }
         } catch (error) {
-            console.error("Error fetching upcoming vacations:", error);
             setShowUpcoming(false);
         }
     }
@@ -102,7 +101,6 @@ function VacationList(): JSX.Element {
                 setTotalVacations(vacationStore.getState().totalVacations);
             }
         } catch (error) {
-            console.error("Error fetching followed vacations:", error);
             setShowFollowed(false);
         }
     }
@@ -126,7 +124,6 @@ function VacationList(): JSX.Element {
                 setTotalVacations(vacationStore.getState().totalVacations);
             }
         } catch (error) {
-            console.error("Error fetching active vacations:", error);
             setShowActive(false);
         }
     }

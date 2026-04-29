@@ -1,4 +1,6 @@
 import React, {JSX, useEffect, useRef, useState} from 'react';
+import {AxiosError} from 'axios';
+import {ErrorModel} from "../../models/error.model";
 import './AdminForm.css';
 import {NavLink, useNavigate, useParams} from "react-router-dom";
 import {useForm} from "react-hook-form";
@@ -45,8 +47,9 @@ function AdminForm(): JSX.Element {
             navigate("/vacations");
         }
         catch (error) {
-            alert(error);
-            console.error(error);
+            const myErr = error as AxiosError;
+            const message = (myErr.response?.data as ErrorModel)?.error;
+            alert(message || "Something went wrong");
         }
     }
 
@@ -57,8 +60,9 @@ function AdminForm(): JSX.Element {
             navigate("/vacations");
         }
         catch (error) {
-            alert(error);
-            console.error(error);
+            const myErr = error as AxiosError;
+            const message = (myErr.response?.data as ErrorModel)?.error;
+            alert(message || "Something went wrong");
         }
     }
 
