@@ -26,11 +26,11 @@ function AdminForm(): JSX.Element {
 
             if (vacation) {
                 const {startDate, endDate} = vacation;
-                vacation.startDate = startDate.split('T')[0];
-                vacation.endDate = endDate.split('T')[0];
-                setVacationToUpdate(vacation);
-                console.log(vacation?.imageName, "vacation id", vacation.id);
-                reset(vacation);
+                const newVacation: Vacation  = {...vacation,
+                    startDate: new Date(startDate).toISOString().split('T')[0] as any,
+                    endDate: new Date(endDate).toISOString().split('T')[0] as any};
+                setVacationToUpdate(newVacation);
+                reset(newVacation);
             }
         }
 

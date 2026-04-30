@@ -31,8 +31,8 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
         setIsFollowing(!!userIsFollowing);
     }, [currentUserFollowedVacations, vacation.id]);
 
-    const startDate: string = vacation.startDate.split('T')[0].split('-').reverse().join('.');
-    const endDate: string = vacation.endDate.split('T')[0].split('-').reverse().join('.');
+    const startDate: string = new Date(vacation.startDate).toLocaleDateString();
+    const endDate: string = new Date(vacation.endDate).toLocaleDateString();
 
     async function like(): Promise<void> {
         if (isFollowing) {
