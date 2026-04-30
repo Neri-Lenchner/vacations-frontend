@@ -1,13 +1,13 @@
 import {Vacation} from "../models/vacation.model";
 import {createStore} from "redux";
-import {VacationDestinationIdModel} from "../models/vacation-destinationId.model";
+import {DestinationAndFollowersCountModel} from "../models/destination-and-followers-count.model";
 
 
 export class VacationState {
     vacationList: Vacation[] = [];
     selectedVacation: Vacation | null = null;
     totalVacations: number = 0;
-    vacationDestinationAndIdList: VacationDestinationIdModel[] = [];
+    vacationDestinationAndIdList: DestinationAndFollowersCountModel[] = [];
 }
 
 export enum VacationActionType {

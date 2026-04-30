@@ -5,14 +5,14 @@ import {Vacation} from '../../models/vacation.model';
 import {User} from '../../models/user.model';
 import {appConfig} from "../../utils/app-config";
 import {followersService} from '../../services/followers-service';
-import {VacationDestinationIdModel} from "../../models/vacation-destinationId.model";
+import {DestinationAndFollowersCountModel} from "../../models/destination-and-followers-count.model";
 import "./VacationItem.css";
 
 interface VacationItemProps {
     user: User;
     vacation: Vacation;
     currentUserFollowedVacations: Follower[];
-    followersCountList: VacationDestinationIdModel[];
+    destinationAndFollowersCountArr: DestinationAndFollowersCountModel[];
     isDelete: boolean;
     setIsDelete: any;
     setVacationId: any;
@@ -23,7 +23,7 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
     let [isFollowing, setIsFollowing] = useState<boolean>(false);
     const [currentUserFollower, setCurrentUserFollower] = useState<Follower | undefined>(undefined);
     const navigate = useNavigate();
-    let {vacation, currentUserFollowedVacations, followersCountList, user, isDelete, setIsDelete, setVacationId} = vacationItemProps;
+    let {vacation, currentUserFollowedVacations, destinationAndFollowersCountArr, user, isDelete, setIsDelete, setVacationId} = vacationItemProps;
 
     useEffect((): void => {
         const userIsFollowing: Follower | undefined = currentUserFollowedVacations.find(follower => follower.vacationId === vacation.id);
@@ -108,7 +108,7 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
                             {isFollowing
                                 ? "❤️"
                                 : "🩶"
-                            } Likes {followersCountList.find(followerCount => followerCount.vacationId === vacation.id)?.followerCount ?? 0}
+                            } Likes {destinationAndFollowersCountArr.find(vacationDestinationAndFollowersCount => vacationDestinationAndFollowersCount.vacationId === vacation.id)?.followerCount ?? 0}
                         </div>
                   </div>
             }

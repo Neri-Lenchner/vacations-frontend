@@ -6,7 +6,7 @@ import {appConfig} from "../utils/app-config";
 import {authStore} from "../state/auth-state";
 import {UserActionType, userStore} from "../state/user-state";
 import {FollowerActionType, followersStore} from "../state/followers-state";
-import {VacationDestinationIdModel} from "../models/vacation-destinationId.model";
+import {DestinationAndFollowersCountModel} from "../models/destination-and-followers-count.model";
 
 class FollowerService {
     public async getFollowersList(): Promise<Follower[]> {
@@ -43,14 +43,14 @@ class FollowerService {
         }
     }
 
-    public async getVacationDestinationWithFollowerCount(): Promise<VacationDestinationIdModel[]> {
-        const response = await axios.get<VacationDestinationIdModel[]>(
+    public async getVacationDestinationWithFollowerCount(): Promise<DestinationAndFollowersCountModel[]> {
+        const response = await axios.get<DestinationAndFollowersCountModel[]>(
             appConfig.apiAddress + "vacations/destination-followers", {headers: {Authorization: "Bearer " + authStore.getState().token}});
         followersStore.dispatch({type: FollowerActionType.GetFollowersCountList, payload: response.data});
         return response.data;
     }
 
-    public async downloadVacationDestinationCSV(vacationData: VacationDestinationIdModel[]): Promise<void> {
+    public async downloadVacationDestinationCSV(vacationData: DestinationAndFollowersCountModel[]): Promise<void> {
         try {
             const response = await axios.post<Blob>(
                 appConfig.apiAddress + "vacations/followers/csv",

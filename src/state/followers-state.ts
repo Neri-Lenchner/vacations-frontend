@@ -1,11 +1,11 @@
 import {createStore} from "redux";
 import {Follower} from "../models/follower.model";
-import {VacationDestinationIdModel} from "../models/vacation-destinationId.model";
+import {DestinationAndFollowersCountModel} from "../models/destination-and-followers-count.model";
 
 
 export class FollowersState {
     currentUserFollowedVacations: Follower[] = [];
-    followersCountList: VacationDestinationIdModel[] = [];
+    followersCountList: DestinationAndFollowersCountModel[] = [];
 }
 
 export enum FollowerActionType {

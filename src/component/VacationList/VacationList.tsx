@@ -10,7 +10,7 @@ import CheckBoxItem from "../CheckBoxItem/CheckBoxItem";
 import VacationItem from "../VacationItem/VacationItem";
 import Pagination from "../Pagination/Pagination";
 import {Follower} from "../../models/follower.model";
-import {VacationDestinationIdModel} from "../../models/vacation-destinationId.model";
+import {DestinationAndFollowersCountModel} from "../../models/destination-and-followers-count.model";
 import {User} from "../../models/user.model";
 import ConfirmationWindow from "../ConfirmationWindow/ConfirmationWindow";
 import {Unsubscribe} from "redux";
@@ -21,7 +21,7 @@ function VacationList(): JSX.Element {
         const [totalVacations, setTotalVacations] = useState<number>(vacationStore.getState().totalVacations);
         const [page, setPage] = useState<Vacation[]>(vacationStore.getState().vacationList);
         const [currentUserFollowedVacations, setCurrentUserFollowedVacations] = useState<Follower[]>(followersStore.getState().currentUserFollowedVacations);
-        const [followersCountList, setFollowersCountList] = useState<VacationDestinationIdModel[]>(followersStore.getState().followersCountList);
+        const [followersCountList, setFollowersCountList] = useState<DestinationAndFollowersCountModel[]>(followersStore.getState().followersCountList);
         const [currentList, setCurrentList] = useState<Vacation[]>([]);
         const [user, setUser] = useState<User | null>(authStore.getState().user);
         const [showFollowed, setShowFollowed] = useState(false);
@@ -166,7 +166,7 @@ function VacationList(): JSX.Element {
                         user={user!}
                         vacation={vacation}
                         currentUserFollowedVacations={currentUserFollowedVacations}
-                        followersCountList={followersCountList}
+                        destinationAndFollowersCountArr={followersCountList}
                         key={vacation.id}
                         isDelete={isDelete}
                         setIsDelete={setIsDelete}

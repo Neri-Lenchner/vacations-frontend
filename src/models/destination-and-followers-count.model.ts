@@ -1,4 +1,4 @@
-export class VacationDestinationIdModel {
+export class DestinationAndFollowersCountModel {
 
     constructor(
         public vacationDestination: string,

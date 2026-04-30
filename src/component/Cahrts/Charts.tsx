@@ -1,16 +1,16 @@
 import { Bar } from 'react-chartjs-2';
 import "./Charts.css";
 import { useEffect, useState } from "react";
-import {VacationDestinationIdModel} from "../../models/vacation-destinationId.model";
+import {DestinationAndFollowersCountModel} from "../../models/destination-and-followers-count.model";
 import {followersService} from "../../services/followers-service";
 
 function Charts() {
 
-    const [vacationDestinationAndIdList, setVacationDestinationIdList] = useState<VacationDestinationIdModel[]>([]);
+    const [vacationDestinationAndIdList, setVacationDestinationIdList] = useState<DestinationAndFollowersCountModel[]>([]);
 
     useEffect(() => {
         async function fetchData() {
-            const data: VacationDestinationIdModel[] = await followersService.getVacationDestinationWithFollowerCount();
+            const data: DestinationAndFollowersCountModel[] = await followersService.getVacationDestinationWithFollowerCount();
             setVacationDestinationIdList(data);
         }
         void fetchData();
