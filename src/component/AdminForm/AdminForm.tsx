@@ -161,7 +161,11 @@ function AdminForm(): JSX.Element {
                                 : "/default-pic.jpg")} />
                         </div>
                         <div className="form-split-buttons">
-                            <NavLink className="form-cancel-button" to={"/vacations"}>Cancel</NavLink>
+                            <NavLink
+                                className="form-cancel-button"
+                                to={"/vacations"}>
+                                Cancel
+                            </NavLink>
                         </div>
                     </div>
                 </div>
