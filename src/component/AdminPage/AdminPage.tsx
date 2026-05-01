@@ -7,7 +7,7 @@ function AdminPage(): JSX.Element {
     const handleDownloadFollowersList = async () => {
         try {
             const vacationData = await followersService.getVacationDestinationWithFollowerCount();
-            await followersService.downloadVacationDestinationCSV(vacationData);
+            await followersService.downloadFollowersMapCSV(vacationData);
         } catch (error) {
             alert("Failed to download vacation followers list");
         }
@@ -15,9 +15,9 @@ function AdminPage(): JSX.Element {
 
     return (
         <div className="admin-page-container">
-            <h1>Download Followers Map CSV</h1>
+            <h1>Followers Map CSV</h1>
             <button onClick={handleDownloadFollowersList}>
-                Download Followers List (CSV)
+                Click To Download
             </button>
         </div>
     );

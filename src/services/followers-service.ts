@@ -48,7 +48,7 @@ class FollowerService {
         return response.data;
     }
 
-    public async downloadVacationDestinationCSV(vacationData: DestinationAndFollowersCountModel[]): Promise<void> {
+    public async downloadFollowersMapCSV(vacationData: DestinationAndFollowersCountModel[]): Promise<void> {
         try {
             const response = await axios.post<Blob>(
                 appConfig.apiAddress + "vacations/followers/csv",
