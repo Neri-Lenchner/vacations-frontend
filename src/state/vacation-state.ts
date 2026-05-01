@@ -1,20 +1,14 @@
 import {Vacation} from "../models/vacation.model";
 import {createStore} from "redux";
-import {DestinationAndFollowersCountModel} from "../models/destination-and-followers-count.model";
-
 
 export class VacationState {
     vacationList: Vacation[] = [];
-    selectedVacation: Vacation | null = null;
     totalVacations: number = 0;
-    vacationDestinationAndIdList: DestinationAndFollowersCountModel[] = [];
 }
 
 export enum VacationActionType {
     GetVacationList = "GetVacationList",
     GetTotalVacations = "GetTotalVacations",
-    GetSelectedVacation = "GetSelectedVacation",
-    GetVacationDestinationIdList = "GetVacationDestinationIdList",
     AddVacation = "AddVacation",
     UpdateVacation = "UpdateVacation",
     DeleteVacation = "DeleteVacation",
@@ -36,12 +30,6 @@ export function vacationReducer(vacationState: VacationState = new VacationState
             break;
         case VacationActionType.GetTotalVacations:
             newState.totalVacations = action.payload;
-            break;
-        case VacationActionType.GetSelectedVacation:
-            newState.selectedVacation = action.payload;
-            break;
-        case VacationActionType.GetVacationDestinationIdList:
-            newState.vacationDestinationAndIdList = action.payload;
             break;
         case VacationActionType.AddVacation:
             newState.vacationList.push(action.payload);

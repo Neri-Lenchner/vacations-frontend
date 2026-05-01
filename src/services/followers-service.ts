@@ -1,10 +1,8 @@
 import axios from 'axios';
 import { saveAs } from 'file-saver';
 import {Follower} from '../models/follower.model';
-import {User} from "../models/user.model";
 import {appConfig} from "../utils/app-config";
 import {authStore} from "../state/auth-state";
-import {UserActionType, userStore} from "../state/user-state";
 import {FollowerActionType, followersStore} from "../state/followers-state";
 import {DestinationAndFollowersCountModel} from "../models/destination-and-followers-count.model";
 

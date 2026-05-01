@@ -110,7 +110,6 @@ class VacationService {
                 `${appConfig.apiAddress}vacation/${id}`,
                 {headers: { Authorization: "Bearer " + token }}
             );
-            vacationStore.dispatch({type: VacationActionType.GetSelectedVacation, payload: response.data});
             return response.data;
         } catch (error) {
             throw error;
