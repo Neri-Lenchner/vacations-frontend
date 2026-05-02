@@ -11,7 +11,7 @@ import {appConfig} from "../../utils/app-config";
 
 
 function AdminForm(): JSX.Element {
-    const {register, formState, handleSubmit, reset} = useForm<Vacation>();
+    const {register, formState, handleSubmit, reset, getValues} = useForm<Vacation>();
     const navigate = useNavigate();
     const params = useParams();
     let [vacationToUpdate, setVacationToUpdate] = useState<Vacation | undefined>(undefined);
@@ -104,7 +104,7 @@ function AdminForm(): JSX.Element {
                             placeholder="$"
                             {...register("cost", {
                                 valueAsNumber: true,
-                                required: { value: true, message: "Cost date is required!" },
+                                required: { value: true, message: "Cost is required!" },
                                 min: { value: 1, message: "Price can not be negative" },
                                 max: { value: 10000, message: "Price can not be more than 10,000$" }
                             })}
@@ -134,6 +134,7 @@ function AdminForm(): JSX.Element {
                             className="form-date form-element"
                             {...register("startDate", {
                                 required: { value: true, message: "Start date is required!" },
+                                min: !params.id ? { value: new Date().toISOString().split('T')[0], message: "Start date cannot be in the past" } : undefined
                             })}
                         />
                         {formState.errors.startDate && <p>{formState.errors.startDate?.message}</p>}
@@ -143,6 +144,7 @@ function AdminForm(): JSX.Element {
                             className="form-date form-element"
                             {...register("endDate", {
                                 required: { value: true, message: "End date is required!" },
+                                validate: value => value > getValues("startDate") || "End date must be after start date"
                             })}
                         />
                         {formState.errors.endDate && <p>{formState.errors.endDate?.message}</p>}
