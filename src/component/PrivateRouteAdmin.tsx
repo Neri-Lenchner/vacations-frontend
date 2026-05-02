@@ -26,7 +26,7 @@ function PrivateRouteAdmin(privateRoutePropsAdmin: PrivateRoutePropsAdmin): JSX.
                 setUser(null);
             }
         });
-        return () => unsubscribe();
+        return (): void => unsubscribe();
     }, [])
 
     if (!user || !user?.isAdmin) {

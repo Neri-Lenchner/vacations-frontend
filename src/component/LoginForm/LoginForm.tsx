@@ -36,7 +36,7 @@ function LoginForm(): JSX.Element {
                 <input type="email" className="form-email form-element" {...register("email",
                     {
                         required: {value: true, message: "Email is required!"},
-                        minLength: {value: 7, message: "Email must be valid"}
+                        pattern: {value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "Email must be valid"}
                     }
                 )}/>
                 {formState.errors.email && <p>{formState.errors.email?.message}</p>}

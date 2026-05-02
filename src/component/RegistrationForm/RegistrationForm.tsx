@@ -41,7 +41,8 @@ function RegistrationForm(): JSX.Element {
                 <input type="text" className="form-first-name form-element" {...register("firstName",
                     {
                         required: {value: true, message: "First name is required!"},
-                        minLength: {value: 2, message: "Must contain at list 2 letter"}
+                        minLength: {value: 2, message: "Must contain at list 2 letter"},
+                        maxLength: {value: 20,message: "First name can not have more than 20 letters"}
                     }
                 )}/>
                 {formState.errors.firstName && <p>{formState.errors.firstName?.message}</p>}
@@ -51,7 +52,8 @@ function RegistrationForm(): JSX.Element {
                 <input type="text" className="form-last-name form-element" {...register("lastName",
                     {
                         required: {value: true, message: "Last name is required!"},
-                        minLength: {value: 2, message: "Must contain at list 2 letter"}
+                        minLength: {value: 2, message: "Must contain at list 2 letter"},
+                        maxLength: {value: 20,message: "First name can not have more than 20 letters"}
                     }
                 )}/>
                 {formState.errors.lastName && <p>{formState.errors.lastName?.message}</p>}
@@ -61,7 +63,7 @@ function RegistrationForm(): JSX.Element {
                 <input type="email" className="form-email form-element" {...register("email",
                     {
                         required: {value: true, message: "Email is required!"},
-                        minLength: {value: 7, message: "Email must be valid"}
+                        pattern: {value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "Email must be valid"}
                     }
                 )}/>
                 {formState.errors.email && <p>{formState.errors.email?.message}</p>}
