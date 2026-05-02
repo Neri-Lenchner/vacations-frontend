@@ -6,9 +6,10 @@ import {User} from "../models/user.model";
 
 interface PrivateRouteProps {
     child: ReactNode;
+    adminOnly?: boolean;
 }
 
-function PrivateRoute(privateRouteProps: PrivateRouteProps): JSX.Element {
+function PrivateRoute({ child, adminOnly }: PrivateRouteProps): JSX.Element {
 
     const [user, setUser] = useState<User | null>(
         authStore.getState().user
@@ -19,7 +20,6 @@ function PrivateRoute(privateRouteProps: PrivateRouteProps): JSX.Element {
     useEffect((): Unsubscribe => {
         const unsubscribe: Unsubscribe = authStore.subscribe((): void => {
             if (authStore.getState().user !== null) {
-                console.log(authStore.getState().user);
                 setUser(authStore.getState().user)
             } else {
                 setUser(null);
@@ -28,13 +28,10 @@ function PrivateRoute(privateRouteProps: PrivateRouteProps): JSX.Element {
         return (): void => unsubscribe();
     }, [])
 
-    if (!user) {
-        return (<Navigate to="/home" />);
-    }
+    if (!user) return <Navigate to="/home" />;
+    if (adminOnly && !user.isAdmin) return <Navigate to="/vacations" />;
 
-    return (
-        <>{privateRouteProps.child}</>
-    );
+    return <>{child}</>;
 }
 
 export default PrivateRoute;
