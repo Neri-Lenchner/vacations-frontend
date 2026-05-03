@@ -1,17 +1,19 @@
 import { Bar } from 'react-chartjs-2';
 import "./Charts.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import {DestinationAndFollowersCountModel} from "../../models/destination-and-followers-count.model";
 import {followersService} from "../../services/followers-service";
 
 function Charts() {
 
     const [vacationDestinationAndIdList, setVacationDestinationIdList] = useState<DestinationAndFollowersCountModel[]>([]);
+    const container = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
         async function fetchData() {
             const data: DestinationAndFollowersCountModel[] = await followersService.getVacationDestinationWithFollowerCount();
             setVacationDestinationIdList(data);
+            container.current?.scrollIntoView();
         }
         void fetchData();
     }, []);
@@ -25,7 +27,7 @@ function Charts() {
     }
 
     return (
-        <div className="Charts-container">
+        <div className="Charts-container" ref={container}>
             <Bar
                 data={{
                     labels: vacationDestinationAndIdList.map(vacation => vacation.vacationDestination),
