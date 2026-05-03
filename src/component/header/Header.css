@@ -25,19 +25,9 @@
     color: yellow;
 }
 
-.header-button-line,
-.header-button-line-2 {
+.header-button-line {
     display: flex;
     gap: 50px;
-}
-
-.header-button-line-2 {
-    align-items: center;
-    position: absolute;
-    gap: 20px;
-    top: 90px;
-    left: 0px;
-    height: 50px;
 }
 
 .header-headline {
@@ -70,29 +60,6 @@
     color: white;
 }
 
-.display-none {
-    display: none;
-}
-
-.header-icon {
-    margin-top: 20px;
-    margin-left: 40px;
-    height: 90px;
-}
-
-.header-home-icon,
-.header-home-icon-2 {
-    height: 30px;
-    width: 30px;
-    margin-top: -5px;
-    margin-left: 15px;
-    margin: 20px 100px 20px 0;
-}
-
-.header-home-icon-2 {
-    margin-top: 0;
-}
-
 .header-js-icon {
     margin-right: 5px;
 }
@@ -107,28 +74,11 @@
     justify-content: flex-start;
 }
 
-.header-home-link {
-    margin: auto 0;
-    text-decoration: none;
-    color: yellow;
-}
-
-.header-login-link {
-   text-align: end;
-}
 .header-plain-image {
     position: absolute;
     top: 35px;
     right: 85px;
     height: 150px;
-}
-
-.header-ship-image {
-    position: absolute;
-    top: -30px;
-    left: 30%;
-    height: 250px;
-    z-index: -20;
 }
 
 .header-balloon-image {
