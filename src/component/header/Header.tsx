@@ -61,9 +61,10 @@ function Header(): JSX.Element {
                     <div className="header-headline">
                         Hello <span>{userName}</span>
                         <div className="header-headline-container">
-                            <div onClick={goHome}>
-                                <AiFillHome className="header-icon header-home-icon-2 header-button" />
-                            </div>
+                            <button onClick={goHome}
+                                    className="header-button">
+                                <AiFillHome className="header-js-icon header-home-icon-2" />
+                            </button>
                             <div className="header-button-line">
                                 <button
                                     onClick={logOut}
