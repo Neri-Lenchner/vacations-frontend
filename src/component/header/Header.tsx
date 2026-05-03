@@ -61,11 +61,12 @@ function Header(): JSX.Element {
                     <div className="header-headline">
                         Hello <span>{userName}</span>
                         <div className="header-headline-container">
-                            <button onClick={goHome}
-                                    className="header-button">
-                                <AiFillHome className="header-js-icon header-home-icon-2" />
-                            </button>
+
                             <div className="header-button-line">
+                                <button onClick={goHome}
+                                        className="header-button">
+                                    <AiFillHome className="header-js-icon" />
+                                </button>
                                 <button
                                     onClick={logOut}
                                     className="header-button">
@@ -111,19 +112,20 @@ function Header(): JSX.Element {
                         </div>
                     </div>
                 </>
-                : <div className="header-button-line-2">
-                    <div
-                        className="header-icon header-button"
-                        onClick={goHome}>
-                        <AiFillHome className="header-icon header-home-icon" />
-                    </div>
-                    <button
-                        className="header-button header-button-adding"
-                        onClick={navigateToLoginForm}>
-                        <RiLoginBoxFill
-                            className="header-logout-icon"/>
+                : <div className="header-headline-container">
+                    <div className="header-button-line">
+                        <button onClick={goHome}
+                                className="header-button">
+                            <AiFillHome className="header-js-icon" />
+                        </button>
+                        <button
+                            className="header-button header-button-adding"
+                            onClick={navigateToLoginForm}>
+                            <RiLoginBoxFill
+                                className="header-logout-icon"/>
                             Login
-                    </button>
+                        </button>
+                    </div>
                  </div>
             }
             <div className="header-site-name">
