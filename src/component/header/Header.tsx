@@ -10,7 +10,8 @@ import { RiLoginBoxFill } from "react-icons/ri";
 import { FaFileCsv } from "react-icons/fa"
 import { IoBarChartSharp } from "react-icons/io5";
 import { MdNoteAdd } from "react-icons/md";
-import { LiaThListSolid } from "react-icons/lia";
+// import { LiaThListSolid } from "react-icons/lia";
+import { LuLayoutList } from "react-icons/lu";
 
 
 function Header(): JSX.Element {
@@ -76,7 +77,7 @@ function Header(): JSX.Element {
                                         <NavLink
                                             className="header-button"
                                             to="/vacations">
-                                            <LiaThListSolid className="header-js-icon"/>
+                                            <LuLayoutList className="header-js-icon"/>
                                             Vacations
                                         </NavLink>
                                         <NavLink
@@ -101,7 +102,7 @@ function Header(): JSX.Element {
                                     : <NavLink
                                         className="header-button"
                                         to="/vacations">
-                                        <LiaThListSolid className="header-js-icon"/>
+                                        <LuLayoutList className="header-js-icon"/>
                                         Vacations
                                      </NavLink>
                                 }
