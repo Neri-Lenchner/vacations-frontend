@@ -9,16 +9,16 @@ function Charts() {
     const [vacationDestinationAndIdList, setVacationDestinationIdList] = useState<DestinationAndFollowersCountModel[]>([]);
     const container = useRef<HTMLDivElement | null>(null);
 
-    useEffect(() => {
-        async function fetchData(): Promise<void> {
+    useEffect((): void => {
+        (async (): Promise<void> => {
             const data: DestinationAndFollowersCountModel[] = await followersService.getVacationDestinationWithFollowerCount();
             setVacationDestinationIdList(data);
 
             const containerElement: HTMLDivElement | null =  container.current;
             if (containerElement) containerElement.scrollIntoView();
 
-        }
-        void fetchData();
+        })();
+
     }, []);
 
 
