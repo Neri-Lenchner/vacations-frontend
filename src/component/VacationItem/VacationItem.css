@@ -48,6 +48,8 @@
 }
 
 .vacation-item-dates {
+    display: flex;
+    justify-content: center;
     font-size: 23px;
     position: relative;
     color: darkblue;
@@ -79,26 +81,6 @@
     transition: all 0.2s ease-in-out;
 }
 
-.vacation-item-likes-container:hover {
-
-}
-
-.vacation-item-svg {
-    margin-top: 5px;
-    margin-right: 20px;
-    position: absolute;
-    left: 5px;
-    top: -2px;
-    color: white;
-    padding-right: 10px;
-    width: 30px;
-    height: 30px;
-    viewBox: 0 0 24 24;
-    fill: none;
-    stroke: darkblue;
-    stroke-width: 2;
-}
-
 .vacation-item-img {
     height: 100%;
     width: 100%;
@@ -114,8 +96,6 @@
     color: white;
 }
 
-   /*true or false*/
-
 .vacation-item-isFollowing-true {
     font-family: Arial, sans-serif !important;
     color: white;
@@ -130,7 +110,6 @@
     background: rgba(0, 0, 139, 0.9);
     box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.2), 0 2px 8px 0 rgba(0, 0, 0, 0.19);
 }
-
 
 .vacation-item-isFollowing-false:hover {
     background: rgba(0, 123, 255, 0.4);
@@ -152,7 +131,6 @@
 .vacation-item-admin-click-right {
     display: flex;
     justify-content: center;
-    /*padding: 30px;*/
     position: absolute;
     top: 10px;
     font-size: 14px;
@@ -205,4 +183,14 @@
 
 .display-none {
     display: none;
+}
+
+.vacation-item-calendar-icon {
+    position: absolute;
+    stroke: currentColor;
+    stroke-width: 0.3;
+    height: 30px;
+    width: 30px;
+    top: 3px;
+    left: 5px;
 }

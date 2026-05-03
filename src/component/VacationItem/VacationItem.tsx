@@ -6,6 +6,7 @@ import {User} from '../../models/user.model';
 import {appConfig} from "../../utils/app-config";
 import {followersService} from '../../services/followers-service';
 import {DestinationAndFollowersCountModel} from "../../models/destination-and-followers-count.model";
+import { CiCalendarDate } from "react-icons/ci";
 import "./VacationItem.css";
 
 interface VacationItemProps {
@@ -68,12 +69,8 @@ function VacationItem(vacationItemProps: VacationItemProps): JSX.Element {
                 } />
             </div>
             <div className="vacation-item-dates">
-                <svg className="vacation-item-svg" viewBox="0 0 24 24" fill="none">
-                    <rect x="3" y="4" width="18" height="18"/>
-                    <line x1="3" y1="10" x2="21" y2="10"/>
-                    <rect x="16" y="16" width="4" height="4"/>
-                </svg>
-                {startDate} - {endDate}
+                <CiCalendarDate className="vacation-item-calendar-icon"  />
+               <div className="vacation-item-start-end-dates">{startDate} - {endDate}</div>
             </div>
             <div className="vacation-item-content-container">
                 <p className="vacation-item-text">
