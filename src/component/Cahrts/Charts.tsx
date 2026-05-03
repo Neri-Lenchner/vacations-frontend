@@ -10,10 +10,13 @@ function Charts() {
     const container = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
-        async function fetchData() {
+        async function fetchData(): Promise<void> {
             const data: DestinationAndFollowersCountModel[] = await followersService.getVacationDestinationWithFollowerCount();
             setVacationDestinationIdList(data);
-            container.current?.scrollIntoView();
+
+            const containerElement: HTMLDivElement | null =  container.current;
+            if (containerElement) containerElement.scrollIntoView();
+
         }
         void fetchData();
     }, []);
