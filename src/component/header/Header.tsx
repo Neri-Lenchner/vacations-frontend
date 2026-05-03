@@ -66,6 +66,7 @@ function Header(): JSX.Element {
                                 <button onClick={goHome}
                                         className="header-button">
                                     <AiFillHome className="header-js-icon" />
+                                        Home
                                 </button>
                                 <button
                                     onClick={logOut}
@@ -117,6 +118,7 @@ function Header(): JSX.Element {
                         <button onClick={goHome}
                                 className="header-button">
                             <AiFillHome className="header-js-icon" />
+                                Home
                         </button>
                         <button
                             className="header-button header-button-adding"
