@@ -122,7 +122,7 @@ function Header(): JSX.Element {
                             className="header-button header-button-adding"
                             onClick={navigateToLoginForm}>
                             <RiLoginBoxFill
-                                className="header-logout-icon"/>
+                                className="header-js-icon"/>
                             Login
                         </button>
                     </div>
