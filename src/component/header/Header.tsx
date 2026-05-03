@@ -7,6 +7,10 @@ import {User} from '../../models/user.model';
 import { AiFillHome } from "react-icons/ai";
 import { RiLogoutBoxFill } from "react-icons/ri";
 import { RiLoginBoxFill } from "react-icons/ri";
+import { FaFileCsv } from "react-icons/fa"
+import { IoBarChartSharp } from "react-icons/io5";
+import { MdNoteAdd } from "react-icons/md";
+import { LiaThListSolid } from "react-icons/lia";
 
 
 function Header(): JSX.Element {
@@ -64,7 +68,7 @@ function Header(): JSX.Element {
                                     onClick={logOut}
                                     className="header-button">
                                     <RiLogoutBoxFill
-                                        className="header-logout-icon"/>
+                                        className="header-js-icon"/>
                                         Logout
                                 </button>
                                 {user?.isAdmin
@@ -72,27 +76,32 @@ function Header(): JSX.Element {
                                         <NavLink
                                             className="header-button"
                                             to="/vacations">
+                                            <LiaThListSolid className="header-js-icon"/>
                                             Vacations
                                         </NavLink>
                                         <NavLink
                                             className="header-button"
                                             to="/admin-form/add-vacation">
+                                            <MdNoteAdd className="header-js-icon"/>
                                             Add Vacation
                                         </NavLink>
                                         <NavLink
                                             className="header-button"
                                             to="/charts">
+                                            <IoBarChartSharp className="header-js-icon"/>
                                             Charts
                                         </NavLink>
                                         <NavLink
                                             className="header-button"
                                             to="/admin-page">
+                                            <FaFileCsv className="header-js-icon"/>
                                             CSV-Download
                                         </NavLink>
                                     </>
                                     : <NavLink
                                         className="header-button"
                                         to="/vacations">
+                                        <LiaThListSolid className="header-js-icon"/>
                                         Vacations
                                      </NavLink>
                                 }
