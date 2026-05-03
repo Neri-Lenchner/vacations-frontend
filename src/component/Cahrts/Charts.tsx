@@ -1,16 +1,16 @@
 import { Bar } from 'react-chartjs-2';
 import "./Charts.css";
-import { useEffect, useState, useRef } from "react";
+import {JSX, useEffect, useState, useRef} from "react";
 import {DestinationAndFollowersCountModel} from "../../models/destination-and-followers-count.model";
 import {followersService} from "../../services/followers-service";
 
-function Charts() {
+function Charts(): JSX.Element {
 
     const [vacationDestinationAndIdList, setVacationDestinationIdList] = useState<DestinationAndFollowersCountModel[]>([]);
     const container = useRef<HTMLDivElement | null>(null);
 
     useEffect((): void => {
-        (async (): Promise<void> => {
+        void (async (): Promise<void> => {
             const data: DestinationAndFollowersCountModel[] = await followersService.getVacationDestinationWithFollowerCount();
             setVacationDestinationIdList(data);
 
