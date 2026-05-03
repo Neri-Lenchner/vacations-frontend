@@ -1,17 +1,34 @@
-.checkbox-container{
+.checkbox-item-container {
     background-color: transparent;
 }
 
 .checkbox-label {
     display: flex;
-    gap: 16px;
+    align-items: center;
+    gap: 10px;
     cursor: pointer;
-    z-index: 50;
+    font-family: "Raleway", Arial, sans-serif;
+    color: darkblue;
+    user-select: none;
+    transition: color 0.2s ease-in-out;
+}
+
+.checkbox-label:hover {
+    color: blue;
+}
+
+.checkbox-label h4 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
 }
 
 .checkbox {
     cursor: pointer;
-    z-index: 50;
+    width: 18px;
+    height: 18px;
+    accent-color: darkblue;
 }
 
 .checkbox-display-none {
