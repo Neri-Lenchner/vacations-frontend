@@ -8,18 +8,17 @@ interface PaginationProps {
     handlePaginationChange?: (page: number) => void;
 }
 
-function Pagination(paginationProps: PaginationProps): JSX.Element {
+function Pagination({totalVacations, handlePaginationChange}: PaginationProps): JSX.Element {
 
-    const {totalVacations, handlePaginationChange} = paginationProps;
     const pagesNumbers: number[] = [];
     const limit: number = 10;
     const pages: number = Math.ceil(totalVacations / limit) || 1;
 
-    function changePage(page: number): void {
+    function changePage(pageNumber: number): void {
         if (handlePaginationChange) {
-            handlePaginationChange(page);
+            handlePaginationChange(pageNumber);
         } else {
-            void vacationService.fetchPage(page);
+            void vacationService.fetchPage(pageNumber);
         }
     }
 
