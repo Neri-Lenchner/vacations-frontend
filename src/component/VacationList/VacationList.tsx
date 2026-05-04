@@ -1,4 +1,4 @@
-import React, {JSX,useEffect, useState} from "react";
+import React, {JSX ,useEffect, useState} from "react";
 import {Vacation} from '../../models/vacation.model';
 import {vacationStore} from '../../state/vacation-state';
 import {followersStore} from "../../state/followers-state";
@@ -24,10 +24,10 @@ function VacationList(): JSX.Element {
         const [followersCountList, setFollowersCountList] = useState<DestinationAndFollowersCountModel[]>(followersStore.getState().followersCountList);
         const [currentList, setCurrentList] = useState<Vacation[]>([]);
         const [user, setUser] = useState<User | null>(authStore.getState().user);
-        const [showFollowed, setShowFollowed] = useState(false);
-        const [showUpcoming, setShowUpcoming] = useState(false);
-        const [showActive, setShowActive] = useState(false);
-        let [isDelete, setIsDelete] = useState(false);
+        const [showFollowed, setShowFollowed] = useState<boolean>(false);
+        const [showUpcoming, setShowUpcoming] = useState<boolean>(false);
+        const [showActive, setShowActive] = useState<boolean>(false);
+        let [isDelete, setIsDelete] = useState<boolean>(false);
         let [vacationId, setVacationId] = useState<number | undefined>(undefined);
 
 
