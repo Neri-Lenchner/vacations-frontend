@@ -33,7 +33,7 @@ function Pagination({totalVacations, handlePaginationChange}: PaginationProps): 
                     <li className="pagination-li" key={pageNumber}>
                         <button
                             className="pagination-page-number-button"
-                            onClick={() => changePage(pageNumber)}
+                            onClick={(): void => changePage(pageNumber)}
                         >
                             {pageNumber}
                         </button>
