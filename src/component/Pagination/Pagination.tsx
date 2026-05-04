@@ -14,11 +14,11 @@ function Pagination({totalVacations, handlePaginationChange}: PaginationProps): 
     const limit: number = 10;
     const pages: number = Math.ceil(totalVacations / limit) || 1;
 
-    function changePage(pageNum: number): void {
+   async function changePage(pageNum: number): Promise<void> {
         if (handlePaginationChange) {
             handlePaginationChange(pageNum);
         } else {
-            void vacationService.fetchPage(pageNum);
+            await vacationService.fetchPage(pageNum);
         }
     }
 
@@ -33,7 +33,7 @@ function Pagination({totalVacations, handlePaginationChange}: PaginationProps): 
                     <li className="pagination-li" key={pageNumber}>
                         <button
                             className="pagination-page-number-button"
-                            onClick={(): void => changePage(pageNumber)}
+                            onClick={(): Promise<void> => changePage(pageNumber)}
                         >
                             {pageNumber}
                         </button>
