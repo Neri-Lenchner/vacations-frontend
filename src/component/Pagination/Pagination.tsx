@@ -14,11 +14,15 @@ function Pagination({totalVacations, handlePaginationChange}: PaginationProps): 
     const limit: number = 10;
     const pages: number = Math.ceil(totalVacations / limit) || 1;
 
-   async function changePage(pageNum: number): Promise<void> {
+    async function changePage(pageNum: number): Promise<void> {
         if (handlePaginationChange) {
             handlePaginationChange(pageNum);
         } else {
-            await vacationService.fetchPage(pageNum);
+            try {
+                await vacationService.fetchPage(pageNum);
+            } catch (error) {
+                console.error(error);
+            }
         }
     }
 
