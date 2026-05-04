@@ -21,7 +21,7 @@ function Pagination({totalVacations, handlePaginationChange}: PaginationProps): 
             try {
                 await vacationService.fetchPage(pageNum);
             } catch (error) {
-                console.error(error);
+                throw error;
             }
         }
     }

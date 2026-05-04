@@ -78,6 +78,7 @@ function VacationList(): JSX.Element {
             }
         } catch (error) {
             setShowUpcoming(false);
+            throw error;
         }
     }
 
