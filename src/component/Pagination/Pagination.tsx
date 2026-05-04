@@ -14,11 +14,11 @@ function Pagination({totalVacations, handlePaginationChange}: PaginationProps): 
     const limit: number = 10;
     const pages: number = Math.ceil(totalVacations / limit) || 1;
 
-    function changePage(pageNumber: number): void {
+    function changePage(pageNum: number): void {
         if (handlePaginationChange) {
-            handlePaginationChange(pageNumber);
+            handlePaginationChange(pageNum);
         } else {
-            void vacationService.fetchPage(pageNumber);
+            void vacationService.fetchPage(pageNum);
         }
     }
 
